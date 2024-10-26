@@ -8,7 +8,7 @@ const ServicesBanner = () => {
         alt="Wedding Banner"
         className="h-[calc(100vh-20vh)] w-full object-cover"
       />
-      <div className="absolute top-0 left-0 right-0 bottom-0 bg-black bg-opacity-20 flex items-center justify-center">
+      <div className="absolute top-0 left-0 right-0 bottom-0  flex items-center justify-center">
         <div>
           <h1 className="text-4xl font-bold text-white">
             Experience Unforgettable Wedding Services

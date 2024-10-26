@@ -132,11 +132,16 @@ const WeedingNavbar = () => {
             </MenuItem>
           </Menu>
         </div>
-        <div className="flex gap-4 items-center">
-          <IconButton onClick={handleDrawerOpen} color="inherit">
+        <div className="flex gap-4 items-center   md:hidden">
+          <IconButton onClick={handleDrawerOpen} color="default">
             <MenuIcon />
           </IconButton>
-          <Drawer anchor="left" open={drawerOpen} onClose={handleDrawerClose}>
+          <Drawer
+            className="px-10"
+            anchor="left"
+            open={drawerOpen}
+            onClose={handleDrawerClose}
+          >
             <List>
               <ListItem button component={Link} to="/weedingHome">
                 <ListItemText primary="Home" />
