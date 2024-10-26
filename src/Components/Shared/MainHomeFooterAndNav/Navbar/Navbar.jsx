@@ -3,17 +3,11 @@ import { Link } from "react-router-dom";
 
 const Navbar = () => {
     return (
-        <div className="container mx-auto navbar bg-base-100">
+        <div className="container mx-auto  navbar bg-base-100">
             {/* phone  */}
+            <div className="navbar-start ">
 
-
-
-            <div className="navbar-start">
-                <div className="text-4xl font-bold space-x-2">
-                    <span>Event</span>
-                    <span className=" text-blue-500">Lunchpad</span>
-                </div>
-                <div className="dropdown navbar-end">
+                <div className="dropdown ">
                     <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
                         <svg
                             xmlns="http://www.w3.org/2000/svg"
@@ -30,7 +24,7 @@ const Navbar = () => {
                     </div>
                     <ul
                         tabIndex={0}
-                        className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow">
+                        className="menu menu-sm z-40 dropdown-content bg-base-100 rounded-box  mt-3 w-52 p-2 shadow">
                         <li><Link to='/about' >About</Link></li>
                         <li>
                             <a>Events</a>
@@ -44,13 +38,15 @@ const Navbar = () => {
                     </ul>
 
                 </div>
-
+                <div className="text-4xl font-bold space-x-2 navbar-end">
+                    <span>Event</span>
+                    <span className=" text-blue-500">Lunchpad</span>
+                </div>
             </div>
 
             {/* computer  */}
             <div className="navbar-end hidden lg:flex">
-                <ul className="menu menu-horizontal px-1">
-                    <li><Link to='/about' >About</Link></li>
+                <ul className="menu menu-horizontal z-40 px-1">
                     <li>
                         <details>
                             <summary >Event</summary>
@@ -60,6 +56,8 @@ const Navbar = () => {
                             </ul>
                         </details>
                     </li>
+                    <li><Link to='/about' >About</Link></li>
+
                     <li><Link to='/contact'>Contact</Link></li>
                 </ul>
             </div>
