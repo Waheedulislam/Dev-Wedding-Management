@@ -45,6 +45,7 @@ const WeedingNavbar = () => {
         background: "rgba(255, 255, 255, 0.2)",
         backdropFilter: "blur(10px)",
         boxShadow: "0 4px 30px rgba(0, 0, 0, 0.1)",
+        borderBottom: "1px solid rgba(255, 255, 255, 0.5)",
       }}
     >
       <Toolbar className="flex justify-between items-center">
