@@ -6,7 +6,9 @@ import WeedingFooter from "../Components/Shared/WeedingFooterAndNavbar/WeedingFo
 const WeedingLayout = () => {
     return (
         <div>
+
             <WeedingNavbar />
+
             <Outlet />
             <WeedingFooter />
         </div>
