@@ -9,7 +9,6 @@ const HomePage = () => {
     return (
 
         <div className="container mx-auto px-2">
-            <h1 className="text-3xl font-bold underline">This is home</h1>
             <BannerSection />
             <EventItems />
             <Gallery />
