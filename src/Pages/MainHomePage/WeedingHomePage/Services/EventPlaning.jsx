@@ -42,11 +42,15 @@ const EventPlaning = () => {
               Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
               eiusmod tempor incididunt.
             </p>
+
             <Button
               variant="outlined"
-              color="primary"
               size="large"
-              className="hover:bg-blue-600 hover:text-white transition-colors duration-300"
+              sx={{
+                borderColor: '#F4A492',
+                color: '#F4A492',
+                '&:hover': { backgroundColor: '#F4A492', color: 'white' }
+              }}
             >
               Learn More
             </Button>
