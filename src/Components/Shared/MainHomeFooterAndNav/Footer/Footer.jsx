@@ -6,7 +6,7 @@ const Footer = () => {
             {/* 1st div */}
             <div className="flex flex-col md:flex-row items-center justify-center gap-8 py-12 text-center">
                 <div>
-                    <h1 className="text-4xl md:text-5xl font-bold">Let's Start Planning!</h1>
+                    <h1 className="text-4xl md:text-5xl font-bold">Lets Start Planning!</h1>
                 </div>
                 <div className="flex  md:flex-row gap-4">
                     <button className="btn bg-[#9CCC9A] text-xl btn-lg hover:rounded-full  ">

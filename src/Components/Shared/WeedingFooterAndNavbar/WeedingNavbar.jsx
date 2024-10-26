@@ -82,7 +82,7 @@ const WeedingNavbar = () => {
           </Link>
 
           <Link
-            to="/weedingHome/blogs"
+            to="/weedingHome/weedingBlogs"
             className="hidden md:inline-block ml-2 text-black hover:text-gray-700 transition duration-300 ease-in-out"
           >
             Blogs
