@@ -41,6 +41,7 @@ const WeedingNavbar = () => {
   return (
     <AppBar
       position="fixed"
+
       style={{
         background: "rgba(255, 255, 255, 0.2)",
         backdropFilter: "blur(10px)",
@@ -68,12 +69,18 @@ const WeedingNavbar = () => {
           </Link>
 
           <Link
-            to="/weedingHome/about"
+            to="/weedingHome/weedingPrice"
             className="hidden md:inline-block ml-2 text-black hover:text-gray-700 transition duration-300 ease-in-out"
           >
-            About
+            Pricing
           </Link>
 
+          <Link
+            to="/weedingHome/weedingTeam"
+            className="hidden md:inline-block ml-2 text-black hover:text-gray-700 transition duration-300 ease-in-out"
+          >
+            Team
+          </Link>
           <Link
             to="/weedingHome/services"
             className="hidden md:inline-block ml-2 text-black hover:text-gray-700 transition duration-300 ease-in-out"

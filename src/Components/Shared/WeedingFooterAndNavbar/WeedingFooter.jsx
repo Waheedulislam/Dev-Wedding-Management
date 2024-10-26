@@ -1,66 +1,148 @@
+// src/Footer.js
+
+import { Button, IconButton } from '@mui/material';
+import { Facebook, Twitter, LinkedIn, Google, Email, Phone, ArrowForward } from '@mui/icons-material';
+import { Link } from 'react-router-dom';
 
 const WeedingFooter = () => {
     return (
-        <div>
-            <footer className="footer footer-center bg-primary text-primary-content p-10">
-                <aside>
-                    <svg
-                        width="50"
-                        height="50"
-                        viewBox="0 0 24 24"
-                        xmlns="http://www.w3.org/2000/svg"
-                        fillRule="evenodd"
-                        clipRule="evenodd"
-                        className="inline-block fill-current">
-                        <path
-                            d="M22.672 15.226l-2.432.811.841 2.515c.33 1.019-.209 2.127-1.23 2.456-1.15.325-2.148-.321-2.463-1.226l-.84-2.518-5.013 1.677.84 2.517c.391 1.203-.434 2.542-1.831 2.542-.88 0-1.601-.564-1.86-1.314l-.842-2.516-2.431.809c-1.135.328-2.145-.317-2.463-1.229-.329-1.018.211-2.127 1.231-2.456l2.432-.809-1.621-4.823-2.432.808c-1.355.384-2.558-.59-2.558-1.839 0-.817.509-1.582 1.327-1.846l2.433-.809-.842-2.515c-.33-1.02.211-2.129 1.232-2.458 1.02-.329 2.13.209 2.461 1.229l.842 2.515 5.011-1.677-.839-2.517c-.403-1.238.484-2.553 1.843-2.553.819 0 1.585.509 1.85 1.326l.841 2.517 2.431-.81c1.02-.33 2.131.211 2.461 1.229.332 1.018-.21 2.126-1.23 2.456l-2.433.809 1.622 4.823 2.433-.809c1.242-.401 2.557.484 2.557 1.838 0 .819-.51 1.583-1.328 1.847m-8.992-6.428l-5.01 1.675 1.619 4.828 5.011-1.674-1.62-4.829z"></path>
-                    </svg>
-                    <p className="font-bold">
-                        ACME Industries Ltd.
-                        <br />
-                        Providing reliable tech since 1992
-                    </p>
-                    <p>Copyright © {new Date().getFullYear()} - All right reserved</p>
-                </aside>
-                <nav>
-                    <div className="grid grid-flow-col gap-4">
-                        <a>
-                            <svg
-                                xmlns="http://www.w3.org/2000/svg"
-                                width="24"
-                                height="24"
-                                viewBox="0 0 24 24"
-                                className="fill-current">
-                                <path
-                                    d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z"></path>
-                            </svg>
-                        </a>
-                        <a>
-                            <svg
-                                xmlns="http://www.w3.org/2000/svg"
-                                width="24"
-                                height="24"
-                                viewBox="0 0 24 24"
-                                className="fill-current">
-                                <path
-                                    d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"></path>
-                            </svg>
-                        </a>
-                        <a>
-                            <svg
-                                xmlns="http://www.w3.org/2000/svg"
-                                width="24"
-                                height="24"
-                                viewBox="0 0 24 24"
-                                className="fill-current">
-                                <path
-                                    d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z"></path>
-                            </svg>
-                        </a>
+        <footer className="bg-gray-50  mt-20">
+            {/* Header Section with Title and Buttons */}
+            <div className="flex flex-col lg:flex-row justify-center items-center gap-6 lg:gap-10 my-20 text-center p-6">
+                <h1 className="text-3xl lg:text-5xl font-semibold text-gray-800">Let's Start Planning!</h1>
+                <div className="flex gap-4 mt-4 lg:mt-0">
+                    <Button
+                        variant="contained"
+                        size="medium"
+                        sx={{
+                            backgroundColor: '#9ACCC9',
+                            color: 'white',
+                            width: '200px', // Set desired width
+                            height: '60px',  // Set desired height
+                            borderRadius: '50px', // Full-rounded
+                            '&:hover': { backgroundColor: '#7FB8B2' }
+                        }}
+                    >
+                        Make Reservation
+                    </Button>
+                    <Button
+                        variant="outlined"
+                        size="large"
+                        sx={{
+                            borderColor: '#F4A492',
+                            color: '#F4A492',
+                            width: '200px',
+                            height: '60px',
+                            borderRadius: '50px',
+                            '&:hover': { backgroundColor: '#F4A492', color: 'white' }
+                        }}
+                    >
+                        Learn More
+                    </Button>
+                </div>
+
+
+            </div>
+
+            {/* Background Decorative Image */}
+            <div className="text-center ">
+                <img src="https://designingmedia.com/bridely/wp-content/uploads/2022/07/hearts.png" alt="decorative hearts" className="mx-auto w-16 md:w-20 lg:w-24" />
+            </div>
+
+            <div className="container mx-auto px-4 flex flex-col lg:flex-row justify-between items-start lg:items-center space-y-8 lg:space-y-0 lg:space-x-8">
+                {/* Left Section - Logo and Description */}
+                <div className="text-center text-black lg:text-left w-full lg:w-1/3 bg-[#9ACCC9] bg-opacity-20  p-10 rounded-2xl shadow-lg">
+                    <div className="flex items-center justify-center lg:justify-start mb-4">
+                        <div className="bg-gray-200 p-4 rounded-full shadow-md">
+                            <span className="text-2xl font-bold text-gray-700">W</span>
+                        </div>
+                        <h2 className="text-3xl text-[#F4A492]  ml-2">WEEDING PRO</h2>
                     </div>
-                </nav>
-            </footer>
-        </div>
+                    <p className=" max-w-xs mx-auto lg:mx-0 leading-relaxed">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec tempor lorem ipsum dolor sit amet.
+                    </p>
+                    {/* Social Media Icons */}
+                    <div className="flex justify-center lg:justify-start mt-6 space-x-3">
+                        <IconButton aria-label="Facebook" style={{ backgroundColor: '#4267B2', color: 'white' }} className="rounded-full shadow">
+                            <Facebook />
+                        </IconButton>
+                        <IconButton aria-label="Twitter" style={{ backgroundColor: '#1DA1F2', color: 'white' }} className="rounded-full shadow">
+                            <Twitter />
+                        </IconButton>
+                        <IconButton aria-label="LinkedIn" style={{ backgroundColor: '#0077B5', color: 'white' }} className="rounded-full shadow">
+                            <LinkedIn />
+                        </IconButton>
+                        <IconButton aria-label="Google" style={{ backgroundColor: '#DB4437', color: 'white' }} className="rounded-full shadow">
+                            <Google />
+                        </IconButton>
+                    </div>
+                </div>
+
+                {/* Middle Section - Company Links */}
+                <div className="text-center w-full lg:w-1/3 space-y-4">
+                    <h3 className="text-3xl  text-[#9ACCC9]">COMPANY</h3>
+                    <div className="flex flex-col lg:flex-row justify-center items-center gap-10">
+                        <ul className="space-y-2 ">
+                            <li className="flex pt-2   items-center space-x-2">
+                                <ArrowForward fontSize="small" className="text-gray-600" />
+                                <Link to="/" className="text-gray-600 hover:text-gray-800">Home</Link>
+                            </li>
+                            <li className="flex pt-2   items-center space-x-2">
+                                <ArrowForward fontSize="small" className="text-gray-600" />
+                                <Link to="/about" className="text-gray-600 hover:text-gray-800">About</Link>
+                            </li>
+                            <li className="flex pt-2   items-center space-x-2">
+                                <ArrowForward fontSize="small" className="text-gray-600" />
+                                <Link to="/services" className="text-gray-600 hover:text-gray-800">Services</Link>
+                            </li>
+                            <li className="flex pt-2  items-center space-x-2">
+                                <ArrowForward fontSize="small" className="text-gray-600" />
+                                <Link to="/contact" className="text-gray-600 hover:text-gray-800">Contact</Link>
+                            </li>
+                        </ul>
+                        <ul className="space-y-2">
+                            <li className="flex pt-2  items-center space-x-2">
+                                <ArrowForward fontSize="small" className="text-gray-600" />
+                                <Link to="/support" className="text-gray-600 hover:text-gray-800">Support</Link>
+                            </li>
+                            <li className="flex pt-2  items-center space-x-2">
+                                <ArrowForward fontSize="small" className="text-gray-600" />
+                                <Link to="/career" className="text-gray-600 hover:text-gray-800">Career</Link>
+                            </li>
+                            <li className="flex pt-2  items-center space-x-2">
+                                <ArrowForward fontSize="small" className="text-gray-600" />
+                                <Link to="/faq" className="text-gray-600 hover:text-gray-800">FAQ's</Link>
+                            </li>
+                            <li className="flex pt-2  items-center space-x-2">
+                                <ArrowForward fontSize="small" className="text-gray-600" />
+                                <Link to="/blog" className="text-gray-600 hover:text-gray-800">Blog</Link>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                {/* Right Section - Contact Info with Icons */}
+                <div className="text-center w-full lg:w-1/3 space-y-6"> {/* Increased space-y to add more gap */}
+                    <div className="flex  items-center lg:pr-14 justify-center text-gray-600 space-x-4"> {/* Adjusted space-x for better gap */}
+                        <Phone fontSize="large" style={{ color: '#9ACCC9' }} />
+                        <div className="text-gray-800 font-semibold text-left"> {/* Added text-left for better alignment */}
+                            <span className="text-2xl text-[#F4A492] ">Call Us :</span><br /><span className='text-xl'>(123) 456-789-00</span>
+                        </div>
+                    </div>
+                    <div className="flex items-center justify-center text-gray-600 space-x-4"> {/* Same adjustments as above */}
+                        <Email fontSize="large" style={{ color: '#9ACCC9' }} />
+                        <div className="text-gray-800 font-semibold text-left">
+                            <span className="text-2xl text-[#F4A492] ">Email Us :</span><br /><span className='text-xl'>weedingpro@gmil.com</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            {/* Footer Bottom */}
+            <div className="mt-20 text-center text-gray-900 bg-opacity-30 bg-[#9ACCC9] p-4"> {/* Added background color and padding */}
+                © Copyright Weeding Pro 2024. All Rights Reserved
+            </div>
+        </footer>
     );
 };
 
