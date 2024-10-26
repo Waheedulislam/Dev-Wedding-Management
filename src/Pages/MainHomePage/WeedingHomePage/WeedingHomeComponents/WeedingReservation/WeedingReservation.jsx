@@ -20,7 +20,7 @@ const WeddingReservation = () => {
     };
 
     return (
-        <div className="h-screen mt-20 bg-[#9ACCC9] bg-opacity-15 flex flex-col items-center">
+        <div className=" mt-20  bg-[#9ACCC9] bg-opacity-15 flex flex-col items-center">
             {/* Decorative Image */}
             <div className="flex justify-end items-end w-full">
                 <img
@@ -137,7 +137,7 @@ const WeddingReservation = () => {
                     {/* Submit Button */}
                     <button
                         type="submit"
-                        className="w-full bg-[#9ACCC9] text-white font-semibold py-3 rounded-lg hover:bg-[#8BB8B6] transition duration-300"
+                        className="w-full mt-8 bg-[#9ACCC9] text-white font-semibold py-3 rounded-lg hover:bg-[#8BB8B6] transition duration-300"
                     >
                         Submit Reservation
                     </button>

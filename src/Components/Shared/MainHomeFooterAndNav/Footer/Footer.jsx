@@ -1,68 +1,129 @@
-import { FaAlignJustify } from "react-icons/fa";
+
+import { Button, IconButton } from '@mui/material';
+import { Facebook, Twitter, LinkedIn, Google, Email, Phone, ArrowForward } from '@mui/icons-material';
+import { Link } from 'react-router-dom';
 
 const Footer = () => {
     return (
-        <div className="bg-base-200">
-            {/* 1st div */}
-            <div className="flex flex-col md:flex-row items-center justify-center gap-8 py-12 text-center">
-                <div>
-                    <h1 className="text-4xl md:text-5xl font-bold">Lets Start Planning!</h1>
-                </div>
-                <div className="flex  md:flex-row gap-4">
-                    <button className="btn bg-[#9CCC9A] text-xl btn-lg hover:rounded-full  ">
-                        <FaAlignJustify /> Make Reservation</button>
-                    <button className="btn bg-[#9CCC9A] btn-lg hover:rounded-full ">Learn More</button>
-                </div>
+        <footer className="bg-gray-50  mt-20">
+            {/* Header Section with Title and Buttons */}
+            <div className="flex flex-col lg:flex-row justify-center items-center gap-6 lg:gap-10 my-20 text-center p-6">
+
+
+
             </div>
 
-            {/* 2nd div */}
-            <footer className="footer grid grid-cols-1 md:grid-cols-4 gap-8 text-base-content p-6 md:p-10">
-                <aside className="text-center md:text-left">
-                    <img
-                        src="https://designingmedia.com/bridely/wp-content/uploads/2022/07/hearts.png" alt="Hearts"
-                        className="mx-auto md:mx-0" />
-                    <svg
-                        width="50"
-                        height="50"
-                        viewBox="0 0 24 24"
-                        xmlns="http://www.w3.org/2000/svg"
-                        fillRule="evenodd"
-                        clipRule="evenodd"
-                        className="fill-current mx-auto md:mx-0">
-                        <path d="M22.672 15.226l-2.432.811.841 2.515c.33 1.019-.209 2.127-1.23 2.456-1.15.325-2.148-.321-2.463-1.226l-.84-2.518-5.013 1.677.84 2.517c.391 1.203-.434 2.542-1.831 2.542-.88 0-1.601-.564-1.86-1.314l-.842-2.516-2.431.809c-1.135.328-2.145-.317-2.463-1.229-.329-1.018.211-2.127 1.231-2.456l2.432-.809-1.621-4.823-2.432.808c-1.355.384-2.558-.59-2.558-1.839 0-.817.509-1.582 1.327-1.846l2.433-.809-.842-2.515c-.33-1.02.211-2.129 1.232-2.458 1.02-.329 2.13.209 2.461 1.229l.842 2.515 5.011-1.677-.839-2.517c-.403-1.238.484-2.553 1.843-2.553.819 0 1.585.509 1.85 1.326l.841 2.517 2.431-.81c1.02-.33 2.131.211 2.461 1.229.332 1.018-.21 2.126-1.23 2.456l-2.433.809 1.622 4.823 2.433-.809c1.242-.401 2.557.484 2.557 1.838 0 .819-.51 1.583-1.328 1.847m-8.992-6.428l-5.01 1.675 1.619 4.828 5.011-1.674-1.62-4.829z"></path>
-                    </svg>
-                    <p className="mt-4">
-                        ACME Industries Ltd.
-                        <br />
-                        Providing reliable tech since 1992
+            {/* Background Decorative Image */}
+            <div className="text-center ">
+                <img src="https://designingmedia.com/bridely/wp-content/uploads/2022/07/hearts.png" alt="decorative hearts" className=" pr-l h-32 w-32" />
+            </div>
+
+            <div className="container mx-auto px-4 flex flex-col lg:flex-row justify-between items-start lg:items-center  lg:space-y-0 lg:space-x-8">
+                {/* Left Section - Logo and Description */}
+                <div className="text-center text-black lg:text-left w-full lg:w-1/3 bg-[#9ACCC9] bg-opacity-20  p-10 rounded-2xl shadow-lg">
+                    <div className="flex items-center justify-center lg:justify-start mb-4">
+                        <div className="bg-gray-200 p-4 rounded-full shadow-md">
+                            <span className="text-2xl font-bold text-gray-700">W</span>
+                        </div>
+                        <h2 className="text-3xl text-[#F4A492]  ml-2">WEEDING PRO</h2>
+                    </div>
+                    <p className=" max-w-xs mx-auto lg:mx-0 leading-relaxed">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec tempor lorem ipsum dolor sit amet.
                     </p>
-                </aside>
+                    {/* Social Media Icons */}
+                    <div className="flex justify-center lg:justify-start mt-6 space-x-3">
+                        <IconButton aria-label="Facebook" style={{ backgroundColor: '#4267B2', color: 'white' }} className="rounded-full shadow">
+                            <Facebook />
+                        </IconButton>
+                        <IconButton aria-label="Twitter" style={{ backgroundColor: '#1DA1F2', color: 'white' }} className="rounded-full shadow">
+                            <Twitter />
+                        </IconButton>
+                        <IconButton aria-label="LinkedIn" style={{ backgroundColor: '#0077B5', color: 'white' }} className="rounded-full shadow">
+                            <LinkedIn />
+                        </IconButton>
+                        <IconButton aria-label="Google" style={{ backgroundColor: '#DB4437', color: 'white' }} className="rounded-full shadow">
+                            <Google />
+                        </IconButton>
+                    </div>
+                </div>
 
-                <nav className="text-center md:text-left">
-                    <h6 className="footer-title">Services</h6>
-                    <a className="link link-hover">Branding</a>
-                    <a className="link link-hover">Design</a>
-                    <a className="link link-hover">Marketing</a>
-                    <a className="link link-hover">Advertisement</a>
-                </nav>
+                {/* Middle Section - Company Links */}
+                <div className="text-center w-full lg:w-1/3 space-y-4 my-8">
+                    <h3 className="text-3xl  text-[#9ACCC9]">COMPANY</h3>
+                    <div className="flex  flex-row  justify-center items-center gap-10">
+                        <ul className="space-y-2 ">
+                            <li className="flex pt-2   items-center space-x-2">
+                                <ArrowForward fontSize="small" className="text-gray-600" />
+                                <Link to="/" className="text-gray-600 hover:text-gray-800">Home</Link>
+                            </li>
+                            <li className="flex pt-2   items-center space-x-2">
+                                <ArrowForward fontSize="small" className="text-gray-600" />
+                                <Link to="/about" className="text-gray-600 hover:text-gray-800">About</Link>
+                            </li>
+                            <li className="flex pt-2   items-center space-x-2">
+                                <ArrowForward fontSize="small" className="text-gray-600" />
+                                <Link to="/services" className="text-gray-600 hover:text-gray-800">Services</Link>
+                            </li>
+                            <li className="flex pt-2  items-center space-x-2">
+                                <ArrowForward fontSize="small" className="text-gray-600" />
+                                <Link to="/contact" className="text-gray-600 hover:text-gray-800">Contact</Link>
+                            </li>
+                        </ul>
+                        <ul className="space-y-2">
+                            <li className="flex pt-2  items-center space-x-2">
+                                <ArrowForward fontSize="small" className="text-gray-600" />
+                                <Link to="/support" className="text-gray-600 hover:text-gray-800">Support</Link>
+                            </li>
+                            <li className="flex pt-2  items-center space-x-2">
+                                <ArrowForward fontSize="small" className="text-gray-600" />
+                                <Link to="/career" className="text-gray-600 hover:text-gray-800">Career</Link>
+                            </li>
+                            <li className="flex pt-2  items-center space-x-2">
+                                <ArrowForward fontSize="small" className="text-gray-600" />
+                                <Link to="/faq" className="text-gray-600 hover:text-gray-800">FAQ's</Link>
+                            </li>
+                            <li className="flex pt-2  items-center space-x-2">
+                                <ArrowForward fontSize="small" className="text-gray-600" />
+                                <Link to="/blog" className="text-gray-600 hover:text-gray-800">Blog</Link>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
 
-                <nav className="text-center md:text-left">
-                    <h6 className="footer-title">Company</h6>
-                    <a className="link link-hover">About us</a>
-                    <a className="link link-hover">Contact</a>
-                    <a className="link link-hover">Jobs</a>
-                    <a className="link link-hover">Press kit</a>
-                </nav>
+                {/* Right Section - Contact Info with Icons */}
+                <div className="text-center w-full lg:w-1/3 space-y-6"> {/* Increased space-y to add more gap */}
+                    <div className="flex  items-center lg:pr-14 justify-center text-gray-600 space-x-4"> {/* Adjusted space-x for better gap */}
+                        <Phone fontSize="large" style={{ color: '#9ACCC9' }} />
+                        <div className="text-gray-800 font-semibold text-left"> {/* Added text-left for better alignment */}
+                            <span className="text-2xl text-[#F4A492] ">Call Us :</span><br /><span className='text-xl'>(123) 456-789-00</span>
+                        </div>
+                    </div>
+                    <div className="flex items-center justify-center text-gray-600 space-x-4"> {/* Same adjustments as above */}
+                        <Email fontSize="large" style={{ color: '#9ACCC9' }} />
+                        <div className="text-gray-800 font-semibold text-left">
+                            <span className="text-2xl text-[#F4A492] ">Email Us :</span><br /><span className='text-xl'>weedingpro@gmil.com</span>
+                        </div>
+                    </div>
 
-                <nav className="text-center md:text-left">
-                    <h6 className="footer-title">Legal</h6>
-                    <a className="link link-hover">Terms of use</a>
-                    <a className="link link-hover">Privacy policy</a>
-                    <a className="link link-hover">Cookie policy</a>
-                </nav>
-            </footer>
-        </div>
-    );
+                </div>
+
+            </div>
+
+
+            {/* Last Image */}
+            <div className="flex justify-end items-end ">
+                <img
+                    className="w-96 opacity-30 h-96 -my-16 object-contain"
+                    src="http://localhost:5173/src/assets/icons/planIcon.png?t=1729953486464"
+                    alt="Plan Icon"
+                />
+            </div>
+
+            {/* Footer Bottom */}
+            <div className=" text-center text-gray-900 bg-opacity-30 bg-[#9ACCC9] p-8"> {/* Added background color and padding */}
+                © Copyright Weeding Pro 2024. All Rights Reserved
+            </div>
+        </footer>);
 };
 
 export default Footer;
