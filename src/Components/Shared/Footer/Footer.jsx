@@ -2,7 +2,7 @@
 const Footer = () => {
     return (
         <div>
-            <div className="text-center flex items-center mx-auto">
+            <div className="text-center justify-items-center align-items-center flex items-center mx-auto">
                 <h1 className="text-5xl font-bold">Lets Start Planning!</h1>
                 <div >
                     <button>Make Reservation</button>
