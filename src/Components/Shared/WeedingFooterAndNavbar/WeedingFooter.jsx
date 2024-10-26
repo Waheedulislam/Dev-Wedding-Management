@@ -49,7 +49,7 @@ const WeedingFooter = () => {
                 <img src="https://designingmedia.com/bridely/wp-content/uploads/2022/07/hearts.png" alt="decorative hearts" className="mx-auto w-16 md:w-20 lg:w-24" />
             </div>
 
-            <div className="container mx-auto px-4 flex flex-col lg:flex-row justify-between items-start lg:items-center space-y-8 lg:space-y-0 lg:space-x-8">
+            <div className="container mx-auto px-4 flex flex-col lg:flex-row justify-between items-start lg:items-center  lg:space-y-0 lg:space-x-8">
                 {/* Left Section - Logo and Description */}
                 <div className="text-center text-black lg:text-left w-full lg:w-1/3 bg-[#9ACCC9] bg-opacity-20  p-10 rounded-2xl shadow-lg">
                     <div className="flex items-center justify-center lg:justify-start mb-4">
@@ -79,9 +79,9 @@ const WeedingFooter = () => {
                 </div>
 
                 {/* Middle Section - Company Links */}
-                <div className="text-center w-full lg:w-1/3 space-y-4">
+                <div className="text-center w-full lg:w-1/3 space-y-4 my-8">
                     <h3 className="text-3xl  text-[#9ACCC9]">COMPANY</h3>
-                    <div className="flex flex-col lg:flex-row justify-center items-center gap-10">
+                    <div className="flex  flex-row  justify-center items-center gap-10">
                         <ul className="space-y-2 ">
                             <li className="flex pt-2   items-center space-x-2">
                                 <ArrowForward fontSize="small" className="text-gray-600" />
@@ -135,11 +135,23 @@ const WeedingFooter = () => {
                             <span className="text-2xl text-[#F4A492] ">Email Us :</span><br /><span className='text-xl'>weedingpro@gmil.com</span>
                         </div>
                     </div>
+
                 </div>
+
+            </div>
+
+
+            {/* Last Image */}
+            <div className="flex justify-end items-end ">
+                <img
+                    className="w-96 opacity-30 h-96 -my-16 object-contain"
+                    src="http://localhost:5173/src/assets/icons/planIcon.png?t=1729953486464"
+                    alt="Plan Icon"
+                />
             </div>
 
             {/* Footer Bottom */}
-            <div className="mt-20 text-center text-gray-900 bg-opacity-30 bg-[#9ACCC9] p-4"> {/* Added background color and padding */}
+            <div className=" text-center text-gray-900 bg-opacity-30 bg-[#9ACCC9] p-8"> {/* Added background color and padding */}
                 © Copyright Weeding Pro 2024. All Rights Reserved
             </div>
         </footer>
