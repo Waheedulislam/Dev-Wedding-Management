@@ -61,28 +61,28 @@ const WeedingNavbar = () => {
         {/* Navbar Items */}
         <div className="flex gap-4 items-center">
           <Link
-            to="/"
+            to="/weedingHome"
             className="hidden md:inline-block ml-2 text-black hover:text-gray-700 transition duration-300 ease-in-out"
           >
             Home
           </Link>
 
           <Link
-            to="/about"
+            to="/weedingHome/about"
             className="hidden md:inline-block ml-2 text-black hover:text-gray-700 transition duration-300 ease-in-out"
           >
             About
           </Link>
 
           <Link
-            to="/services"
+            to="/weedingHome/services"
             className="hidden md:inline-block ml-2 text-black hover:text-gray-700 transition duration-300 ease-in-out"
           >
             Services
           </Link>
 
           <Link
-            to="/blogs"
+            to="/weedingHome/blogs"
             className="hidden md:inline-block ml-2 text-black hover:text-gray-700 transition duration-300 ease-in-out"
           >
             Blogs
@@ -138,16 +138,16 @@ const WeedingNavbar = () => {
           </IconButton>
           <Drawer anchor="left" open={drawerOpen} onClose={handleDrawerClose}>
             <List>
-              <ListItem button component={Link} to="/">
+              <ListItem button component={Link} to="/weedingHome">
                 <ListItemText primary="Home" />
               </ListItem>
-              <ListItem button component={Link} to="/about">
+              <ListItem button component={Link} to="/weedingHome/about">
                 <ListItemText primary="About" />
               </ListItem>
-              <ListItem button component={Link} to="/services">
+              <ListItem button component={Link} to="/weedingHome/services">
                 <ListItemText primary="Services" />
               </ListItem>
-              <ListItem button component={Link} to="/blogs">
+              <ListItem button component={Link} to="/weedingHome/blogs">
                 <ListItemText primary="Blogs" />
               </ListItem>
             </List>
