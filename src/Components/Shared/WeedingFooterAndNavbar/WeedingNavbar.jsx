@@ -68,21 +68,14 @@ const WeedingNavbar = () => {
           </Link>
 
           <Link
-            to="/about"
-            className="hidden md:inline-block ml-2 text-black hover:text-gray-700 transition duration-300 ease-in-out"
-          >
-            About
-          </Link>
-
-          <Link
-            to="/services"
+            to="/weedingHome/services"
             className="hidden md:inline-block ml-2 text-black hover:text-gray-700 transition duration-300 ease-in-out"
           >
             Services
           </Link>
 
           <Link
-            to="/blogs"
+            to="/weedingHome/weedingBlogs"
             className="hidden md:inline-block ml-2 text-black hover:text-gray-700 transition duration-300 ease-in-out"
           >
             Blogs

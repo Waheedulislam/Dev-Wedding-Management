@@ -14,7 +14,7 @@ const WeedingMainHomePage = () => {
               Welcome to Weeding
             </h1>
             <p className="py-6 text-gray-800">
-              Explore the world of wedding planning with us. From finding the
+              Explore the world of wedding planning wisth us. From finding the
               perfect venue to crafting unforgettable experiences, we`re here to
               guide you every step of the way.
             </p>
