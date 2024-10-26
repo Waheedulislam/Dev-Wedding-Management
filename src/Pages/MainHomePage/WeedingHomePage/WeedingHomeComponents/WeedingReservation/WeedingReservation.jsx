@@ -43,7 +43,7 @@ const WeddingReservation = () => {
 
                 {/* Reservation Form */}
                 <form
-                    className="w-full max-w-5xl mx-auto p-8 lg:px-20 bg-white rounded-lg shadow-lg lg:flex gap-8"
+                    className="w-full max-w-7xl mx-auto p-8 lg:px-20 bg-white rounded-lg shadow-lg lg:flex gap-8"
                     onSubmit={handleSubmit}
                 >
                     <div className="lg:w-1/2">

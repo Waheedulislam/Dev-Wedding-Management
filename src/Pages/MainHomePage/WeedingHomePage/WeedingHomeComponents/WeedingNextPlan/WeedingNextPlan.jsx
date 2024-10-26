@@ -4,9 +4,13 @@ import { Button } from "@mui/material";
 const WeddingNextPlan = () => {
     return (
         <div className="flex mt-12 container mx-auto px-4 flex-col md:flex-row items-center justify-between p-8 ">
-            <div className="h-28 w-28 lg:-mt-28"> <img src="https://designingmedia.com/bridely/wp-content/uploads/2024/03/home-2-plan-section-content-shape.png " alt="" /></div>
+
             {/* Middle Section - Text Content */}
             <div className="w-full md:w-1/2 mb-6 text-center md:text-left space-y-4">
+                <div className="h-28 w-28 -mb-16">
+                    <img src="https://designingmedia.com/bridely/wp-content/uploads/2024/03/home-2-plan-section-content-shape.png " alt="" />
+                </div>
+                <p className="text-2xl  text-[#F4A492]">Dedicated Wedding Planners</p>
                 <h2 className="text-5xl  font-bold text-gray-800">
                     Let's Plan Your <br /> Next Event
                 </h2>
