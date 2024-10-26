@@ -1,4 +1,5 @@
 import EventPlaning from "./EventPlaning";
+import ProductCategory from "./ProductCategory";
 import ServicesBanner from "./ServicesBanner";
 
 const Services = () => {
@@ -8,6 +9,7 @@ const Services = () => {
       <div className="container mx-auto px-2">
         <EventPlaning />
       </div>
+      <ProductCategory />
     </div>
   );
 };
