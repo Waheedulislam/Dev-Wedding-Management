@@ -1,4 +1,5 @@
 import EventPlaning from "./EventPlaning";
+import OurTalentedTeam from "./OurTelentedTeam";
 import ProductCategory from "./ProductCategory";
 import ServicesBanner from "./ServicesBanner";
 
@@ -10,6 +11,7 @@ const Services = () => {
         <EventPlaning />
       </div>
       <ProductCategory />
+      <OurTalentedTeam />
     </div>
   );
 };
