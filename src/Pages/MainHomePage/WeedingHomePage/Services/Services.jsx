@@ -2,6 +2,7 @@ import EventPlaning from "./EventPlaning";
 import OurTalentedTeam from "./OurTelentedTeam";
 import ProductCategory from "./ProductCategory";
 import ServicesBanner from "./ServicesBanner";
+import WeedingInsparation from "./WeedingInsparation";
 
 const Services = () => {
   return (
@@ -12,6 +13,7 @@ const Services = () => {
       </div>
       <ProductCategory />
       <OurTalentedTeam />
+      <WeedingInsparation />
     </div>
   );
 };
