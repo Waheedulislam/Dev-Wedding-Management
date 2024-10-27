@@ -4,7 +4,7 @@ const ServicesBanner = () => {
   return (
     <div className="relative">
       <img
-        src={banner}
+        src="https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcT7bkIg7ervTP16vLvjDxivQ6FGH3zmr7wfaWsMBfqK7YWHSHG9"
         alt="Wedding Banner"
         className="h-[calc(100vh-20vh)] w-full object-cover"
       />

@@ -32,7 +32,7 @@ const weddingImage = [
 const WeedingInsparation = () => {
   return (
     <div
-      className="my-20 py-8 px-4 rounded-lg shadow-lg h-screen flex md:flex-row flex-col-reverse justify-center items-center "
+      className="my-20 py-8 px-4 r h-screen flex md:flex-row flex-col-reverse justify-center items-center "
       style={{
         backgroundImage: `url(${backgroundImage})`,
         backgroundSize: "cover",
