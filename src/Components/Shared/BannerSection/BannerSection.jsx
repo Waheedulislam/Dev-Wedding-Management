@@ -1,4 +1,4 @@
-import React from "react";
+/* eslint-disable react/prop-types */
 import "./BannerSection.css";
 
 const BannerSection = ({ bannerSectionTitle, bannerSectionDescription }) => {

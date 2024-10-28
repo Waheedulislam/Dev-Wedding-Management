@@ -9,7 +9,7 @@ const WeedingFooter = () => {
         <footer className="bg-gray-50  mt-20">
             {/* Header Section with Title and Buttons */}
             <div className="flex flex-col lg:flex-row justify-center items-center gap-6 lg:gap-10 my-20 text-center p-6">
-                <h1 className="text-3xl lg:text-5xl font-semibold text-gray-800">Let's Start Planning!</h1>
+                <h1 className="text-3xl lg:text-5xl font-semibold text-gray-800">Lets Start Planning!</h1>
                 <div className="flex gap-4 mt-4 lg:mt-0">
                     <Button
                         variant="contained"
@@ -111,7 +111,7 @@ const WeedingFooter = () => {
                             </li>
                             <li className="flex pt-2  items-center space-x-2">
                                 <ArrowForward fontSize="small" className="text-gray-600" />
-                                <Link to="/faq" className="text-gray-600 hover:text-gray-800">FAQ's</Link>
+                                <Link to="/faq" className="text-gray-600 hover:text-gray-800">FAQ</Link>
                             </li>
                             <li className="flex pt-2  items-center space-x-2">
                                 <ArrowForward fontSize="small" className="text-gray-600" />

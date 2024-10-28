@@ -32,7 +32,7 @@ const weddingImage = [
 const WeedingInsparation = () => {
   return (
     <div
-      className="my-20 py-8 px-4 r h-screen flex md:flex-row flex-col-reverse justify-center items-center "
+      className=" py-8 px-4 r h-screen flex md:flex-row flex-col-reverse justify-center items-center "
       style={{
         backgroundImage: `url(${backgroundImage})`,
         backgroundSize: "cover",
@@ -43,7 +43,7 @@ const WeedingInsparation = () => {
     >
       <Container className="mx-auto py-10">
         <Box mb={6} textAlign="center">
-          <Typography variant="p" color="textSecondary" gutterBottom>
+          <Typography variant="p" className="text-[#f4a492] font-bold" gutterBottom>
             We Share Expert Advice
           </Typography>
           <Typography variant="h3" component="h1" fontWeight={700} gutterBottom>

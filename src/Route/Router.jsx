@@ -58,11 +58,13 @@ const router = createBrowserRouter([
         element: <WeedingBlogs />,
       },
       {
-        path: "/weedingHome/weedingAbout", 
+        path: "/weedingHome/weedingAbout",
         element: <WeedingAbout />,
       },
-      {path: "/weedingHome/MenuPlanner", // Updated path
-        element: <MenuPlanner></MenuPlanner>,}
+      {
+        path: "/weedingHome/MenuPlanner", // Updated path
+        element: <MenuPlanner />,
+      }
     ],
   },
 ]);

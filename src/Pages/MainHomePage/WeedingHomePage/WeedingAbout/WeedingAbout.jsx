@@ -1,4 +1,4 @@
-import React from "react";
+
 import BannerSection from "../../../../Components/Shared/BannerSection/BannerSection";
 import WhoWeAre from "../../../../Components/AboutPageComponents/WhoWeAre/WhoWeAre";
 

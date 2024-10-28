@@ -4,9 +4,15 @@ import WeddingNextPlan from "./WeedingHomeComponents/WeedingNextPlan/WeedingNext
 import UnforgettableEvents from "./WeedingHomeComponents/UnforgettableEvents/UnforgettableEvents";
 import PersonalizedPlanning from "./WeedingHomeComponents/PersonalizedPlanning/PersonalizedPlanning";
 import Section from "./WeedingHomeComponents/Section/Section";
+import BridelyServices from "./WeedingHomeComponents/BridelyServices/BridelyServices";
+import WeedingBanner from "./WeedingBanner/WeedingBanner";
+import WeedingInsparation from "./Services/WeedingInsparation";
 const WeedingMainHomePage = () => {
   return (
     <div >
+      <WeedingBanner />
+      <WeedingInsparation />
+      <BridelyServices />
       <Section />
       <PersonalizedPlanning />
       <UnforgettableEvents />

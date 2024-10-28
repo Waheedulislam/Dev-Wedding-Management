@@ -10,7 +10,7 @@ const WeddingNextPlan = () => {
                 <div className="h-28 w-28 -mb-16">
                     <img src="https://designingmedia.com/bridely/wp-content/uploads/2024/03/home-2-plan-section-content-shape.png " alt="" />
                 </div>
-                <p className="text-2xl  text-[#F4A492]">Dedicated Wedding Planners</p>
+                <p className="text-2xl  text-[#f4a492]">Dedicated Wedding Planners</p>
                 <h2 className="text-5xl  font-bold text-gray-800">
                     Let's Plan Your <br /> Next Event
                 </h2>
