@@ -14,7 +14,7 @@ const WhoWeAre = () => {
             <div className='absolute xl:-right-44 right-0 lg:-top-8'>
                 <img src={bird} alt="" />
             </div>
-            <h3 className="text-[#f4a492] text-sm md:text-[22px] font-light">Who We Are</h3>
+            <h3 id='who' className="text-[#f4a492] text-sm md:text-[22px] font-light">Who We Are</h3>
             <h2 className="text-black text-2xl md:text-3xl lg:text-[50px] lg:leading-[1.1em] text-balance font-bold">
               Planner for Your <br />  Perfect Wedding
             </h2>
