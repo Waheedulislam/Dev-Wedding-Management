@@ -45,16 +45,12 @@ const WeedingNavbar = () => {
         background: "rgba(255, 255, 255, 0.2)",
         backdropFilter: "blur(10px)",
         boxShadow: "0 4px 30px rgba(0, 0, 0, 0.1)",
+        borderBottom: "1px solid rgba(255, 255, 255, 0.5)",
       }}
     >
       <Toolbar className="flex justify-between items-center">
         {/* Brand Logo */}
-        <Typography
-          variant="h6"
-          component="a"
-          href="/"
-          className="font-bold text-black"
-        >
+        <Typography variant="h6" component="a" href="/" className="font-bold text-black">
           Weeding
         </Typography>
 
@@ -68,12 +64,18 @@ const WeedingNavbar = () => {
           </Link>
 
           <Link
-            to="/weedingHome/about"
+            to="/weedingHome/weedingPrice"
             className="hidden md:inline-block ml-2 text-black hover:text-gray-700 transition duration-300 ease-in-out"
           >
-            About
+            Pricing
           </Link>
 
+          <Link
+            to="/weedingHome/weedingTeam"
+            className="hidden md:inline-block ml-2 text-black hover:text-gray-700 transition duration-300 ease-in-out"
+          >
+            Team
+          </Link>
           <Link
             to="/weedingHome/services"
             className="hidden md:inline-block ml-2 text-black hover:text-gray-700 transition duration-300 ease-in-out"
@@ -82,10 +84,22 @@ const WeedingNavbar = () => {
           </Link>
 
           <Link
-            to="/weedingHome/blogs"
+            to="/weedingHome/weedingBlogs"
             className="hidden md:inline-block ml-2 text-black hover:text-gray-700 transition duration-300 ease-in-out"
           >
             Blogs
+          </Link>
+          <Link
+            to="/weedingHome/MenuPlanner"
+            className="hidden md:inline-block ml-2 text-black hover:text-gray-700 transition duration-300 ease-in-out"
+          >
+            MenuPlanner
+          </Link>
+          <Link
+            to="/weedingHome/weedingAbout"
+            className="hidden md:inline-block ml-2 text-black hover:text-gray-700 transition duration-300 ease-in-out"
+          >
+            About
           </Link>
         </div>
 
@@ -136,12 +150,7 @@ const WeedingNavbar = () => {
           <IconButton onClick={handleDrawerOpen} color="default">
             <MenuIcon />
           </IconButton>
-          <Drawer
-            className="px-10"
-            anchor="left"
-            open={drawerOpen}
-            onClose={handleDrawerClose}
-          >
+          <Drawer className="px-10" anchor="left" open={drawerOpen} onClose={handleDrawerClose}>
             <List>
               <ListItem button component={Link} to="/weedingHome">
                 <ListItemText primary="Home" />
@@ -154,6 +163,9 @@ const WeedingNavbar = () => {
               </ListItem>
               <ListItem button component={Link} to="/weedingHome/blogs">
                 <ListItemText primary="Blogs" />
+              </ListItem>
+              <ListItem button component={Link} to="/weedingHome/MenuPlanner">
+                <ListItemText primary="MenuPlanner" />
               </ListItem>
             </List>
           </Drawer>
