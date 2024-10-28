@@ -55,7 +55,7 @@ const WeedingInsparation = () => {
             <Grid item xs={12} sm={6} md={4} key={index} className="group">
               <Paper
                 elevation={3}
-                className="relative overflow-hidden rounded-lg"
+                className="relative overflow-hidden rounded-lg "
               >
                 <img
                   src={wedding.image}
