@@ -41,7 +41,6 @@ const WeedingNavbar = () => {
   return (
     <AppBar
       position="fixed"
-
       style={{
         background: "rgba(255, 255, 255, 0.2)",
         backdropFilter: "blur(10px)",
@@ -51,12 +50,7 @@ const WeedingNavbar = () => {
     >
       <Toolbar className="flex justify-between items-center">
         {/* Brand Logo */}
-        <Typography
-          variant="h6"
-          component="a"
-          href="/"
-          className="font-bold text-black"
-        >
+        <Typography variant="h6" component="a" href="/" className="font-bold text-black">
           Weeding
         </Typography>
 
@@ -94,6 +88,18 @@ const WeedingNavbar = () => {
             className="hidden md:inline-block ml-2 text-black hover:text-gray-700 transition duration-300 ease-in-out"
           >
             Blogs
+          </Link>
+          <Link
+            to="/weedingHome/MenuPlanner"
+            className="hidden md:inline-block ml-2 text-black hover:text-gray-700 transition duration-300 ease-in-out"
+          >
+            MenuPlanner
+          </Link>
+          <Link
+            to="/weedingHome/weedingAbout"
+            className="hidden md:inline-block ml-2 text-black hover:text-gray-700 transition duration-300 ease-in-out"
+          >
+            About
           </Link>
         </div>
 
@@ -144,12 +150,7 @@ const WeedingNavbar = () => {
           <IconButton onClick={handleDrawerOpen} color="default">
             <MenuIcon />
           </IconButton>
-          <Drawer
-            className="px-10"
-            anchor="left"
-            open={drawerOpen}
-            onClose={handleDrawerClose}
-          >
+          <Drawer className="px-10" anchor="left" open={drawerOpen} onClose={handleDrawerClose}>
             <List>
               <ListItem button component={Link} to="/weedingHome">
                 <ListItemText primary="Home" />
@@ -162,6 +163,9 @@ const WeedingNavbar = () => {
               </ListItem>
               <ListItem button component={Link} to="/weedingHome/blogs">
                 <ListItemText primary="Blogs" />
+              </ListItem>
+              <ListItem button component={Link} to="/weedingHome/MenuPlanner">
+                <ListItemText primary="MenuPlanner" />
               </ListItem>
             </List>
           </Drawer>
