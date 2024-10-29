@@ -3,14 +3,15 @@
 
 import { Avatar, Typography } from "@mui/material";
 import { AccessTime } from "@mui/icons-material";
+import { Link } from "react-router-dom";
 
-const BlogCard = ({ image, title, author, date, description }) => {
+const BlogCard = ({ id, image, title, author, date, description }) => {
   return (
     <div className="my-4 mx-auto bg-white rounded-xl shadow-md overflow-hidden group">
       <div className="md:flex">
         <div className="md:flex-shrink-0">
           <img
-            className="h-48 w-full object-cover md:h-full md:w-72  transform transition-transform duration-300 ease-in-out group-hover:scale-110"
+            className="h-48 w-full object-cover md:h-full md:w-72 transform transition-transform duration-300 ease-in-out group-hover:scale-110"
             src={image}
             alt="Blog cover"
           />
@@ -36,9 +37,12 @@ const BlogCard = ({ image, title, author, date, description }) => {
             <span>{date}</span>
           </div>
           <p className="mt-2 text-gray-500 text-sm">{description}</p>
-          <a href="#" className="text-indigo-500 mt-4 block font-semibold">
+          <Link
+            to={`/weedingHome/weedingBlogs/${id}`}
+            className="text-indigo-500 mt-4 block font-semibold"
+          >
             Read More
-          </a>
+          </Link>
         </div>
       </div>
     </div>

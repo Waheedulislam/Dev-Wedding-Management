@@ -11,6 +11,7 @@ import WeedingPricing from "../Pages/MainHomePage/WeedingHomePage/WeedingPricing
 import WeedingBlogs from "../Pages/MainHomePage/WeedingHomePage/WeedingBlogs/WeedingBlogs";
 import WeedingAbout from "../Pages/MainHomePage/WeedingHomePage/WeedingAbout/WeedingAbout";
 import MenuPlanner from "../Pages/MainHomePage/WeedingHomePage/MenuPlanner/MenuPlanner";
+import BlogDetails from "../Pages/MainHomePage/WeedingHomePage/WeedingBlogs/BlogsDetails/BlogDetails";
 
 const router = createBrowserRouter([
   // Main Home Page Route
@@ -58,13 +59,17 @@ const router = createBrowserRouter([
         element: <WeedingBlogs />,
       },
       {
+        path: "/weedingHome/weedingBlogs/:id",
+        element: <BlogDetails />,
+      },
+      {
         path: "/weedingHome/weedingAbout",
         element: <WeedingAbout />,
       },
       {
         path: "/weedingHome/MenuPlanner", // Updated path
         element: <MenuPlanner />,
-      }
+      },
     ],
   },
 ]);

@@ -40,6 +40,7 @@ const WeddingBlog = () => {
         {blogData.map((blog) => (
           <BlogCard
             key={blog.id}
+            id={blog.id}
             image={blog.image}
             title={blog.title}
             author={blog.author}
