@@ -1,13 +1,6 @@
 /* eslint-disable react/prop-types */
-// import banner from "../../../../assets/weeding-banner.jpg";
 
-const ServicesBanner = ({
-  imageUrl,
-  title,
-  subtitle,
-  overlayColor,
-  textColor,
-}) => {
+const BlogBanner = ({ imageUrl, title, subtitle, overlayColor, textColor }) => {
   return (
     <div className="relative">
       <img
@@ -27,4 +20,4 @@ const ServicesBanner = ({
   );
 };
 
-export default ServicesBanner;
+export default BlogBanner;
