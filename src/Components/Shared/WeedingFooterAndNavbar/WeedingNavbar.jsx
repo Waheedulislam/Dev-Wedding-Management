@@ -101,6 +101,18 @@ const WeedingNavbar = () => {
           >
             About
           </Link>
+          <Link
+            to="/weedingHome/Testimonial"
+            className="hidden md:inline-block ml-2 text-black hover:text-gray-700 transition duration-300 ease-in-out"
+          >
+            Testimonial
+          </Link>
+          <Link
+            to="/weedingHome/Reservation"
+            className="hidden md:inline-block ml-2 text-black hover:text-gray-700 transition duration-300 ease-in-out"
+          >
+            Reservation
+          </Link>
         </div>
 
         {/* Search Bar */}

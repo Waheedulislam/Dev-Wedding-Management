@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { FaUser, FaEnvelope, FaCalendarAlt, FaUsers } from "react-icons/fa"; // Importing required icons
 
-const WeddingReservation = () => {
+const Reservation = () => {
     const [formData, setFormData] = useState({
         fullName: "",
         date: "",
@@ -165,4 +165,4 @@ const WeddingReservation = () => {
     );
 };
 
-export default WeddingReservation;
+export default Reservation;
