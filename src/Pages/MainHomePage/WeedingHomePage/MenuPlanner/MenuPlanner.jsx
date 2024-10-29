@@ -1,7 +1,102 @@
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import "react-tabs/style/react-tabs.css";
+import BudgetInput from "../../../../Components/BudgetInput/BudgetInput";
+import FoodCategory from "../../../../Components/FoodCategory/FoodCategory";
+import { useState } from "react";
+import Sidebar from "../../../../Components/Sidebar/Sidebar";
 
 const MenuPlanner = () => {
+  const [budget, setBudget] = useState(0);
+  const [selectedItems, setSelectedItems] = useState([]);
+  const [totalCost, setTotalCost] = useState(0);
+
+  const handleBudgetChange = (value) => {
+    setBudget(value);
+    setSelectedItems([]);
+    setTotalCost(0);
+  };
+
+  const handleAddItem = (item) => {
+    const alreadySelected = selectedItems.some((selectedItem) => selectedItem.id === item.id);
+
+    if (alreadySelected) {
+      alert("Already Took This item!");
+      return;
+    } else {
+      const newTotal = totalCost + item.price;
+      if (newTotal <= budget) {
+        setSelectedItems([...selectedItems, item]);
+        setTotalCost(newTotal);
+      } else {
+        alert("Adding this item will exceed your budget!");
+      }
+    }
+  };
+
+  const handleRemoveItem = (itemId) => {
+    const updatedItems = selectedItems.filter((item) => item.id !== itemId);
+    const removedItem = selectedItems.find((item) => item.id === itemId);
+    setTotalCost(totalCost - removedItem.price);
+    setSelectedItems(updatedItems);
+  };
+  const foodData = {
+    "Rice Dishes": [
+      { id: 1, name: "Mutton Katchi Biryani", price: 250 },
+      { id: 2, name: "Chicken Biryani", price: 200 },
+      { id: 3, name: "Plain Polow", price: 50 },
+      { id: 4, name: "Peace Polow", price: 60 },
+      { id: 5, name: "Morog Polaw", price: 180 },
+      { id: 6, name: "Whole Mutton Roast with Rice (1 pcs)", price: 1000 },
+      { id: 7, name: "Beef Tehari", price: 180 },
+    ],
+    "Chicken Dishes": [
+      { id: 8, name: "Chicken Roast", price: 150 },
+      { id: 9, name: "Chicken Tandoori", price: 150 },
+      { id: 10, name: "Whole Chicken Roast (4 pcs)", price: 700 },
+      { id: 11, name: "Whole Chicken Roast (6 pcs)", price: 1000 },
+      { id: 12, name: "Chicken Shaslik (20 pcs)", price: 800 },
+    ],
+    "Mutton Dishes": [
+      { id: 13, name: "Mutton Bhuna", price: 200 },
+      { id: 14, name: "Mutton Kaleya", price: 220 },
+      { id: 15, name: "Mutton Leg Roast (2 pcs)", price: 300 },
+    ],
+    "Beef Dishes": [
+      { id: 16, name: "Beef Bhuna", price: 180 },
+      { id: 17, name: "Beef Kala Bhuna", price: 200 },
+    ],
+    "Fish Dishes": [
+      { id: 18, name: "Fish Fry", price: 150 },
+      { id: 19, name: "Fish Dopeyaja", price: 180 },
+      { id: 20, name: "Whole Fish Smoked (1 pcs)", price: 500 },
+    ],
+    "Kebab Varieties": [
+      { id: 21, name: "Jali Kebab", price: 100 },
+      { id: 22, name: "Kebab", price: 100 },
+      { id: 23, name: "Nargis Kebab (10 pcs)", price: 400 },
+      { id: 24, name: "Nargis Kebab (5 pcs)", price: 200 },
+    ],
+    "Bread Varieties": [
+      { id: 25, name: "Special Naan", price: 40 },
+      { id: 26, name: "Special Naan Roti", price: 50 },
+    ],
+    "Sweet Dishes": [
+      { id: 27, name: "Shahi Jorda (with baby sweets)", price: 50 },
+      { id: 28, name: "Shahi Firni", price: 60 },
+      { id: 29, name: "Reshmi Jilapi", price: 30 },
+    ],
+    "Beverages": [
+      { id: 30, name: "Shahi Borhani", price: 50 },
+      { id: 31, name: "Coke", price: 30 },
+      { id: 32, name: "Coffee", price: 40 },
+      { id: 33, name: "Mineral Water", price: 10 },
+    ],
+    "Side Dishes": [
+      { id: 34, name: "Alu Bukhara Chatni", price: 20 },
+      { id: 35, name: "Salad (Mixed/Piece)", price: 20 },
+    ],
+    "Appetizer": [{ id: 36, name: "Chotpoti/Fucka", price: 40 }],
+  };
   const instagramData = [
     {
       id: 1,
@@ -465,7 +560,33 @@ const MenuPlanner = () => {
           </div>
         </TabPanel>
         <TabPanel>
-          <h2>Any content 2</h2>
+          <div className="min-h-screen bg-gray-100 p-6">
+            <h1 className="text-4xl text-center text-teal-600 font-bold mb-6">
+              Custom Food Platter
+            </h1>
+
+            <BudgetInput onBudgetChange={handleBudgetChange} />
+            <div className="w-full px-4 md:px-6 lg:px-[50px] max-w-[1420px] mx-auto flex flex-col lg:flex-row justify-between">
+              <div className="order-2 lg:order-1 w-full lg:w-[73%] mb-6 lg:mb-[100px]">
+                {Object.keys(foodData).map((category) => (
+                  <FoodCategory
+                    key={category}
+                    category={category}
+                    items={foodData[category]}
+                    onAddItem={handleAddItem}
+                  />
+                ))}
+              </div>
+              <div className="order-1 lg:order-2 w-full lg:w-[26%] sticky top-[80px] h-auto lg:h-screen mb-[24px] lg:mb-[0px]">
+                <Sidebar
+                  selectedItems={selectedItems}
+                  totalCost={totalCost}
+                  remainingBudget={budget - totalCost}
+                  onRemoveItem={handleRemoveItem}
+                />
+              </div>
+            </div>
+          </div>
         </TabPanel>
       </Tabs>
     </div>
