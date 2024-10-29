@@ -3,10 +3,10 @@ import RecentBlog from "./RecentBlog";
 
 const BlogActivitisHome = () => {
   return (
-    <div>
+    <>
       <BlogSearch />
       <RecentBlog />
-    </div>
+    </>
   );
 };
 

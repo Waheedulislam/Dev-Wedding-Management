@@ -6,11 +6,11 @@ import { AccessTime } from "@mui/icons-material";
 
 const BlogCard = ({ image, title, author, date, description }) => {
   return (
-    <div className="my-4 mx-auto bg-white rounded-xl shadow-md overflow-hidden ">
+    <div className="my-4 mx-auto bg-white rounded-xl shadow-md overflow-hidden group">
       <div className="md:flex">
         <div className="md:flex-shrink-0">
           <img
-            className="h-48 w-full object-cover md:h-full md:w-48"
+            className="h-48 w-full object-cover md:h-full md:w-72  transform transition-transform duration-300 ease-in-out group-hover:scale-110"
             src={image}
             alt="Blog cover"
           />
@@ -21,7 +21,7 @@ const BlogCard = ({ image, title, author, date, description }) => {
           </div>
           <Typography
             variant="h5"
-            className="block mt-1 text-lg leading-tight font-medium text-black hover:underline"
+            className="block mt-1 text-lg leading-tight font-medium text-black hover:underline cursor-pointer"
           >
             {title}
           </Typography>
