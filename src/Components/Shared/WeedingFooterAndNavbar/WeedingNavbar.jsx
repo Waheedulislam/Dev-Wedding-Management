@@ -57,61 +57,73 @@ const WeedingNavbar = () => {
         {/* Navbar Items */}
         <div className="flex gap-4 items-center">
           <Link
-            to="/weedingHome"
+            to="/weeding/weedingHome"
             className="hidden md:inline-block ml-2 text-black hover:text-gray-700 transition duration-300 ease-in-out"
           >
             Home
           </Link>
 
           <Link
-            to="/weedingHome/weedingPrice"
+            to="/weeding/weedingPrice"
             className="hidden md:inline-block ml-2 text-black hover:text-gray-700 transition duration-300 ease-in-out"
           >
             Pricing
           </Link>
 
           <Link
-            to="/weedingHome/weedingTeam"
+            to="/weeding/weedingTeam"
             className="hidden md:inline-block ml-2 text-black hover:text-gray-700 transition duration-300 ease-in-out"
           >
             Team
           </Link>
           <Link
-            to="/weedingHome/services"
+            to="/weeding/services"
             className="hidden md:inline-block ml-2 text-black hover:text-gray-700 transition duration-300 ease-in-out"
           >
             Services
           </Link>
 
           <Link
-            to="/weedingHome/weedingBlogs"
+            to="/weeding/weedingBlogs"
             className="hidden md:inline-block ml-2 text-black hover:text-gray-700 transition duration-300 ease-in-out"
           >
             Blogs
           </Link>
           <Link
-            to="/weedingHome/MenuPlanner"
+            to="/weeding/MenuPlanner"
             className="hidden md:inline-block ml-2 text-black hover:text-gray-700 transition duration-300 ease-in-out"
           >
             MenuPlanner
           </Link>
           <Link
-            to="/weedingHome/weedingAbout"
+            to="/weeding/weedingAbout"
             className="hidden md:inline-block ml-2 text-black hover:text-gray-700 transition duration-300 ease-in-out"
           >
             About
           </Link>
           <Link
-            to="/weedingHome/Testimonial"
+            to="/weeding/Testimonial"
             className="hidden md:inline-block ml-2 text-black hover:text-gray-700 transition duration-300 ease-in-out"
           >
             Testimonial
           </Link>
           <Link
-            to="/weedingHome/Reservation"
+            to="/weeding/Reservation"
             className="hidden md:inline-block ml-2 text-black hover:text-gray-700 transition duration-300 ease-in-out"
           >
             Reservation
+          </Link>
+          <Link
+            to="/weeding/login"
+            className="hidden md:inline-block ml-2 text-black hover:text-gray-700 transition duration-300 ease-in-out"
+          >
+            Login
+          </Link>
+          <Link
+            to="/weeding/register"
+            className="hidden md:inline-block ml-2 text-black hover:text-gray-700 transition duration-300 ease-in-out"
+          >
+            Register
           </Link>
         </div>
 

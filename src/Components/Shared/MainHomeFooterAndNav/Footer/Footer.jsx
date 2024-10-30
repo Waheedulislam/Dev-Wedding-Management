@@ -1,5 +1,5 @@
 
-import { Button, IconButton } from '@mui/material';
+import { IconButton } from '@mui/material';
 import { Facebook, Twitter, LinkedIn, Google, Email, Phone, ArrowForward } from '@mui/icons-material';
 import { Link } from 'react-router-dom';
 
@@ -80,7 +80,7 @@ const Footer = () => {
                             </li>
                             <li className="flex pt-2  items-center space-x-2">
                                 <ArrowForward fontSize="small" className="text-gray-600" />
-                                <Link to="/faq" className="text-gray-600 hover:text-gray-800">FAQ's</Link>
+                                <Link to="/faq" className="text-gray-600 hover:text-gray-800">FAQ</Link>
                             </li>
                             <li className="flex pt-2  items-center space-x-2">
                                 <ArrowForward fontSize="small" className="text-gray-600" />

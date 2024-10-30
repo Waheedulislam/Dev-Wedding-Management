@@ -14,6 +14,8 @@ import MenuPlanner from "../Pages/MainHomePage/WeedingHomePage/MenuPlanner/MenuP
 import BlogDetails from "../Pages/MainHomePage/WeedingHomePage/WeedingBlogs/BlogsDetails/BlogDetails";
 import Testimonial from "../Pages/MainHomePage/WeedingHomePage/weedingTestimonial/Testimonial";
 import WeedingReservation from "../Pages/MainHomePage/WeedingHomePage/WeedingReservation/WeedingReservation";
+import Login from "../Components/LoginRegister/Login/Login";
+import Register from "../Components/LoginRegister/Register/Register";
 
 const router = createBrowserRouter([
   // Main Home Page Route
@@ -33,52 +35,61 @@ const router = createBrowserRouter([
         path: "/contact",
         element: <Contact />,
       },
+
     ],
   },
   // Weeding Page Route
   {
-    path: "/weedingHome",
+    path: "/weeding",
     element: <WeedingLayout />,
     children: [
       {
-        path: "/weedingHome",
+        path: "/weeding/weedingHome",
         element: <WeedingMainHomePage />,
       },
       {
-        path: "/weedingHome/services",
+        path: "/weeding/services",
         element: <Services />,
       },
       {
-        path: "/weedingHome/weedingTeam", // Updated path
+        path: "/weeding/weedingTeam", // Updated path
         element: <WeedingTeam />,
       },
       {
-        path: "/weedingHome/weedingPrice", // Updated path
+        path: "/weeding/weedingPrice", // Updated path
         element: <WeedingPricing />,
       },
       {
-        path: "/weedingHome/weedingBlogs", // Updated path
+        path: "/weeding/weedingBlogs", // Updated path
         element: <WeedingBlogs />,
       },
       {
-        path: "/weedingHome/weedingBlogs/:id",
+        path: "/weeding/weedingBlogs/:id",
         element: <BlogDetails />,
       },
       {
-        path: "/weedingHome/weedingAbout",
+        path: "/weeding/weedingAbout",
         element: <WeedingAbout />,
       },
       {
-        path: "/weedingHome/MenuPlanner", // Updated path
+        path: "/weeding/MenuPlanner", // Updated path
         element: <MenuPlanner />,
       },
       {
-        path: "/weedingHome/Testimonial",
+        path: "/weeding/Testimonial",
         element: <Testimonial />,
       },
       {
-        path: "/weedingHome/Reservation",
+        path: "/weeding/Reservation",
         element: <WeedingReservation />,
+      },
+      {
+        path: "/weeding/Login",
+        element: <Login />,
+      },
+      {
+        path: "/weeding/Register",
+        element: <Register />,
       },
     ],
   },
