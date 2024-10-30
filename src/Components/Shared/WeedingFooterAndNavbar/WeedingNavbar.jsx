@@ -114,6 +114,12 @@ const WeedingNavbar = () => {
             Reservation
           </Link>
           <Link
+            to="/dashboard"
+            className="hidden md:inline-block ml-2 text-black hover:text-gray-700 transition duration-300 ease-in-out"
+          >
+            Dashboard
+          </Link>
+          <Link
             to="/weeding/login"
             className="hidden md:inline-block ml-2 text-black hover:text-gray-700 transition duration-300 ease-in-out"
           >
