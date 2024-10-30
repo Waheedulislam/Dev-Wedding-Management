@@ -19,7 +19,7 @@ const pages = [
     { name: 'Contact', link: '/contact' }
 ];
 const eventOptions = [
-    { name: 'Wedding Events', link: '/weeding' },
+    { name: 'Wedding Events', link: '/weeding/weedingHome' },
     { name: 'Upcoming Events', link: '/upcoming-events' },
     { name: 'Event Highlights', link: '/event-highlights' }
 ];

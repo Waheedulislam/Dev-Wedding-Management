@@ -16,7 +16,9 @@ import Testimonial from "../Pages/MainHomePage/WeedingHomePage/weedingTestimonia
 import WeedingReservation from "../Pages/MainHomePage/WeedingHomePage/WeedingReservation/WeedingReservation";
 import Login from "../Components/LoginRegister/Login/Login";
 import Register from "../Components/LoginRegister/Register/Register";
-import ResponsiveDrawer from "../Pages/MainHomePage/WeedingHomePage/Dashboard/Dashboar";
+import Dashboar from "../Pages/MainHomePage/WeedingHomePage/Dashboard/Dashboar";
+import Draft from "../Pages/MainHomePage/WeedingHomePage/Dashboard/Draft"; // Ensure this component exists
+import ResponsiveDrawer from "../Layouts/DashboardLayout";
 
 const router = createBrowserRouter([
   // Main Home Page Route
@@ -26,7 +28,7 @@ const router = createBrowserRouter([
     children: [
       {
         index: true,
-        element: <HomePage />
+        element: <HomePage />,
       }, // index route for the main page
       { path: "about", element: <About /> },
       { path: "contact", element: <Contact /> },
@@ -37,7 +39,7 @@ const router = createBrowserRouter([
     path: "/weeding",
     element: <WeedingLayout />,
     children: [
-      { index: true, element: <WeedingMainHomePage /> },
+      { path: 'weedingHome', element: <WeedingMainHomePage /> },
       { path: "services", element: <Services /> },
       { path: "weedingTeam", element: <WeedingTeam /> },
       { path: "weedingPrice", element: <WeedingPricing /> },
@@ -49,19 +51,22 @@ const router = createBrowserRouter([
       { path: "Reservation", element: <WeedingReservation /> },
       { path: "Login", element: <Login /> },
       { path: "Register", element: <Register /> },
-
-
     ],
   },
+  // Dashboard Route
   {
     path: "/dashboard",
     element: <ResponsiveDrawer />,
     children: [
       {
-        index: true,
-        element: <WeedingMainHomePage />
+        path: "home", // relative path for nested routes
+        element: <Dashboar />,
       },
-    ]
+      {
+        path: "draft", // relative path for nested routes
+        element: <Draft />, // Ensure you have this component
+      },
+    ],
   },
 ]);
 
