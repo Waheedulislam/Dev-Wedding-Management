@@ -13,8 +13,14 @@ import {
   Drawer,
   ListItemText,
   Box,
+  Button,
 } from "@mui/material";
-import { AccountCircle, Settings, ExitToApp } from "@mui/icons-material";
+import {
+  AccountCircle,
+  Settings,
+  ExitToApp,
+  LogoutOutlined,
+} from "@mui/icons-material";
 import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import { MenuIcon } from "lucide-react";
@@ -25,8 +31,7 @@ const WeedingNavbar = () => {
   const [drawerOpen, setDrawerOpen] = useState(false);
   const [dropdownAnchor, setDropdownAnchor] = useState(null);
 
-  const { user } = useContext(AuthContext);
-  console.log(user);
+  const { user, logout } = useContext(AuthContext);
 
   const handleMenu = (event) => {
     setAnchorEl(event.currentTarget);
@@ -50,6 +55,10 @@ const WeedingNavbar = () => {
 
   const handleDropdownClose = () => {
     setDropdownAnchor(null);
+  };
+
+  const handleLogout = () => {
+    logout();
   };
 
   return (
@@ -144,24 +153,46 @@ const WeedingNavbar = () => {
               Reservation
             </MenuItem>
           </Menu>
+          {user && user.role === "admin" && (
+            <Link
+              to="/admin-dashboard"
+              className="hidden md:inline-block ml-2 text-black hover:text-gray-700 transition duration-300 ease-in-out"
+            >
+              Admin Dashboard
+            </Link>
+          )}
+          {user && user.role === "attendee" && (
+            <Link
+              to="/user-dashboard"
+              className="hidden md:inline-block ml-2 text-black hover:text-gray-700 transition duration-300 ease-in-out"
+            >
+              User Dashboard
+            </Link>
+          )}
           <Link
-            to="/dashboard"
-            className="hidden md:inline-block ml-2 text-black hover:text-gray-700 transition duration-300 ease-in-out"
+            to="#"
+            className="hidden md:inline-block ml-2 text-black border hover:text-gray-700 transition duration-300 ease-in-out"
           >
-            Dashboard
+            {user?.name} <br />
+            {user?.email}
           </Link>
-          <Link
-            to="/weeding/Login"
-            className="hidden md:inline-block ml-2 text-black hover:text-gray-700 transition duration-300 ease-in-out"
-          >
-            Login
-          </Link>
-          <Link
-            to="/weeding/Register"
-            className="hidden md:inline-block ml-2 text-black hover:text-gray-700 transition duration-300 ease-in-out"
-          >
-            Register
-          </Link>
+
+          {user ? (
+            <Button
+              onClick={handleLogout} // Removed the parentheses to pass the function reference
+              type="button"
+              className="hidden md:inline-block ml-2 text-black hover:text-gray-700 transition duration-300 ease-in-out"
+            >
+              <LogoutOutlined />
+            </Button>
+          ) : (
+            <Link
+              to="/weeding/Login"
+              className="hidden md:inline-block ml-2 text-black hover:text-gray-700 transition duration-300 ease-in-out"
+            >
+              Login
+            </Link>
+          )}
         </div>
 
         {/* Search Bar */}

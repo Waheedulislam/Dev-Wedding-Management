@@ -49,18 +49,12 @@ export const AuthProvider = ({ children }) => {
     }
   };
 
-  const logOut = async () => {
-    setLoading(true);
-    try {
-      await API.post("/auth/logout");
-      localStorage.removeItem("access-token");
-      setUser(null);
-    } catch (error) {
-      console.error("Error logging out:", error);
-    } finally {
-      setLoading(false);
-    }
+  const logout = () => {
+    localStorage.removeItem("access-token");
+    setUser(null);
+    window.location.href = "/weeding/Login";
   };
+
   useEffect(() => {
     const token = localStorage.getItem("access-token");
     if (token) {
@@ -79,7 +73,7 @@ export const AuthProvider = ({ children }) => {
     user,
     createUser,
     signIn,
-    logOut,
+    logout,
     loading,
   };
 
