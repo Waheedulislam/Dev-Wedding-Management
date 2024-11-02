@@ -1,6 +1,7 @@
 import React from "react";
 import BannerSection from "../../../../Components/Shared/BannerSection/BannerSection";
 import WhoWeAre from "../../../../Components/AboutPageComponents/WhoWeAre/WhoWeAre";
+import AboutBridely from "../../../../Components/AboutPageComponents/AboutBridely/AboutBridely";
 
 const WeedingAbout = () => {
   const description =
@@ -12,6 +13,7 @@ const WeedingAbout = () => {
         bannerSectionDescription={description}
       />
       <WhoWeAre />
+      <AboutBridely />
     </>
   );
 };
