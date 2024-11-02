@@ -4,10 +4,10 @@ import Button from "@mui/material/Button";
 import { Link, useNavigate } from "react-router-dom";
 import GoogleLogin from "../../Auth/GoogleLogin";
 import FacebookLogin from "../../Auth/FacebookLogin";
-
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import API from "../../../api/api";
+import { useContext } from "react";
+import { AuthContext } from "../../../Providers/AuthProvider";
 
 function Register() {
   const {
@@ -16,18 +16,15 @@ function Register() {
     formState: { errors },
   } = useForm();
   const navigate = useNavigate();
+  const { createUser } = useContext(AuthContext);
 
   const onSubmit = async (data) => {
     try {
-      const response = await API.post("/auth/register", data);
-      console.log(response);
-
-      if (response.data.message) {
-        toast.success("Registration successful!", { autoClose: 2000 });
-        setTimeout(() => {
-          navigate("/weeding/login");
-        }, 2000);
-      }
+      await createUser(data.name, data.email, data.password);
+      toast.success("Registration successful!", { autoClose: 2000 });
+      setTimeout(() => {
+        navigate("/weeding/login");
+      }, 2000);
     } catch (error) {
       const errorMessage =
         error.response?.data?.error || "Registration failed. Please try again.";
@@ -39,7 +36,7 @@ function Register() {
   return (
     <div className="flex h-screen mt-10 items-center justify-center bg-gray-100">
       <div className="bg-white p-10 rounded-lg shadow-lg w-full max-w-md">
-        <ToastContainer /> {/* ToastContainer for displaying toasts */}
+        <ToastContainer />
         <h2 className="text-4xl font-bold mb-8 text-center text-gray-800">
           Register Now
         </h2>
@@ -61,7 +58,6 @@ function Register() {
               }}
             />
           </div>
-
           <div className="mb-6">
             <TextField
               label="Email"
@@ -82,7 +78,6 @@ function Register() {
               }}
             />
           </div>
-
           <div className="mb-6">
             <TextField
               label="Password"
@@ -107,7 +102,6 @@ function Register() {
               }}
             />
           </div>
-
           <Button
             type="submit"
             variant="contained"

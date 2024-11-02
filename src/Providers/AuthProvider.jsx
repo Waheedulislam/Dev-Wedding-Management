@@ -1,0 +1,93 @@
+/* eslint-disable no-useless-catch */
+import { createContext, useEffect, useState } from "react";
+import { jwtDecode } from "jwt-decode";
+import API from "../api/api";
+
+export const AuthContext = createContext(null);
+
+export const AuthProvider = ({ children }) => {
+  const [user, setUser] = useState(null);
+  const [loading, setLoading] = useState(true);
+
+  const createUser = async (name, email, password) => {
+    setLoading(true);
+    try {
+      const response = await API.post("/auth/register", {
+        name,
+        email,
+        password,
+      });
+      localStorage.setItem("access-token", response.data.token);
+      const decodedUser = jwtDecode(response.data.token);
+      setUser({
+        id: decodedUser.id,
+        role: decodedUser.role,
+        name: decodedUser.name,
+        email: decodedUser.email,
+      });
+    } catch (error) {
+      throw error; // Propagate the error to be handled in the Register component
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const signIn = async (email, password) => {
+    setLoading(true);
+    try {
+      const response = await API.post("/auth/login", { email, password });
+      console.log("Token received:", response.data.token); // Log the token
+      localStorage.setItem("access-token", response.data.token);
+      const decodedUser = jwtDecode(response.data.token);
+      console.log("Decoded user:", decodedUser); // Log the decoded user
+      setUser({
+        id: decodedUser.id,
+        role: decodedUser.role,
+        name: decodedUser.name,
+        email: decodedUser.email,
+      });
+    } catch (error) {
+      throw error;
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const logOut = async () => {
+    setLoading(true);
+    try {
+      await API.post("/auth/logout");
+      localStorage.removeItem("access-token");
+      setUser(null);
+    } catch (error) {
+      console.error("Error logging out:", error);
+    } finally {
+      setLoading(false);
+    }
+  };
+  useEffect(() => {
+    const token = localStorage.getItem("access-token");
+    if (token) {
+      try {
+        const decodedUser = jwtDecode(token);
+        console.log("Decoded user from token:", decodedUser);
+        setUser(decodedUser);
+      } catch (error) {
+        console.error("Error decoding token:", error);
+      }
+    }
+    setLoading(false);
+  }, []);
+
+  const authInfo = {
+    user,
+    createUser,
+    signIn,
+    logOut,
+    loading,
+  };
+
+  return (
+    <AuthContext.Provider value={authInfo}>{children}</AuthContext.Provider>
+  );
+};

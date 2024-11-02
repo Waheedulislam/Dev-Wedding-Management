@@ -48,7 +48,6 @@ const WeedingNavbar = () => {
     setDropdownAnchor(null);
   };
 
-
   return (
     <AppBar
       position="fixed"
@@ -61,7 +60,12 @@ const WeedingNavbar = () => {
     >
       <Toolbar className="flex justify-between container mx-auto items-center">
         {/* Brand Logo */}
-        <Typography variant="h6" component="a" href="/" className="font-bold text-black">
+        <Typography
+          variant="h6"
+          component="a"
+          href="/"
+          className="font-bold text-black"
+        >
           Weeding
         </Typography>
 
@@ -100,19 +104,39 @@ const WeedingNavbar = () => {
             open={Boolean(dropdownAnchor)}
             onClose={handleDropdownClose}
           >
-            <MenuItem component={Link} to="/weeding/weedingBlogs" onClick={handleDropdownClose}>
+            <MenuItem
+              component={Link}
+              to="/weeding/weedingBlogs"
+              onClick={handleDropdownClose}
+            >
               Blogs
             </MenuItem>
-            <MenuItem component={Link} to="/weeding/weedingTeam" onClick={handleDropdownClose}>
+            <MenuItem
+              component={Link}
+              to="/weeding/weedingTeam"
+              onClick={handleDropdownClose}
+            >
               Team
             </MenuItem>
-            <MenuItem component={Link} to="/weeding/weedingAbout" onClick={handleDropdownClose}>
+            <MenuItem
+              component={Link}
+              to="/weeding/weedingAbout"
+              onClick={handleDropdownClose}
+            >
               About
             </MenuItem>
-            <MenuItem component={Link} to="/weeding/Testimonial" onClick={handleDropdownClose}>
+            <MenuItem
+              component={Link}
+              to="/weeding/Testimonial"
+              onClick={handleDropdownClose}
+            >
               Testimonial
             </MenuItem>
-            <MenuItem component={Link} to="/weeding/Reservation" onClick={handleDropdownClose}>
+            <MenuItem
+              component={Link}
+              to="/weeding/Reservation"
+              onClick={handleDropdownClose}
+            >
               Reservation
             </MenuItem>
           </Menu>
@@ -185,7 +209,12 @@ const WeedingNavbar = () => {
           <IconButton onClick={handleDrawerOpen} color="default">
             <MenuIcon />
           </IconButton>
-          <Drawer className="px-10" anchor="left" open={drawerOpen} onClose={handleDrawerClose}>
+          <Drawer
+            className="px-10"
+            anchor="left"
+            open={drawerOpen}
+            onClose={handleDrawerClose}
+          >
             <List>
               <ListItem button component={Link} to="/weeding/weedingHome">
                 <ListItemText primary="Home" />
