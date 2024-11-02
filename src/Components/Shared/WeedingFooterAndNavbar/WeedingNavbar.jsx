@@ -15,14 +15,18 @@ import {
   Box,
 } from "@mui/material";
 import { AccountCircle, Settings, ExitToApp } from "@mui/icons-material";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import { MenuIcon } from "lucide-react";
+import { AuthContext } from "../../../Providers/AuthProvider";
 
 const WeedingNavbar = () => {
   const [anchorEl, setAnchorEl] = useState(null);
   const [drawerOpen, setDrawerOpen] = useState(false);
   const [dropdownAnchor, setDropdownAnchor] = useState(null);
+
+  const { user } = useContext(AuthContext);
+  console.log(user);
 
   const handleMenu = (event) => {
     setAnchorEl(event.currentTarget);
