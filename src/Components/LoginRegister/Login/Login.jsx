@@ -4,11 +4,12 @@ import Button from "@mui/material/Button";
 import { Link, useNavigate } from "react-router-dom";
 import GoogleLogin from "../../Auth/GoogleLogin";
 import FacebookLogin from "../../Auth/FacebookLogin";
-import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
-import API from "../../../api/api";
+import { ToastContainer, toast } from "react-toastify"; // Import toast for notifications
+import { useContext } from "react";
+import { AuthContext } from "../../../Providers/AuthProvider";
 
 function Login() {
+  const { signIn, loading } = useContext(AuthContext);
   const {
     register,
     handleSubmit,
@@ -17,39 +18,16 @@ function Login() {
   const navigate = useNavigate();
 
   const onSubmit = async (data) => {
-    console.log("Data being sent:", data); // Check the data structure
+    console.log("getting data", data);
+
     try {
-      const response = await API.post("/auth/login", data);
-      console.log("Response:", response); // Log the full response
-
-      // Check if the response contains a token
-      if (response.data.token) {
-        toast.success("Login successful!", { autoClose: 2000 });
-        localStorage.setItem("tokens", response.data.token);
-        setTimeout(() => {
-          navigate("/weeding/weedingHome"); // Redirect to home page after login
-        }, 2000);
-      } else {
-        toast.error("Login failed. Please try again.", { autoClose: 3000 });
-      }
-
-      //     try {
-      //       const response = await axios.post(
-      //         "http://localhost:5000/api/auth/login",
-      //         data
-      //       );
-      //       const { token } = response.data;
-      //       localStorage.setItem("token", token);
-      //       toast.success({
-      //         message: "Login Successful",
-      //         description: "Welcome back!",
-      //       });
-      //       navigate("/");
+      await signIn(data.email, data.password); // Ensure to pass email and password separately
+      navigate("/weeding/weedingHome");
     } catch (error) {
-      console.error("Full error response:", error.response); // Log complete error response
+      console.error("Full error response:", error.response);
+      // Handle error, you can customize the error message based on your API response
       toast.error(
-        error.response?.data?.message || "Login failed. Please try again.",
-        { autoClose: 3000 }
+        "Failed to log in. Please check your credentials and try again."
       );
     }
   };
@@ -60,7 +38,6 @@ function Login() {
         <h2 className="text-4xl font-bold mb-8 text-center text-gray-800">
           Login Now
         </h2>
-
         <form onSubmit={handleSubmit(onSubmit)}>
           <div className="mb-6">
             <TextField
@@ -70,20 +47,15 @@ function Login() {
               required
               {...register("email", {
                 required: "Email is required",
-                pattern: { value: /\S+@\S+\.\S+/, message: "Email is invalid" },
+                pattern: {
+                  value: /\S+@\S+\.\S+/,
+                  message: "Email is invalid",
+                },
               })}
               error={!!errors.email}
               helperText={errors.email ? errors.email.message : ""}
-              sx={{
-                "& .MuiOutlinedInput-root": {
-                  "& fieldset": { borderColor: "#9ACCC9" },
-                  "&:hover fieldset": { borderColor: "#F4A492" },
-                  "&.Mui-focused fieldset": { borderColor: "#F4A492" },
-                },
-              }}
             />
           </div>
-
           <div className="mb-6">
             <TextField
               label="Password"
@@ -94,41 +66,22 @@ function Login() {
               {...register("password", { required: "Password is required" })}
               error={!!errors.password}
               helperText={errors.password ? errors.password.message : ""}
-              sx={{
-                "& .MuiOutlinedInput-root": {
-                  "& fieldset": { borderColor: "#9ACCC9" },
-                  "&:hover fieldset": { borderColor: "#F4A492" },
-                  "&.Mui-focused fieldset": { borderColor: "#F4A492" },
-                },
-              }}
             />
           </div>
-
           <Button
             type="submit"
             variant="contained"
             fullWidth
-            sx={{
-              backgroundColor: "#9ACCC9",
-              color: "black",
-              padding: "12px 0",
-              "&:hover": {
-                backgroundColor: "#F4A492",
-                color: "white",
-              },
-            }}
+            disabled={loading}
           >
-            Login
+            {loading ? "Logging in..." : "Login"}
           </Button>
         </form>
-
         <p className="text-center text-gray-600 mt-6">Or sign in with</p>
-
         <div className="flex items-center gap-4 justify-center mt-4">
           <GoogleLogin />
           <FacebookLogin />
         </div>
-
         <p className="text-sm text-center text-gray-600 mt-6">
           Do not have an account?{" "}
           <Link
@@ -138,7 +91,6 @@ function Login() {
             Register here
           </Link>
         </p>
-
         <ToastContainer />
       </div>
     </div>

@@ -13,16 +13,25 @@ import {
   Drawer,
   ListItemText,
   Box,
+  Button,
 } from "@mui/material";
-import { AccountCircle, Settings, ExitToApp } from "@mui/icons-material";
-import { useState } from "react";
+import {
+  AccountCircle,
+  Settings,
+  ExitToApp,
+  LogoutOutlined,
+} from "@mui/icons-material";
+import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import { MenuIcon } from "lucide-react";
+import { AuthContext } from "../../../Providers/AuthProvider";
 
 const WeedingNavbar = () => {
   const [anchorEl, setAnchorEl] = useState(null);
   const [drawerOpen, setDrawerOpen] = useState(false);
   const [dropdownAnchor, setDropdownAnchor] = useState(null);
+
+  const { user, logout } = useContext(AuthContext);
 
   const handleMenu = (event) => {
     setAnchorEl(event.currentTarget);
@@ -48,6 +57,9 @@ const WeedingNavbar = () => {
     setDropdownAnchor(null);
   };
 
+  const handleLogout = () => {
+    logout();
+  };
 
   return (
     <AppBar
@@ -61,7 +73,12 @@ const WeedingNavbar = () => {
     >
       <Toolbar className="flex justify-between container mx-auto items-center">
         {/* Brand Logo */}
-        <Typography variant="h6" component="a" href="/" className="font-bold text-black">
+        <Typography
+          variant="h6"
+          component="a"
+          href="/"
+          className="font-bold text-black"
+        >
           Weeding
         </Typography>
 
@@ -100,40 +117,82 @@ const WeedingNavbar = () => {
             open={Boolean(dropdownAnchor)}
             onClose={handleDropdownClose}
           >
-            <MenuItem component={Link} to="/weeding/weedingBlogs" onClick={handleDropdownClose}>
+            <MenuItem
+              component={Link}
+              to="/weeding/weedingBlogs"
+              onClick={handleDropdownClose}
+            >
               Blogs
             </MenuItem>
-            <MenuItem component={Link} to="/weeding/weedingTeam" onClick={handleDropdownClose}>
+            <MenuItem
+              component={Link}
+              to="/weeding/weedingTeam"
+              onClick={handleDropdownClose}
+            >
               Team
             </MenuItem>
-            <MenuItem component={Link} to="/weeding/weedingAbout" onClick={handleDropdownClose}>
+            <MenuItem
+              component={Link}
+              to="/weeding/weedingAbout"
+              onClick={handleDropdownClose}
+            >
               About
             </MenuItem>
-            <MenuItem component={Link} to="/weeding/Testimonial" onClick={handleDropdownClose}>
+            <MenuItem
+              component={Link}
+              to="/weeding/Testimonial"
+              onClick={handleDropdownClose}
+            >
               Testimonial
             </MenuItem>
-            <MenuItem component={Link} to="/weeding/Reservation" onClick={handleDropdownClose}>
+            <MenuItem
+              component={Link}
+              to="/weeding/Reservation"
+              onClick={handleDropdownClose}
+            >
               Reservation
             </MenuItem>
           </Menu>
+          {user && user.role === "admin" && (
+            <Link
+              to="/admin-dashboard"
+              className="hidden md:inline-block ml-2 text-black hover:text-gray-700 transition duration-300 ease-in-out"
+            >
+              Admin Dashboard
+            </Link>
+          )}
+          {user && user.role === "attendee" && (
+            <Link
+              to="/user-dashboard"
+              className="hidden md:inline-block ml-2 text-black hover:text-gray-700 transition duration-300 ease-in-out"
+            >
+              User Dashboard
+            </Link>
+          )}
           <Link
-            to="/dashboard"
-            className="hidden md:inline-block ml-2 text-black hover:text-gray-700 transition duration-300 ease-in-out"
+            to="#"
+            className="hidden md:inline-block ml-2 text-black border hover:text-gray-700 transition duration-300 ease-in-out"
           >
-            Dashboard
+            {user?.name} <br />
+            {user?.email}
           </Link>
-          <Link
-            to="/weeding/Login"
-            className="hidden md:inline-block ml-2 text-black hover:text-gray-700 transition duration-300 ease-in-out"
-          >
-            Login
-          </Link>
-          <Link
-            to="/weeding/Register"
-            className="hidden md:inline-block ml-2 text-black hover:text-gray-700 transition duration-300 ease-in-out"
-          >
-            Register
-          </Link>
+
+          {user ? (
+            <Button
+              onClick={handleLogout} // Removed the parentheses to pass the function reference
+              type="button"
+              className="hidden md:inline-block ml-2 text-black hover:text-gray-700 transition duration-300 ease-in-out"
+            >
+              <LogoutOutlined />
+            </Button>
+          ) : (
+            <Link
+              to="/weeding/Login"
+              className="hidden md:inline-block ml-2 text-black hover:text-gray-700 transition duration-300 ease-in-out"
+            >
+              Login
+            </Link>
+          )}
         </div>
 
         {/* Search Bar */}
@@ -185,7 +244,12 @@ const WeedingNavbar = () => {
           <IconButton onClick={handleDrawerOpen} color="default">
             <MenuIcon />
           </IconButton>
-          <Drawer className="px-10" anchor="left" open={drawerOpen} onClose={handleDrawerClose}>
+          <Drawer
+            className="px-10"
+            anchor="left"
+            open={drawerOpen}
+            onClose={handleDrawerClose}
+          >
             <List>
               <ListItem button component={Link} to="/weeding/weedingHome">
                 <ListItemText primary="Home" />
