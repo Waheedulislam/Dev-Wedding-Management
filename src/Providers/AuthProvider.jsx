@@ -1,4 +1,3 @@
-/* eslint-disable react-refresh/only-export-components */
 /* eslint-disable no-useless-catch */
 import { createContext, useEffect, useState } from "react";
 import { jwtDecode } from "jwt-decode";
@@ -19,16 +18,8 @@ export const AuthProvider = ({ children }) => {
         password,
       });
       localStorage.setItem("access-token", response.data.token);
-      // Decode the token
-      const decodedUser = jwtDecode(response.data.token); // This will now include id, role, name, and email
-      setUser({
-        id: decodedUser.id,
-        role: decodedUser.role,
-        name: decodedUser.name, // Now you can access name from the token
-        email: decodedUser.email, // Now you can access email from the token
-      });
     } catch (error) {
-      console.error("Error creating user:", error);
+      throw error; // Propagate the error to be handled in the Register component
     } finally {
       setLoading(false);
     }
@@ -39,15 +30,19 @@ export const AuthProvider = ({ children }) => {
     try {
       const response = await API.post("/auth/login", { email, password });
       localStorage.setItem("access-token", response.data.token);
-      const decodedUser = jwtDecode(response.data.token); // This will now include id, role, name, and email
+
+      // Decode the token to retrieve user info
+      const decodedUser = JSON.parse(atob(response.data.token.split(".")[1]));
+      console.log("Decoded user in frontend:", decodedUser); // Log to verify decoded data
+
       setUser({
         id: decodedUser.id,
         role: decodedUser.role,
-        name: decodedUser.name, // Accessing name from the token
-        email: decodedUser.email, // Accessing email from the token
+        name: decodedUser.name,
+        email: decodedUser.email,
       });
     } catch (error) {
-      console.error("Error signing in:", error);
+      throw error;
     } finally {
       setLoading(false);
     }
