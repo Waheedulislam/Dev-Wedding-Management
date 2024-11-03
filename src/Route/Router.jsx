@@ -19,6 +19,7 @@ import Register from "../Components/LoginRegister/Register/Register";
 import Dashboar from "../Pages/MainHomePage/WeedingHomePage/Dashboard/Dashboar";
 import Draft from "../Pages/MainHomePage/WeedingHomePage/Dashboard/Draft"; // Ensure this component exists
 import ResponsiveDrawer from "../Layouts/DashboardLayout";
+import WeedingGallery from "../Pages/MainHomePage/WeedingHomePage/WeedingGallery/WeedingGallery";
 
 const router = createBrowserRouter([
   // Main Home Page Route
@@ -49,11 +50,12 @@ const router = createBrowserRouter([
       { path: "MenuPlanner", element: <MenuPlanner /> },
       { path: "Testimonial", element: <Testimonial /> },
       { path: "Reservation", element: <WeedingReservation /> },
+      { path: "Gallery", element: <WeedingGallery /> },
       { path: "Login", element: <Login /> },
       { path: "Register", element: <Register /> },
     ],
   },
-  // Dashboard Route
+  // weeding Dashboard Route
   {
     path: "/dashboard",
     element: <ResponsiveDrawer />,
