@@ -6,59 +6,81 @@ import CssBaseline from '@mui/material/CssBaseline';
 import Divider from '@mui/material/Divider';
 import Drawer from '@mui/material/Drawer';
 import IconButton from '@mui/material/IconButton';
-import InboxIcon from '@mui/icons-material/MoveToInbox';
 import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
-import MailIcon from '@mui/icons-material/Mail';
 import MenuIcon from '@mui/icons-material/Menu';
 import Toolbar from '@mui/material/Toolbar';
-import Typography from '@mui/material/Typography';
-import { Outlet, useNavigate } from 'react-router-dom'; // Import useNavigate for routing
+import { Outlet, useNavigate } from 'react-router-dom';
+import DashboardIcon from '@mui/icons-material/Dashboard';
+import PeopleIcon from '@mui/icons-material/People';
+import EventIcon from '@mui/icons-material/Event';
+import StoreIcon from '@mui/icons-material/Store';
+import BookIcon from '@mui/icons-material/Book';
+import PaymentIcon from '@mui/icons-material/Payment';
+import AssessmentIcon from '@mui/icons-material/Assessment';
+import SettingsIcon from '@mui/icons-material/Settings';
+import MessageIcon from '@mui/icons-material/Message';
+import PersonIcon from '@mui/icons-material/Person';
+import AdminDashboardLayoutNavbar from '../Components/Shared/WeedingFooterAndNavbar/AdminDashboardLayoutNavbar';
 
 const drawerWidth = 240;
 
 function ResponsiveDrawer(props) {
     const { window } = props;
     const [mobileOpen, setMobileOpen] = React.useState(false);
-    const [isClosing, setIsClosing] = React.useState(false);
-    const navigate = useNavigate(); // Initialize useNavigate
-
-    const handleDrawerClose = () => {
-        setIsClosing(true);
-        setMobileOpen(false);
-    };
-
-    const handleDrawerTransitionEnd = () => {
-        setIsClosing(false);
-    };
+    const navigate = useNavigate();
 
     const handleDrawerToggle = () => {
-        if (!isClosing) {
-            setMobileOpen(!mobileOpen);
-        }
+        setMobileOpen(!mobileOpen);
     };
 
     const handleNavigation = (path) => {
-        navigate(`/dashboard/${path}`); // Navigate to the specified path
+        navigate(`/dashboard/${path}`);
     };
+
+    const isAdmin = true; // Set to true for admin dashboard view
+
+    // admin Drawer Content 
+    const adminDrawerContent = [
+        { text: 'Dashboard', icon: <DashboardIcon />, path: 'adminHome' },
+        { text: 'Users', icon: <PeopleIcon />, path: 'all-Users' },
+        { text: 'Events', icon: <EventIcon />, path: 'events' },
+        { text: 'Vendors', icon: <StoreIcon />, path: 'vendors' },
+        { text: 'Bookings', icon: <BookIcon />, path: 'bookings' },
+        { text: 'Payments', icon: <PaymentIcon />, path: 'payments' },
+        { text: 'Reports', icon: <AssessmentIcon />, path: 'reports' },
+        { text: 'Settings', icon: <SettingsIcon />, path: 'settings' },
+    ];
+
+    // user Drawer Content 
+    const userDrawerContent = [
+        { text: 'Dashboard Overview', icon: <DashboardIcon />, path: '/user/dashboard' },
+        { text: 'My Events', icon: <EventIcon />, path: '/user/my-events' },
+        { text: 'Vendor Selection', icon: <StoreIcon />, path: '/user/vendors' },
+        { text: 'Booking Status', icon: <BookIcon />, path: '/user/bookings' },
+        { text: 'Payments & Invoices', icon: <PaymentIcon />, path: '/user/payments' },
+        { text: 'Messages & Notifications', icon: <MessageIcon />, path: '/user/messages' },
+        { text: 'Profile Settings', icon: <PersonIcon />, path: '/user/profile' },
+    ];
+    const drawerContent = isAdmin ? adminDrawerContent : userDrawerContent;
 
     const drawer = (
         <div>
-            <Toolbar ><h1 className='text-3xl font-semibold'>
-                Weeding <span className='text-blue-800'>Pro</span>
-            </h1></Toolbar>
-
+            <Toolbar>
+                <h1 className='text-3xl font-semibold'>
+                    Wedding <span className='text-blue-800'>Pro</span>
+                </h1>
+            </Toolbar>
             <Divider />
             <List>
-                {/* Main Navigation Items */}
-                {['Home', 'Draft'].map((text) => (
+                {drawerContent.map(({ text, icon, path }) => (
                     <ListItem key={text} disablePadding>
-                        <ListItemButton onClick={() => handleNavigation(text.toLowerCase())}>
+                        <ListItemButton onClick={() => handleNavigation(path)}>
                             <ListItemIcon>
-                                {text === 'Home' ? <InboxIcon /> : <MailIcon />}
+                                {icon}
                             </ListItemIcon>
                             <ListItemText primary={text} />
                         </ListItemButton>
@@ -66,18 +88,6 @@ function ResponsiveDrawer(props) {
                 ))}
             </List>
             <Divider />
-            <List>
-                {['All mail', 'Trash', 'Spam'].map((text, index) => (
-                    <ListItem key={text} disablePadding>
-                        <ListItemButton onClick={() => handleNavigation(text.toLowerCase())}>
-                            <ListItemIcon>
-                                {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-                            </ListItemIcon>
-                            <ListItemText primary={text} />
-                        </ListItemButton>
-                    </ListItem>
-                ))}
-            </List>
         </div>
     );
 
@@ -93,20 +103,21 @@ function ResponsiveDrawer(props) {
                     ml: { sm: `${drawerWidth}px` },
                 }}
             >
-                <Toolbar>
-                    <IconButton
-                        color="inherit"
-                        aria-label="open drawer"
-                        edge="start"
-                        onClick={handleDrawerToggle}
-                        sx={{ mr: 2, display: { sm: 'none' } }}
-                    >
-                        <MenuIcon />
-                    </IconButton>
-                    <Typography variant="h4" noWrap component="div">
-                        Weeding Pro
-                    </Typography>
-                </Toolbar>
+
+                <IconButton
+                    color="inherit"
+                    aria-label="open drawer"
+                    edge="start"
+                    onClick={handleDrawerToggle}
+                    sx={{ mr: 2, display: { sm: 'none' } }}
+                >
+                    <MenuIcon />
+                </IconButton>
+
+                {/* admin home navbar  */}
+                <AdminDashboardLayoutNavbar />
+
+
             </AppBar>
             <Box
                 component="nav"
@@ -117,10 +128,9 @@ function ResponsiveDrawer(props) {
                     container={container}
                     variant="temporary"
                     open={mobileOpen}
-                    onTransitionEnd={handleDrawerTransitionEnd}
-                    onClose={handleDrawerClose}
+                    onClose={handleDrawerToggle}
                     ModalProps={{
-                        keepMounted: true, // Better open performance on mobile.
+                        keepMounted: true,
                     }}
                     sx={{
                         display: { xs: 'block', sm: 'none' },
@@ -145,8 +155,8 @@ function ResponsiveDrawer(props) {
                 sx={{ flexGrow: 1, p: 3, width: { sm: `calc(100% - ${drawerWidth}px)` } }}
             >
                 <Toolbar />
-                {/* Main content area */}
-                <Outlet></Outlet>
+                {/* main content  */}
+                <Outlet />
             </Box>
         </Box>
     );

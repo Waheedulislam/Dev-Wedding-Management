@@ -16,10 +16,18 @@ import Testimonial from "../Pages/MainHomePage/WeedingHomePage/weedingTestimonia
 import WeedingReservation from "../Pages/MainHomePage/WeedingHomePage/WeedingReservation/WeedingReservation";
 import Login from "../Components/LoginRegister/Login/Login";
 import Register from "../Components/LoginRegister/Register/Register";
-import Dashboar from "../Pages/MainHomePage/WeedingHomePage/Dashboard/Dashboar";
-import Draft from "../Pages/MainHomePage/WeedingHomePage/Dashboard/Draft"; // Ensure this component exists
+import Draft from "../Pages/MainHomePage/WeedingHomePage/Dashboard/User/Draft"; // Ensure this component exists
 import ResponsiveDrawer from "../Layouts/DashboardLayout";
 import WeedingGallery from "../Pages/MainHomePage/WeedingHomePage/WeedingGallery/WeedingGallery";
+import UserHome from "../Pages/MainHomePage/WeedingHomePage/Dashboard/User/UserHome";
+import AdminHome from "../Pages/MainHomePage/WeedingHomePage/Dashboard/Admin/AdminHome/AdminHome";
+import AllUser from "../Pages/MainHomePage/WeedingHomePage/Dashboard/Admin/AllUser/AllUser";
+import Event from "../Pages/MainHomePage/WeedingHomePage/Dashboard/Admin/Event/Event";
+import Bookings from "../Pages/MainHomePage/WeedingHomePage/Dashboard/Admin/Bookings/Bookings";
+import Payments from "../Pages/MainHomePage/WeedingHomePage/Dashboard/Admin/Payments/Payments";
+import Reports from "../Pages/MainHomePage/WeedingHomePage/Dashboard/Admin/Reports/Reports";
+import Settings from "../Pages/MainHomePage/WeedingHomePage/Dashboard/Admin/Settings/Settings";
+
 
 const router = createBrowserRouter([
   // Main Home Page Route
@@ -60,13 +68,43 @@ const router = createBrowserRouter([
     path: "/dashboard",
     element: <ResponsiveDrawer />,
     children: [
+      // user Dashboard Route
       {
-        path: "home", // relative path for nested routes
-        element: <Dashboar />,
+        path: "Home",
+        element: <UserHome />,
       },
       {
-        path: "draft", // relative path for nested routes
-        element: <Draft />, // Ensure you have this component
+        path: "draft",
+        element: <Draft />,
+      },
+      // Admin Dashboard Route
+      {
+        path: 'adminHome',
+        element: <AdminHome />
+      },
+      {
+        path: 'all-Users',
+        element: <AllUser />
+      },
+      {
+        path: 'events',
+        element: <Event />
+      },
+      {
+        path: 'Reports',
+        element: <Reports />
+      },
+      {
+        path: 'payments',
+        element: <Payments />
+      },
+      {
+        path: 'bookings',
+        element: <Bookings />
+      },
+      {
+        path: 'Settings',
+        element: <Settings />
       },
     ],
   },
