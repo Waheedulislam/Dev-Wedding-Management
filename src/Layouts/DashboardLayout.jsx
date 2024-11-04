@@ -25,6 +25,7 @@ import SettingsIcon from '@mui/icons-material/Settings';
 import MessageIcon from '@mui/icons-material/Message';
 import PersonIcon from '@mui/icons-material/Person';
 import AdminDashboardLayoutNavbar from '../Components/Shared/WeedingFooterAndNavbar/AdminDashboardLayoutNavbar';
+import { ManageAccounts } from '@mui/icons-material';
 
 const drawerWidth = 240;
 
@@ -46,9 +47,9 @@ function ResponsiveDrawer(props) {
   // admin Drawer Content 
   const adminDrawerContent = [
     { text: 'Dashboard', icon: <DashboardIcon />, path: 'adminHome' },
+    { text: 'Event-management', icon: <ManageAccounts />, path: 'event-management' },
     { text: 'Users', icon: <PeopleIcon />, path: 'all-Users' },
     { text: 'Events', icon: <EventIcon />, path: 'events' },
-    { text: 'Vendors', icon: <StoreIcon />, path: 'vendors' },
     { text: 'Bookings', icon: <BookIcon />, path: 'bookings' },
     { text: 'Payments', icon: <PaymentIcon />, path: 'payments' },
     { text: 'Reports', icon: <AssessmentIcon />, path: 'reports' },

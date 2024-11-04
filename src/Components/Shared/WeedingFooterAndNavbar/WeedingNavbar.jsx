@@ -155,7 +155,7 @@ const WeedingNavbar = () => {
           </Menu>
           {user && user.role === "admin" && (
             <Link
-              to="/dashboard"
+              to="/dashboard/adminHome"
               className="hidden md:inline-block ml-2 text-black hover:text-gray-700 transition duration-300 ease-in-out"
             >
               Admin Dashboard
@@ -163,7 +163,7 @@ const WeedingNavbar = () => {
           )}
           {user && user.role === "attendee" && (
             <Link
-              to="/dashboard/adminHome"
+              to="/dashboard/userHome"
               className="hidden md:inline-block ml-2 text-black hover:text-gray-700 transition duration-300 ease-in-out"
             >
               User Dashboard
