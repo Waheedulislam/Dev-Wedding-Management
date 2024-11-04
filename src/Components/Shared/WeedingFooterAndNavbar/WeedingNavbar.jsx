@@ -163,7 +163,7 @@ const WeedingNavbar = () => {
           )}
           {user && user.role === "attendee" && (
             <Link
-              to="/user-dashboard"
+              to="/dashboard/adminHome"
               className="hidden md:inline-block ml-2 text-black hover:text-gray-700 transition duration-300 ease-in-out"
             >
               User Dashboard
