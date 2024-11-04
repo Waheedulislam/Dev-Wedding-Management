@@ -119,17 +119,10 @@ const WeedingNavbar = () => {
           >
             <MenuItem
               component={Link}
-              to="/weeding/Gallery"
+              to="/weeding/weedingBlogs"
               onClick={handleDropdownClose}
             >
-              Gallery
-            </MenuItem>
-            <MenuItem
-              component={Link}
-              to="/weeding/Reservation"
-              onClick={handleDropdownClose}
-            >
-              Reservation
+              Blogs
             </MenuItem>
             <MenuItem
               component={Link}
@@ -138,15 +131,6 @@ const WeedingNavbar = () => {
             >
               Team
             </MenuItem>
-
-            <MenuItem
-              component={Link}
-              to="/weeding/Testimonial"
-              onClick={handleDropdownClose}
-            >
-              Testimonial
-            </MenuItem>
-
             <MenuItem
               component={Link}
               to="/weeding/weedingAbout"
@@ -156,15 +140,22 @@ const WeedingNavbar = () => {
             </MenuItem>
             <MenuItem
               component={Link}
-              to="/weeding/weedingBlogs"
+              to="/weeding/Testimonial"
               onClick={handleDropdownClose}
             >
-              Blogs
+              Testimonial
+            </MenuItem>
+            <MenuItem
+              component={Link}
+              to="/weeding/Reservation"
+              onClick={handleDropdownClose}
+            >
+              Reservation
             </MenuItem>
           </Menu>
           {user && user.role === "admin" && (
             <Link
-              to="/admin-dashboard"
+              to="/dashboard"
               className="hidden md:inline-block ml-2 text-black hover:text-gray-700 transition duration-300 ease-in-out"
             >
               Admin Dashboard

@@ -20,12 +20,16 @@ import Dashboar from "../Pages/MainHomePage/WeedingHomePage/Dashboard/Dashboar";
 import Draft from "../Pages/MainHomePage/WeedingHomePage/Dashboard/Draft"; // Ensure this component exists
 import ResponsiveDrawer from "../Layouts/DashboardLayout";
 import WeedingGallery from "../Pages/MainHomePage/WeedingHomePage/WeedingGallery/WeedingGallery";
+import EventManagement from "../Pages/MainHomePage/WeedingHomePage/Dashboard/EventManagement";
+import EventDetail from "../Pages/MainHomePage/WeedingHomePage/WeedingHomeComponents/EventDetail/EventDetail";
+import ErrorPage from "../Components/Error/ErrorPage";
 
 const router = createBrowserRouter([
   // Main Home Page Route
   {
     path: "/",
     element: <MainLayout />,
+    errorElement: <ErrorPage />,
     children: [
       {
         index: true,
@@ -39,8 +43,9 @@ const router = createBrowserRouter([
   {
     path: "/weeding",
     element: <WeedingLayout />,
+
     children: [
-      { path: 'weedingHome', element: <WeedingMainHomePage /> },
+      { path: "weedingHome", element: <WeedingMainHomePage /> },
       { path: "services", element: <Services /> },
       { path: "weedingTeam", element: <WeedingTeam /> },
       { path: "weedingPrice", element: <WeedingPricing /> },
@@ -67,6 +72,14 @@ const router = createBrowserRouter([
       {
         path: "draft", // relative path for nested routes
         element: <Draft />, // Ensure you have this component
+      },
+      {
+        path: "event-management",
+        element: <EventManagement />,
+      },
+      {
+        path: "event-management/:id",
+        element: <EventDetail />,
       },
     ],
   },

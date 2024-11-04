@@ -7,12 +7,14 @@ import BridelyServices from "./WeedingHomeComponents/BridelyServices/BridelyServ
 import WeedingBanner from "./WeedingBanner/WeedingBanner";
 import WeedingInsparation from "./Services/WeedingInsparation";
 import Reservation from "./WeedingHomeComponents/Reservation/Reservation";
+import EventList from "./WeedingHomeComponents/EventList/EventList";
 const WeedingMainHomePage = () => {
   return (
-    <div >
+    <div>
       <WeedingBanner />
       <WeedingInsparation />
       <BridelyServices />
+      <EventList />
       <Section />
       <PersonalizedPlanning />
       <UnforgettableEvents />
