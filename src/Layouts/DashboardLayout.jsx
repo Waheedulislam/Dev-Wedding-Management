@@ -25,6 +25,7 @@ import MessageIcon from '@mui/icons-material/Message';
 import PersonIcon from '@mui/icons-material/Person';
 import AdminDashboardLayoutNavbar from '../Components/Shared/WeedingFooterAndNavbar/AdminDashboardLayoutNavbar';
 import { ManageAccounts } from '@mui/icons-material';
+import { LogOut } from 'lucide-react';
 
 const drawerWidth = 240;
 
@@ -41,12 +42,11 @@ function ResponsiveDrawer(props) {
     navigate(`/dashboard/${path}`);
   };
 
-  const isAdmin = false; // Set to true for admin dashboard view
+  const isAdmin = true; // Set to true for admin dashboard view
 
-  // admin Drawer Content 
   const adminDrawerContent = [
     { text: 'Dashboard', icon: <DashboardIcon />, path: 'adminHome' },
-    { text: 'Event-management', icon: <ManageAccounts />, path: 'event-management' },
+    { text: 'Event Management', icon: <ManageAccounts />, path: 'event-management' },
     { text: 'Users', icon: <PeopleIcon />, path: 'all-Users' },
     { text: 'Events', icon: <EventIcon />, path: 'events' },
     { text: 'Bookings', icon: <BookIcon />, path: 'bookings' },
@@ -55,7 +55,6 @@ function ResponsiveDrawer(props) {
     { text: 'Settings', icon: <SettingsIcon />, path: 'settings' },
   ];
 
-  // user Drawer Content 
   const userDrawerContent = [
     { text: 'Dashboard Overview', icon: <DashboardIcon />, path: 'userHome' },
     { text: 'My Events', icon: <EventIcon />, path: 'userEvents' },
@@ -64,6 +63,7 @@ function ResponsiveDrawer(props) {
     { text: 'Messages & Notifications', icon: <MessageIcon />, path: 'userMessages' },
     { text: 'Profile Settings', icon: <PersonIcon />, path: 'userProfile' },
   ];
+
   const drawerContent = isAdmin ? adminDrawerContent : userDrawerContent;
 
   const drawer = (
@@ -77,7 +77,20 @@ function ResponsiveDrawer(props) {
       <List>
         {drawerContent.map(({ text, icon, path }) => (
           <ListItem key={text} disablePadding>
-            <ListItemButton onClick={() => handleNavigation(path)}>
+            <ListItemButton
+              onClick={() => handleNavigation(path)}
+              sx={{
+                '&:hover': {
+                  backgroundColor: 'rgba(0, 0, 0, 0.08)', // Change background on hover
+                },
+                '&.Mui-selected': {
+                  backgroundColor: 'rgba(0, 0, 0, 0.15)', // Change background when selected
+                  color: 'primary.main',
+                },
+                padding: '10px 20px', // Custom padding
+                fontSize: '16px', // Custom font size
+              }}
+            >
               <ListItemIcon>
                 {icon}
               </ListItemIcon>
@@ -87,6 +100,22 @@ function ResponsiveDrawer(props) {
         ))}
       </List>
       <Divider />
+
+      <List sx={{
+        '&:hover': {
+          backgroundColor: 'rgba(0, 0, 0, 0.08)', // Change background on hover
+
+        },
+        '&.Mui-selected': {
+          backgroundColor: 'rgba(0, 0, 0, 0.15)', // Change background when selected
+          color: 'primary.main',
+        },
+        padding: '10px 20px', // Custom padding
+        fontSize: '16px', // Custom font size
+      }} className="flex items-center ">
+        <LogOut className="h-6 w-6" />
+        <span className='text-xl ml-2'>Log out</span>
+      </List>
     </div>
   );
 
@@ -113,9 +142,7 @@ function ResponsiveDrawer(props) {
           <MenuIcon />
         </IconButton>
 
-        {/* admin home navbar  */}
         <AdminDashboardLayoutNavbar />
-
 
       </AppBar>
       <Box
@@ -154,7 +181,6 @@ function ResponsiveDrawer(props) {
         sx={{ flexGrow: 1, p: 3, width: { sm: `calc(100% - ${drawerWidth}px)` } }}
       >
         <Toolbar />
-        {/* main content  */}
         <Outlet />
       </Box>
     </Box>

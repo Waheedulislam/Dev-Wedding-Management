@@ -1,161 +1,188 @@
+'use client';
 
-// import { Button, TextField, Typography, Box, Card, CardContent, CardHeader } from '@mui/material'
-// import Avatar from '@mui/material/Avatar'
+import { useState } from 'react';
+import {
+    Box,
+    Button,
+    Card,
+    CardContent,
+    CardHeader,
+    Typography,
+    Grid,
+    Tabs,
+    Tab,
+    List,
+    ListItem,
+    ListItemText,
+    ListItemIcon,
+} from '@mui/material';
+import {
+    CalendarToday,
+    People,
+    AttachMoney,
+    TrendingUp,
+    ArrowForward,
+    ArrowDropUp,
+    ArrowDropDown,
+} from '@mui/icons-material';
+import { BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer } from 'recharts';
 
-// export default function UserHome() {
-
-
-//     return (
-//         <Box sx={{ p: 4 }}>
-//             <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mb: 4 }}>
-//                 <Typography variant="h4" component="h1">Profile Settings</Typography>
-//                 <Button variant="contained" color="primary">Save Changes</Button>
-//             </Box>
-
-//             <Card>
-//                 <CardHeader title="Personal Information" />
-//                 <CardContent>
-//                     <Box sx={{ display: 'flex', alignItems: 'center', mb: 4 }}>
-//                         <Avatar src="https://github.com/shadcn.png" alt="User avatar" sx={{ width: 80, height: 80, marginRight: 2 }} />
-//                         <Button variant="outlined">Change Avatar</Button>
-//                     </Box>
-//                     <Box sx={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 2 }}>
-//                         <TextField label="First Name" placeholder="John" fullWidth variant="outlined" />
-//                         <TextField label="Last Name" placeholder="Doe" fullWidth variant="outlined" />
-//                     </Box>
-//                     <TextField label="Email" type="email" placeholder="john.doe@example.com" fullWidth variant="outlined" sx={{ mt: 2 }} />
-//                     <TextField label="Phone" type="tel" placeholder="+1 (555) 123-4567" fullWidth variant="outlined" sx={{ mt: 2 }} />
-//                 </CardContent>
-//             </Card>
-
-
-//         </Box>
-//     )
-// }
-import { useState } from 'react'
-import { Card, CardContent, CardHeader, Typography, Box, Button, Avatar, LinearProgress } from '@mui/material'
-import { CalendarToday, AttachMoney, Group, ArrowForward, BarChart, TrendingUp } from '@mui/icons-material'
+const data = [
+    { name: 'Jan', total: 1500 },
+    { name: 'Feb', total: 2300 },
+    { name: 'Mar', total: 3200 },
+    { name: 'Apr', total: 2800 },
+    { name: 'May', total: 3600 },
+    { name: 'Jun', total: 4200 },
+    { name: 'Jul', total: 3800 },
+    { name: 'Aug', total: 4600 },
+    { name: 'Sep', total: 5200 },
+    { name: 'Oct', total: 4800 },
+    { name: 'Nov', total: 5500 },
+    { name: 'Dec', total: 6200 },
+];
 
 export default function UserHome() {
-    const [progress] = useState(67)
+    const [tabValue, setTabValue] = useState('activity');
 
     return (
-        <Box sx={{ p: 4 }}>
-            <Box display="flex" justifyContent="space-between" alignItems="center" mb={4}>
-                <Typography variant="h4" component="h1" color="text.primary">Dashboard Overview</Typography>
+        <Box sx={{ padding: 3 }} className="space-y-6">
+            <Box display="flex" justifyContent="space-between" alignItems="center">
+                <Typography variant="h4" component="h1" gutterBottom>
+                    Dashboard Overview
+                </Typography>
                 <Button variant="contained" color="primary" endIcon={<ArrowForward />}>
                     View Reports
                 </Button>
             </Box>
 
-            <Box display="grid" gap={3} gridTemplateColumns={{ xs: '1fr', md: 'repeat(2, 1fr)', lg: 'repeat(4, 1fr)' }}>
-                <Card variant="outlined">
-                    <CardHeader
-                        title="Total Events"
-                        action={<CalendarToday color="primary" />}
-                    />
-                    <CardContent>
-                        <Typography variant="h5">28</Typography>
-                        <Typography variant="body2" color="success.main">+2% from last month</Typography>
-                    </CardContent>
-                </Card>
+            <Grid container spacing={3}>
+                <Grid item xs={12} sm={6} md={3}>
+                    <Card>
+                        <CardHeader
+                            title="Total Events"
+                            subheader="28"
+                            avatar={<CalendarToday />}
+                        />
+                        <CardContent>
+                            <Typography variant="body2" color="textSecondary">
+                                <ArrowDropUp className="text-green-500" /> 2% from last month
+                            </Typography>
+                        </CardContent>
+                    </Card>
+                </Grid>
+                <Grid item xs={12} sm={6} md={3}>
+                    <Card>
+                        <CardHeader
+                            title="Active Bookings"
+                            subheader="189"
+                            avatar={<People />}
+                        />
+                        <CardContent>
+                            <Typography variant="body2" color="textSecondary">
+                                <ArrowDropUp className="text-green-500" /> 12% from last week
+                            </Typography>
+                        </CardContent>
+                    </Card>
+                </Grid>
+                <Grid item xs={12} sm={6} md={3}>
+                    <Card>
+                        <CardHeader
+                            title="Revenue"
+                            subheader="$32,621"
+                            avatar={<AttachMoney />}
+                        />
+                        <CardContent>
+                            <Typography variant="body2" color="textSecondary">
+                                <ArrowDropDown className="text-red-500" /> 4% from last month
+                            </Typography>
+                        </CardContent>
+                    </Card>
+                </Grid>
+                <Grid item xs={12} sm={6} md={3}>
+                    <Card>
+                        <CardHeader
+                            title="Vendor Satisfaction"
+                            subheader="95%"
+                            avatar={<TrendingUp />}
+                        />
+                        <CardContent>
+                            <Typography variant="body2" color="textSecondary">
+                                {/* You can add a progress bar here if needed */}
+                            </Typography>
+                        </CardContent>
+                    </Card>
+                </Grid>
+            </Grid>
 
-                <Card variant="outlined">
-                    <CardHeader
-                        title="Active Bookings"
-                        action={<Group color="secondary" />}
-                    />
-                    <CardContent>
-                        <Typography variant="h5">189</Typography>
-                        <Typography variant="body2" color="success.main">+12% from last week</Typography>
-                    </CardContent>
-                </Card>
+            <Tabs value={tabValue} onChange={(event, newValue) => setTabValue(newValue)}>
+                <Tab label="Recent Activity" value="activity" />
+                <Tab label="Upcoming Events" value="events" />
+            </Tabs>
 
-                <Card variant="outlined">
-                    <CardHeader
-                        title="Revenue"
-                        action={<AttachMoney color="success" />}
-                    />
+            {tabValue === 'activity' && (
+                <Card>
                     <CardContent>
-                        <Typography variant="h5">$32,621</Typography>
-                        <Typography variant="body2" color="error.main">-4% from last month</Typography>
-                    </CardContent>
-                </Card>
-
-                <Card variant="outlined">
-                    <CardHeader
-                        title="Vendor Satisfaction"
-                        action={<TrendingUp color="warning" />}
-                    />
-                    <CardContent>
-                        <Typography variant="h5">95%</Typography>
-                        <LinearProgress variant="determinate" value={progress} sx={{ height: 8, mt: 2 }} />
-                    </CardContent>
-                </Card>
-            </Box>
-
-            <Box display="grid" gap={3} gridTemplateColumns={{ xs: '1fr', md: '1fr 1fr' }} mt={4}>
-                <Card variant="outlined">
-                    <CardHeader
-                        title="Recent Activity"
-                    />
-                    <CardContent>
-                        <Box component="ul" sx={{ listStyle: 'none', p: 0, m: 0 }}>
+                        <List>
                             {[
-                                { name: "John Doe", action: "booked a new event", time: "2 hours ago" },
-                                { name: "Alice Smith", action: "updated her profile", time: "5 hours ago" },
-                                { name: "Robert Johnson", action: "made a payment", time: "1 day ago" },
-                                { name: "Emily Brown", action: "cancelled a booking", time: "2 days ago" },
+                                { name: 'John Doe', action: 'booked a new event', time: '2 hours ago' },
+                                { name: 'Alice Smith', action: 'updated her profile', time: '5 hours ago' },
+                                { name: 'Robert Johnson', action: 'made a payment', time: '1 day ago' },
+                                { name: 'Emily Brown', action: 'cancelled a booking', time: '2 days ago' },
                             ].map((item, index) => (
-                                <Box component="li" key={index} display="flex" alignItems="center" mb={2}>
-                                    <Avatar sx={{ bgcolor: 'primary.main', mr: 2 }}>{item.name.split(' ').map(n => n[0]).join('')}</Avatar>
-                                    <Box>
-                                        <Typography variant="body1" color="text.primary">{item.name} {item.action}</Typography>
-                                        <Typography variant="caption" color="text.secondary">{item.time}</Typography>
-                                    </Box>
-                                </Box>
+                                <ListItem key={index}>
+                                    <ListItemIcon>
+                                        <span className="inline-block h-10 w-10 rounded-full bg-blue-500 text-white text-center leading-10 font-semibold">
+                                            {item.name.split(' ').map(n => n[0]).join('')}
+                                        </span>
+                                    </ListItemIcon>
+                                    <ListItemText primary={`${item.name} ${item.action}`} secondary={item.time} />
+                                </ListItem>
                             ))}
-                        </Box>
+                        </List>
                     </CardContent>
                 </Card>
+            )}
 
-                <Card variant="outlined">
-                    <CardHeader
-                        title="Upcoming Events"
-                    />
+            {tabValue === 'events' && (
+                <Card>
                     <CardContent>
-                        <Box component="ul" sx={{ listStyle: 'none', p: 0, m: 0 }}>
+                        <List>
                             {[
-                                { name: "Annual Gala", date: "June 15, 2024", attendees: 200 },
-                                { name: "Tech Conference", date: "July 22, 2024", attendees: 500 },
-                                { name: "Wedding Ceremony", date: "August 5, 2024", attendees: 150 },
-                                { name: "Product Launch", date: "September 10, 2024", attendees: 300 },
+                                { name: 'Annual Gala', date: 'June 15, 2024', attendees: 200 },
+                                { name: 'Tech Conference', date: 'July 22, 2024', attendees: 500 },
+                                { name: 'Wedding Ceremony', date: 'August 5, 2024', attendees: 150 },
+                                { name: 'Product Launch', date: 'September 10, 2024', attendees: 300 },
                             ].map((event, index) => (
-                                <Box component="li" key={index} display="flex" justifyContent="space-between" mb={2}>
-                                    <Box>
-                                        <Typography variant="body1" color="text.primary">{event.name}</Typography>
-                                        <Typography variant="body2" color="text.secondary">{event.date}</Typography>
-                                    </Box>
-                                    <Box display="flex" alignItems="center">
-                                        <Group fontSize="small" color="action" />
-                                        <Typography variant="body2" color="text.secondary" sx={{ ml: 1 }}>{event.attendees}</Typography>
-                                    </Box>
-                                </Box>
+                                <ListItem key={index}>
+                                    <ListItemText
+                                        primary={event.name}
+                                        secondary={event.date}
+                                    />
+                                    <ListItemIcon>
+                                        <People />
+                                        <Typography variant="body2" color="textSecondary">{event.attendees}</Typography>
+                                    </ListItemIcon>
+                                </ListItem>
                             ))}
-                        </Box>
+                        </List>
                     </CardContent>
                 </Card>
-            </Box>
+            )}
 
-            <Card variant="outlined" sx={{ mt: 4 }}>
-                <CardHeader
-                    title="Monthly Revenue Overview"
-                />
-                <CardContent sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: 320 }}>
-                    <BarChart fontSize="large" color="action" />
-                    <Typography variant="body2" color="text.secondary" sx={{ ml: 2 }}>Revenue chart placeholder</Typography>
+            <Card>
+                <CardHeader title="Monthly Revenue Overview" />
+                <CardContent>
+                    <ResponsiveContainer width="100%" height={300}>
+                        <BarChart data={data}>
+                            <XAxis dataKey="name" />
+                            <YAxis tickFormatter={(value) => `$${value}`} />
+                            <Tooltip />
+                            <Bar dataKey="total" fill="#3f51b5" />
+                        </BarChart>
+                    </ResponsiveContainer>
                 </CardContent>
             </Card>
         </Box>
-    )
+    );
 }
