@@ -17,7 +17,6 @@ import { Outlet, useNavigate } from 'react-router-dom';
 import DashboardIcon from '@mui/icons-material/Dashboard';
 import PeopleIcon from '@mui/icons-material/People';
 import EventIcon from '@mui/icons-material/Event';
-import StoreIcon from '@mui/icons-material/Store';
 import BookIcon from '@mui/icons-material/Book';
 import PaymentIcon from '@mui/icons-material/Payment';
 import AssessmentIcon from '@mui/icons-material/Assessment';
@@ -42,7 +41,7 @@ function ResponsiveDrawer(props) {
     navigate(`/dashboard/${path}`);
   };
 
-  const isAdmin = true; // Set to true for admin dashboard view
+  const isAdmin = false; // Set to true for admin dashboard view
 
   // admin Drawer Content 
   const adminDrawerContent = [
@@ -58,13 +57,12 @@ function ResponsiveDrawer(props) {
 
   // user Drawer Content 
   const userDrawerContent = [
-    { text: 'Dashboard Overview', icon: <DashboardIcon />, path: '/user/dashboard' },
-    { text: 'My Events', icon: <EventIcon />, path: '/user/my-events' },
-    { text: 'Vendor Selection', icon: <StoreIcon />, path: '/user/vendors' },
-    { text: 'Booking Status', icon: <BookIcon />, path: '/user/bookings' },
-    { text: 'Payments & Invoices', icon: <PaymentIcon />, path: '/user/payments' },
-    { text: 'Messages & Notifications', icon: <MessageIcon />, path: '/user/messages' },
-    { text: 'Profile Settings', icon: <PersonIcon />, path: '/user/profile' },
+    { text: 'Dashboard Overview', icon: <DashboardIcon />, path: 'userHome' },
+    { text: 'My Events', icon: <EventIcon />, path: 'userEvents' },
+    { text: 'Booking Status', icon: <BookIcon />, path: 'userBookings' },
+    { text: 'Payments & Invoices', icon: <PaymentIcon />, path: 'userPayments' },
+    { text: 'Messages & Notifications', icon: <MessageIcon />, path: 'userMessages' },
+    { text: 'Profile Settings', icon: <PersonIcon />, path: 'userProfile' },
   ];
   const drawerContent = isAdmin ? adminDrawerContent : userDrawerContent;
 

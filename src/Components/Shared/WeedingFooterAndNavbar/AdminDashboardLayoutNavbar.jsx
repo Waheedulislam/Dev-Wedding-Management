@@ -1,7 +1,8 @@
 
 import { Bell, LogOut } from 'lucide-react';
 import { IconButton, Menu, MenuItem, Avatar, Typography } from '@mui/material';
-import { useState } from 'react';
+import { useContext, useState } from 'react';
+import { AuthContext } from '../../../Providers/AuthProvider';
 
 function AdminDashboardLayoutNavbar() {
     const [anchorEl, setAnchorEl] = useState(null);
@@ -14,10 +15,14 @@ function AdminDashboardLayoutNavbar() {
         setAnchorEl(null);
     };
 
+    // user info 
+    const { user } = useContext(AuthContext);
+
     return (
         <header className="bg-white shadow-md p-4 flex justify-between items-center">
-            <Typography variant="h6" component="h2" className="text-gray-800 font-semibold">
-                Welcome, Admin
+            <Typography variant="h6" component="h2" className="flex items-center gap-2 text-gray-800 font-semibold">
+                Welcome <p className='font-semibold text-blue-800'>{user?.name}</p>
+
             </Typography>
             <div className="flex items-center space-x-4">
                 {/* Notification Icon */}

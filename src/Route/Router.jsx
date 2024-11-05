@@ -16,7 +16,6 @@ import Testimonial from "../Pages/MainHomePage/WeedingHomePage/weedingTestimonia
 import WeedingReservation from "../Pages/MainHomePage/WeedingHomePage/WeedingReservation/WeedingReservation";
 import Login from "../Components/LoginRegister/Login/Login";
 import Register from "../Components/LoginRegister/Register/Register";
-import Draft from "../Pages/MainHomePage/WeedingHomePage/Dashboard/User/Draft"; // Ensure this component exists
 import ResponsiveDrawer from "../Layouts/DashboardLayout";
 import WeedingGallery from "../Pages/MainHomePage/WeedingHomePage/WeedingGallery/WeedingGallery";
 import EventManagement from "../Pages/MainHomePage/WeedingHomePage/Dashboard/EventManagement";
@@ -30,6 +29,11 @@ import Bookings from "../Pages/MainHomePage/WeedingHomePage/Dashboard/Admin/Book
 import Payments from "../Pages/MainHomePage/WeedingHomePage/Dashboard/Admin/Payments/Payments";
 import Reports from "../Pages/MainHomePage/WeedingHomePage/Dashboard/Admin/Reports/Reports";
 import Settings from "../Pages/MainHomePage/WeedingHomePage/Dashboard/Admin/Settings/Settings";
+import UserEvents from "../Pages/MainHomePage/WeedingHomePage/Dashboard/User/UserEvents";
+import UserMessagesNotifications from "../Pages/MainHomePage/WeedingHomePage/Dashboard/User/UserMessagesNotifications";
+import UserPayments from "../Pages/MainHomePage/WeedingHomePage/Dashboard/User/UserPayments";
+import UserBookings from "../Pages/MainHomePage/WeedingHomePage/Dashboard/User/UserBookings";
+import ProfilePage from "../Pages/MainHomePage/WeedingHomePage/Dashboard/User/UserProfile";
 
 
 const router = createBrowserRouter([
@@ -75,12 +79,28 @@ const router = createBrowserRouter([
     children: [
       // user Dashboard Route
       {
-        path: "Home",
+        path: "userHome",
         element: <UserHome />,
       },
       {
-        path: "draft",
-        element: <Draft />,
+        path: "userEvents",
+        element: <UserEvents />,
+      },
+      {
+        path: "userMessages",
+        element: <UserMessagesNotifications />,
+      },
+      {
+        path: "userPayments",
+        element: <UserPayments />,
+      },
+      {
+        path: "userBookings",
+        element: <UserBookings />,
+      },
+      {
+        path: "userProfile",
+        element: <ProfilePage />,
       },
       // Admin Dashboard Route
       {
