@@ -57,7 +57,6 @@ function ResponsiveDrawer(props) {
       path: "event-management",
     },
     { text: "Users", icon: <PeopleIcon />, path: "all-Users" },
-    { text: "Events", icon: <EventIcon />, path: "events" },
     { text: "Bookings", icon: <BookIcon />, path: "bookings" },
     { text: "Payments", icon: <PaymentIcon />, path: "payments" },
     { text: "Reports", icon: <AssessmentIcon />, path: "reports" },
