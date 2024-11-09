@@ -2,7 +2,7 @@ import { BookCopy, Microscope } from "lucide-react";
 
 const UpcomingEvents = () => {
     return (
-        <div className="flex flex-col md:flex-row-reverse gap-16  items-center justify-between my-20">
+        <div className="container mx-auto px-2 flex flex-col md:flex-row-reverse gap-16  items-center justify-between my-20">
 
 
 

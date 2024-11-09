@@ -8,7 +8,7 @@ import UpCommingEvents from "./UpCommingEvents/UpCommingEvents";
 const HomePage = () => {
     return (
 
-        <div className="container mx-auto px-2">
+        <div >
             <BannerSection />
             <EventItems />
             <Gallery />

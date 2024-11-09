@@ -36,7 +36,7 @@ function ResponsiveDrawer(props) {
   const { window } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
   const navigate = useNavigate();
-  const { user, loading } = useContext(AuthContext);
+  const { user, loading, logout } = useContext(AuthContext);
 
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
@@ -46,6 +46,9 @@ function ResponsiveDrawer(props) {
     navigate(`/dashboard/${path}`);
   };
 
+  const handleLogout = () => {
+    logout();
+  };
   // Check if the user is an admin
   const isAdmin = user?.role === "admin";
 
@@ -132,8 +135,10 @@ function ResponsiveDrawer(props) {
         }}
         className="flex items-center"
       >
-        <LogOut className="h-6 w-6" />
-        <span className="text-xl ml-2">Log out</span>
+        <div onClick={handleLogout} className="flex items-center cursor-pointer">
+          <LogOut className="h-6 w-6" />
+          <span className="text-xl ml-2 ">Log out</span>
+        </div>
       </List>
     </div>
   );

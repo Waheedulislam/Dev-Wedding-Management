@@ -2,8 +2,8 @@ import { useForm } from "react-hook-form";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 import { Link, useNavigate } from "react-router-dom";
-import GoogleLogin from "../../Auth/GoogleLogin";
-import FacebookLogin from "../../Auth/FacebookLogin";
+// import GoogleLogin from "../../Auth/GoogleLogin";
+// import FacebookLogin from "../../Auth/FacebookLogin";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useContext } from "react";
@@ -16,7 +16,7 @@ function Register() {
     formState: { errors },
   } = useForm();
   const navigate = useNavigate();
-  const { createUser } = useContext(AuthContext);
+  const { createUser, loading } = useContext(AuthContext);
 
   const onSubmit = async (data) => {
     try {
@@ -115,15 +115,16 @@ function Register() {
                 color: "white",
               },
             }}
+            disabled={loading}
           >
             Register
           </Button>
         </form>
-        <p className="text-center text-gray-600 mt-6">Or sign in with</p>
+        {/* <p className="text-center text-gray-600 mt-6">Or sign in with</p>
         <div className="flex items-center gap-4 justify-center mt-4">
           <GoogleLogin />
           <FacebookLogin />
-        </div>
+        </div> */}
         <p className="text-sm text-center text-gray-600 mt-6">
           Already have an account?{" "}
           <Link to="/weeding/login" className="text-blue-500 hover:underline">

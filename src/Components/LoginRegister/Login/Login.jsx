@@ -2,8 +2,8 @@ import { useForm } from "react-hook-form";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 import { Link, useNavigate } from "react-router-dom";
-import GoogleLogin from "../../Auth/GoogleLogin";
-import FacebookLogin from "../../Auth/FacebookLogin";
+// import GoogleLogin from "../../Auth/GoogleLogin";
+// import FacebookLogin from "../../Auth/FacebookLogin";
 import { ToastContainer, toast } from "react-toastify"; // Import toast for notifications
 import { useContext } from "react";
 import { AuthContext } from "../../../Providers/AuthProvider";
@@ -72,16 +72,25 @@ function Login() {
             type="submit"
             variant="contained"
             fullWidth
+            sx={{
+              backgroundColor: "#9ACCC9",
+              color: "black",
+              padding: "12px 0",
+              "&:hover": {
+                backgroundColor: "#F4A492",
+                color: "white",
+              },
+            }}
             disabled={loading}
           >
             {loading ? "Logging in..." : "Login"}
           </Button>
         </form>
-        <p className="text-center text-gray-600 mt-6">Or sign in with</p>
+        {/* <p className="text-center text-gray-600 mt-6">Or sign in with</p>
         <div className="flex items-center gap-4 justify-center mt-4">
           <GoogleLogin />
           <FacebookLogin />
-        </div>
+        </div> */}
         <p className="text-sm text-center text-gray-600 mt-6">
           Do not have an account?{" "}
           <Link

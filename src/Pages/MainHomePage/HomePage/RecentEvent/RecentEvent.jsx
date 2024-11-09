@@ -2,7 +2,7 @@
 
 const RecentlyEvent = () => {
     return (
-        <div className="my-28 grid grid-cols-1 text-center md:text-left md:grid-cols-2 gap-4">
+        <div className="container mx-auto px-2 my-28 grid grid-cols-1 text-center md:text-left md:grid-cols-2 gap-4">
             <div>
                 <h2 className="text-5xl font-bold">Recent Events</h2>
                 <p className="my-4">

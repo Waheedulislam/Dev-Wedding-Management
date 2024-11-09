@@ -2,8 +2,8 @@ import { Check, X } from "lucide-react";
 
 const PricingPlan = () => {
     return (
-        <div>
-            <div className="my-20 ">
+        <div className="bg-[#9da1df] bg-opacity-20">
+            <div className=" container mx-auto px-2 py-20">
                 <div className="text-center">
                     <h2 className="text-5xl font-bold">Explore our pricing plans</h2>
                     <p className="max-w-5xl w-full mx-auto my-4">

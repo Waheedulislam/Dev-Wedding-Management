@@ -20,8 +20,8 @@ const pages = [
 ];
 const eventOptions = [
     { name: 'Wedding Events', link: '/weeding/weedingHome' },
-    { name: 'Upcoming Events', link: '/upcoming-events' },
-    { name: 'Event Highlights', link: '/event-highlights' }
+    // { name: 'Upcoming Events', link: '/upcoming-events' },
+    // { name: 'Event Highlights', link: '/event-highlights' }
 ];
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 
