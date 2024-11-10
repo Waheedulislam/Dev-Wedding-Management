@@ -1,49 +1,42 @@
-import NavigationBreadcrumb from "../../../../Components/Shared/NavigationBreadcrumb/NavigationBreadcrumb";
+import axios from "axios";
+import { useState } from "react";
+import { useParams } from "react-router-dom";
 import CheckCircleOutlineIcon from "@mui/icons-material/CheckCircleOutline";
 
 import CancelIcon from "@mui/icons-material/Cancel";
-import InstagramFeed from "./InstagramFeed";
-import WeedingSlider from "../../../../Components/Shared/WeedingSlider/WeedingSlider";
-import { useNavigate } from 'react-router-dom';
+const PlanPayment = () => {
+  const [meetLink, setMeetLink] = useState("");
+  const [isPaid, setIsPaid] = useState(false);
+  const { planId } = useParams();
+  console.log(planId);
+  const handlePayment = async () => {
+    // SSLCommerz payment logic
+    const paymentId = "sample_payment_id"; // Placeholder for the payment ID
 
-const WeedingPricing = () => {
-  const navigate = useNavigate();
-  const handleReservationClick = (plan) => {
-    
-    navigate(`/weeding/payment/${plan}`); // Replace planId with the actual ID for the "Standard" plan.
-    console.log(1)
+    // Mock payment verification success
+    const paymentSuccessful = true;
+    if (paymentSuccessful) {
+      setIsPaid(true);
+      fetchMeetLink(paymentId);
+    }
   };
-
+  const fetchMeetLink = async (paymentId) => {
+    try {
+      const response = await axios.post("http://localhost:5000/confirm-payment", { paymentId });
+      if (response.data.meetLink) {
+        setMeetLink(response.data.meetLink);
+      }
+    } catch (error) {
+      console.error("Error fetching Meet link:", error);
+    }
+  };
   return (
-    <div className="">
-      <div
-        className="flex items-center justify-center  pb-0  mt-[60px] md:mt-0 lg:mt-0 md:min-h-[520px] lg:min-h-[520px] bg-center bg-no-repeat"
-        style={{
-          backgroundImage:
-            "url('https://designingmedia.com/bridely/wp-content/themes/bridely/assets/img/sub-banner-img.jpg')",
-          backgroundSize: "contain",
-        }}
-      >
-        <div className="text-center  text-white bg-black bg-opacity-50 p-4 md:p-6 lg:p-8 rounded-md max-w-2xl">
-          <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-2 md:mb-4">
-            Discover Our Wedding Packages
-          </h1>
-          <p className="text-sm sm:text-base md:text-lg lg:text-xl">
-            Explore our exclusive wedding packages designed to make your special day unforgettable.
-            Find the perfect package that suits your style and budget.
-          </p>
-          <div className="flex justify-center items-center">
-            <NavigationBreadcrumb></NavigationBreadcrumb>
-          </div>
-        </div>
-      </div>
-      {/* start Pricing Plans */}
-      <div className="flex flex-col items-center py-16  bg-gradient-to-b from-[white] to-[#e5f5f4]">
-        <h2 className="text-4xl font-bold mb-4 text-gray-800">Pricing Plans</h2>
-        <p className="text-lg text-gray-600 mb-12">Pricing Plans for Your Dream Wedding</p>
+    <div className="flex flex-col items-center justify-center w-full  p-4 mt-[200px]">
+      <div className="bg-white rounded-lg shadow-md p-6  max-w-md   ">
+        <h1 className="text-2xl font-bold mb-4 text-center">Service Payment</h1>
 
-        <div className="flex flex-wrap justify-center gap-8 max-w-6xl">
-          {/* Basic Plan */}
+
+        {planId === "BasicPlan" && (
           <div className="group relative flex flex-col items-center bg-white border border-transparent rounded-3xl shadow-lg overflow-hidden transform transition-all duration-500 hover:scale-105 w-full md:w-80 lg:w-96 p-8 hover:border-pink-500  bg-clip-padding bg-gradient-to-tr from-pink-100 to-transparent">
             <h3 className="text-2xl font-semibold text-gray-800 mb-4">Basic</h3>
             <div className="relative p-4 border-2 border-pink-400 rounded-full bg-white shadow-lg mb-4">
@@ -88,12 +81,9 @@ const WeedingPricing = () => {
                 Rehearsal Dinner Coordination
               </li>
             </ul>
-            <button   onClick={()=>handleReservationClick("BasicPlan")} className="mt-6 py-2 px-8 bg-pink-600 text-white rounded-full font-semibold transform transition duration-300 hover:bg-pink-700 hover:scale-105 shadow-md">
-              Make Reservation
-            </button>
           </div>
-
-          {/* Standard Plan */}
+        )}
+        {planId === "StandardPlan" && (
           <div className="group relative flex flex-col items-center bg-white border border-transparent rounded-3xl shadow-lg overflow-hidden transform transition-all duration-500 hover:scale-105 w-full md:w-80 lg:w-96 p-8 hover:border-pink-500 bg-clip-padding bg-gradient-to-tr from-transparent to-pink-100">
             <h3 className="text-2xl font-semibold text-gray-800 mb-4">Standard</h3>
             <div className="relative p-4 border-2 border-pink-400 rounded-full bg-white shadow-lg mb-4">
@@ -140,12 +130,9 @@ const WeedingPricing = () => {
                 Rehearsal Dinner Coordination
               </li>
             </ul>
-            <button onClick={()=>handleReservationClick("StandardPlan")} className="mt-6 py-2 px-8 bg-pink-600 text-white rounded-full font-semibold transform transition duration-300 hover:bg-pink-700 hover:scale-105 shadow-md">
-              Make Reservation
-            </button>
           </div>
-
-          {/* Premium Plan */}
+        )}
+        {planId === "PremiumPlan" && (
           <div className="group relative flex flex-col items-center bg-white border border-transparent rounded-3xl shadow-lg overflow-hidden transform transition-all duration-500 hover:scale-105 w-full md:w-80 lg:w-96 p-8 hover:border-pink-500 bg-clip-padding bg-gradient-to-b from-pink-100 to-transparent">
             <h3 className="text-2xl font-semibold text-gray-800 mb-4">Premium</h3>
             <div className="relative p-4 border-2 border-pink-400 rounded-full bg-white shadow-lg mb-4">
@@ -196,21 +183,39 @@ const WeedingPricing = () => {
                 Rehearsal Dinner Coordination
               </li>
             </ul>
-            <button onClick={()=>handleReservationClick("PremiumPlan")} className="mt-6 py-2 px-8 bg-pink-600 text-white rounded-full font-semibold transform transition duration-300 hover:bg-pink-700 hover:scale-105 shadow-md">
-              Make Reservation
-            </button>
           </div>
-        </div>
+        )}
+
+        <p className="text-gray-600 mb-6 text-center mt-[40px]">
+          Pay for our service to receive a Meet link.
+        </p>
+
+        {!isPaid ? (
+          <button
+            onClick={handlePayment}
+            className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded w-full"
+          >
+            Pay Now
+          </button>
+        ) : (
+          <>
+            {meetLink ? (
+              <a
+                href={meetLink}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded w-full text-center block mt-4"
+              >
+                Join Google Meet
+              </a>
+            ) : (
+              <p>Loading meeting link...</p>
+            )}
+          </>
+        )}
       </div>
-
-      {/* slider  */}
-      <WeedingSlider />
-
-      {/* Instagram Feed  */}
-      <InstagramFeed />
     </div>
   );
 };
 
-export default WeedingPricing;
-
+export default PlanPayment;

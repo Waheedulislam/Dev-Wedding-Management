@@ -34,6 +34,7 @@ import UserMessagesNotifications from "../Pages/MainHomePage/WeedingHomePage/Das
 import UserPayments from "../Pages/MainHomePage/WeedingHomePage/Dashboard/User/UserPayments";
 import UserBookings from "../Pages/MainHomePage/WeedingHomePage/Dashboard/User/UserBookings";
 import ProfilePage from "../Pages/MainHomePage/WeedingHomePage/Dashboard/User/UserProfile";
+import PlanPayment from "../Pages/MainHomePage/WeedingHomePage/PlanPayment/PlanPayment";
 
 
 const router = createBrowserRouter([
@@ -70,6 +71,7 @@ const router = createBrowserRouter([
       { path: "Gallery", element: <WeedingGallery /> },
       { path: "Login", element: <Login /> },
       { path: "Register", element: <Register /> },
+      { path: "/weeding/payment/:planId", element: < PlanPayment /> },
     ],
   },
   // weeding Dashboard Route
