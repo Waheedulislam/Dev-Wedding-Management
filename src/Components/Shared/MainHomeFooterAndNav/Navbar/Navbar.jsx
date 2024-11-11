@@ -57,7 +57,7 @@ function ResponsiveAppBar() {
                             textDecoration: 'none',
                         }}
                     >
-                        LOGO
+                        WEEDING PRO
                     </Typography>
 
                     {/* Mobile Menu */}
