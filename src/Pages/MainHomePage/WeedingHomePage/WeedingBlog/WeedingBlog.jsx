@@ -1,9 +1,9 @@
 import { Container, Grid } from "@mui/material";
 import BlogBanner from "./BlogBanner";
-import WeddingBlog from "./WeddingBlog/weddingBlog";
+import WeddingBlog from "./Blog/Blog";
 import BlogActivitisHome from "./BlogActivitis/BlogActivitisHome";
 
-const WeedingBlog = () => {
+const Blog = () => {
   return (
     <div>
 
@@ -27,4 +27,4 @@ const WeedingBlog = () => {
   );
 };
 
-export default WeedingBlog;
+export default Blog;
