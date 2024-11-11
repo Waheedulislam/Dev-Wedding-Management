@@ -1,6 +1,6 @@
-import BannerSection from "../../../../Components/Shared/BannerSection/BannerSection";
-import UnforgettableEvents from "../WeedingHomeComponents/UnforgettableEvents/UnforgettableEvents";
-import InstagramFeed from "../WeedingPricing/InstagramFeed";
+import BannerSection from "../../../../../Components/Shared/BannerSection/BannerSection";
+import UnforgettableEvents from "../../WeedingHomeComponents/UnforgettableEvents/UnforgettableEvents";
+import InstagramFeed from "../../WeedingPricing/InstagramFeed";
 
 
 const WeedingGallery = () => {
