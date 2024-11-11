@@ -149,7 +149,7 @@ function ResponsiveAppBar() {
                             textDecoration: 'none',
                         }}
                     >
-                        LOGO
+                        WEEDING PRO
                     </Typography>
 
                     {/* Desktop Menu */}
