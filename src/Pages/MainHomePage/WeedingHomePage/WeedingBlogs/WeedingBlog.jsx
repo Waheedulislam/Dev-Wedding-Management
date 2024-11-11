@@ -3,9 +3,10 @@ import BlogBanner from "./BlogBanner";
 import WeddingBlog from "./weddingBlog/weddingBlog";
 import BlogActivitisHome from "./BlogActivitis/BlogActivitisHome";
 
-const WeedingBlogs = () => {
+const WeedingBlog = () => {
   return (
     <div>
+
       <BlogBanner
         imageUrl="https://img.freepik.com/premium-photo/picture-water-sky-with-some-leaves-it_1044943-50255.jpg"
         title="Blog"
@@ -26,4 +27,4 @@ const WeedingBlogs = () => {
   );
 };
 
-export default WeedingBlogs;
+export default WeedingBlog;
