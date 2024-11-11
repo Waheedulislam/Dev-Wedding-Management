@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const API = axios.create({ baseURL: "http://localhost:5000/api" });
+const API = axios.create({ baseURL: "https://weedubg-managment-server.vercel.app/api" });
 
 // Add token to headers if available
 API.interceptors.request.use((req) => {

@@ -1,28 +1,36 @@
 import axios from "axios";
-import { useState } from "react";
-import { useParams } from "react-router-dom";
+import { useContext, useState } from "react";
+import { useNavigate, useParams } from "react-router-dom";
 import CheckCircleOutlineIcon from "@mui/icons-material/CheckCircleOutline";
 
 import CancelIcon from "@mui/icons-material/Cancel";
+import { AuthContext } from "../../../../Providers/AuthProvider";
 const PlanPayment = () => {
   const [meetLink, setMeetLink] = useState("");
   const [isPaid, setIsPaid] = useState(false);
   const { planId } = useParams();
-  console.log(planId);
-  const handlePayment = async () => {
-    // SSLCommerz payment logic
-    const paymentId = "sample_payment_id"; // Placeholder for the payment ID
+  const { user } = useContext(AuthContext);
+  const navigate = useNavigate();
 
-    // Mock payment verification success
-    const paymentSuccessful = true;
-    if (paymentSuccessful) {
-      setIsPaid(true);
-      fetchMeetLink(paymentId);
+  const handlePayment = async () => {
+    if (!user) {
+      navigate('/weeding/Login')
+    } else {
+      // SSLCommerz payment logic
+      const paymentId = "sample_payment_id"; // Placeholder for the payment ID
+
+      // Mock payment verification success
+      const paymentSuccessful = true;
+      if (paymentSuccessful) {
+        setIsPaid(true);
+        fetchMeetLink(paymentId);
+      }
     }
   };
   const fetchMeetLink = async (paymentId) => {
     try {
-      const response = await axios.post("http://localhost:5000/confirm-payment", { paymentId });
+      const response = await axios.post("https://weedubg-managment-server.vercel.app/api/meet", { paymentId });
+      console.log(response)
       if (response.data.meetLink) {
         setMeetLink(response.data.meetLink);
       }
