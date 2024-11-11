@@ -14,7 +14,6 @@ import {
   TextField,
   InputAdornment,
   IconButton,
-  Modal,
 } from "@mui/material";
 import { Search } from "@mui/icons-material";
 import API from "../../../../../api/api";
@@ -45,11 +44,12 @@ const EventList = () => {
           justifyContent: "space-between",
           alignItems: "center",
           mb: 4,
+          flexDirection: { xs: "column", sm: "row" }, // Stack on smaller screens
         }}
       >
         <Typography
           variant="h4"
-          sx={{ fontWeight: "bold", color: "primary.main" }}
+          sx={{ fontWeight: "bold", color: "primary.main", mb: { xs: 2, sm: 0 } }}
         >
           Our Events
         </Typography>
@@ -60,7 +60,7 @@ const EventList = () => {
             placeholder="Search..."
             variant="outlined"
             size="small"
-            sx={{ mr: 2, width: "200px" }}
+            sx={{ mr: 2, width: { xs: "100%", sm: "200px" } }} // Responsive width
             InputProps={{
               endAdornment: (
                 <InputAdornment position="end">
