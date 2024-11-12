@@ -29,7 +29,7 @@ const PlanPayment = () => {
   };
   const fetchMeetLink = async (paymentId) => {
     try {
-      const response = await API.post("/api/meet", { paymentId });
+      const response = await API.post("/meet", { paymentId });
       console.log(response)
       if (response.data.meetLink) {
         setMeetLink(response.data.meetLink);
