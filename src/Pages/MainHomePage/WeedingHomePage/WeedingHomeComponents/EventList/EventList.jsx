@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import {
   Card,
   CardContent,
@@ -14,7 +14,6 @@ import {
   TextField,
   InputAdornment,
   IconButton,
-  Modal,
 } from "@mui/material";
 import { Search } from "@mui/icons-material";
 import API from "../../../../../api/api";
