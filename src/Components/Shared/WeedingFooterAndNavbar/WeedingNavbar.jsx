@@ -254,19 +254,53 @@ const WeedingNavbar = () => {
               <ListItem button component={Link} to="/weeding/weedingHome">
                 <ListItemText primary="Home" />
               </ListItem>
-              <ListItem button component={Link} to="/weeding/weedingAbout">
-                <ListItemText primary="About" />
+
+              <ListItem
+                component={Link}
+                to="/weeding/weedingPrice"
+                className="hidden md:inline-block  text-black hover:text-gray-700 transition duration-300 ease-in-out"
+              >
+                Pricing
               </ListItem>
-              <ListItem button component={Link} to="/weeding/services">
-                <ListItemText primary="Services" />
-              </ListItem>
+
               <ListItem button component={Link} to="/weeding/weedingBlogs">
                 <ListItemText primary="Blogs" />
               </ListItem>
+
               <ListItem button component={Link} to="/weeding/MenuPlanner">
                 <ListItemText primary="MenuPlanner" />
               </ListItem>
+
+              <ListItem
+                component={Link}
+                to="/weeding/weedingTeam"
+                onClick={handleDropdownClose}
+              >
+                Team
+              </ListItem>
+              <ListItem
+                component={Link}
+                to="/weeding/weedingAbout"
+                onClick={handleDropdownClose}
+              >
+                About
+              </ListItem>
+              <ListItem
+                component={Link}
+                to="/weeding/Testimonial"
+                onClick={handleDropdownClose}
+              >
+                Testimonial
+              </ListItem>
+              <ListItem
+                component={Link}
+                to="/weeding/Reservation"
+                onClick={handleDropdownClose}
+              >
+                Reservation
+              </ListItem>
             </List>
+
           </Drawer>
         </div>
       </Toolbar>

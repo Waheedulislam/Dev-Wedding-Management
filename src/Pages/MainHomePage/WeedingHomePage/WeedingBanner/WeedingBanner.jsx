@@ -3,7 +3,7 @@ import { Button } from "@mui/material";
 const WeedingBanner = () => {
     return (
         <div className=" bg-[#9ACCC9] bg-opacity-20 py-4 mt-16 ">
-            <div className="flex mt-12 container mx-auto px-4 flex-col md:flex-row items-center justify-between p-8 ">
+            <div className="flex mt-12  c container mx-auto px-4 flex-col-reverse md:flex-row items-center justify-between p-8 ">
 
                 {/* Middle Section - Text Content */}
                 <div className="w-full md:w-1/2 mb-6 text-center md:text-left space-y-4">
