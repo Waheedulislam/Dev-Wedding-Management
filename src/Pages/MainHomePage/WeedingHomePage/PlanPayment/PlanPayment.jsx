@@ -1,10 +1,10 @@
-import axios from "axios";
 import { useContext, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import CheckCircleOutlineIcon from "@mui/icons-material/CheckCircleOutline";
 
 import CancelIcon from "@mui/icons-material/Cancel";
 import { AuthContext } from "../../../../Providers/AuthProvider";
+import API from "../../../../api/api";
 const PlanPayment = () => {
   const [meetLink, setMeetLink] = useState("");
   const [isPaid, setIsPaid] = useState(false);
@@ -29,7 +29,7 @@ const PlanPayment = () => {
   };
   const fetchMeetLink = async (paymentId) => {
     try {
-      const response = await axios.post("https://weedubg-managment-server.vercel.app/api/meet", { paymentId });
+      const response = await API.post("/api/meet", { paymentId });
       console.log(response)
       if (response.data.meetLink) {
         setMeetLink(response.data.meetLink);
