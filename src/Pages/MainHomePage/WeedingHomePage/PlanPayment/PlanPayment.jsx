@@ -5,6 +5,9 @@ import CheckCircleOutlineIcon from "@mui/icons-material/CheckCircleOutline";
 import CancelIcon from "@mui/icons-material/Cancel";
 import { AuthContext } from "../../../../Providers/AuthProvider";
 import API from "../../../../api/api";
+import { toast } from "react-toastify";
+
+
 const PlanPayment = () => {
   const [meetLink, setMeetLink] = useState("");
   const [isPaid, setIsPaid] = useState(false);
@@ -12,32 +15,65 @@ const PlanPayment = () => {
   const { user } = useContext(AuthContext);
   const navigate = useNavigate();
 
+  let planPrice = 0;
+
+  if (planId === "BasicPlan") {
+    planPrice = 599;
+  } else if (planId === "StandardPlan") {
+    planPrice = 799;
+  } else {
+    planPrice = 999
+  }
+
   const handlePayment = async () => {
+
     if (!user) {
       navigate('/weeding/Login')
     } else {
-      // SSLCommerz payment logic
-      const paymentId = "sample_payment_id"; // Placeholder for the payment ID
+      const response = API.post("/create-payment", {
+        eventPlan: planId, // Send event plan array with product information
+        planPrice: parseFloat(planPrice), // Send total price
+        customerName: user.name, // Send User Name
+        customerEmail: user.email, // Send User Email
+      })
+        .then((res) => {
+          console.log("payment page 25:", res);
+          const redirectUrl = res.data.paymentUrl;
+          console.log(redirectUrl)
+
+          //
+          if (redirectUrl) {
+            window.location.replace(redirectUrl);
+          }
+          // setLoader(false);
+        })
+        .catch((error) => {
+          console.error("Error creating payment:", error);
+          toast.error("There was an error processing your payment. Please try again.");
+        });
+
 
       // Mock payment verification success
+      console.log(response)
       const paymentSuccessful = true;
       if (paymentSuccessful) {
         setIsPaid(true);
-        fetchMeetLink(paymentId);
+        // fetchMeetLink();
       }
     }
   };
-  const fetchMeetLink = async (paymentId) => {
-    try {
-      const response = await API.post("/meet", { paymentId });
-      console.log(response)
-      if (response.data.meetLink) {
-        setMeetLink(response.data.meetLink);
-      }
-    } catch (error) {
-      console.error("Error fetching Meet link:", error);
-    }
-  };
+  // const fetchMeetLink = async () => {
+  //   try {
+  //     const response = await API.post("/meet",);
+  //     console.log(response)
+  //     if (response.data.meetLink) {
+  //       setMeetLink(response.data.meetLink);
+  //     }
+  //   } catch (error) {
+  //     console.error("Error fetching Meet link:", error);
+  //   }
+  // };
+
   return (
     <div className="flex flex-col items-center justify-center w-full  p-4 mt-[200px]">
       <div className="bg-white rounded-lg shadow-md p-6  max-w-md   ">
