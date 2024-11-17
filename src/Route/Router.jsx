@@ -37,6 +37,7 @@ import PlanPayment from "../Pages/MainHomePage/WeedingHomePage/PlanPayment/PlanP
 // import WeedingBlog from "../Pages/MainHomePage/WeedingHomePage/WeedingBlog/WeedingBlog";
 import BlogDetailsCard from "../Pages/MainHomePage/WeedingHomePage/WeedingBlog/BlogsDetails/BlogDetailsCard";
 import WeedingGallery from "../Pages/MainHomePage/WeedingHomePage/WeedingBlog/WeedingGallery/WeedingGallery";
+import PaymentSuccess from "../Pages/MainHomePage/WeedingHomePage/PlanPayment/PaymentSuccess";
 
 
 
@@ -51,8 +52,12 @@ const router = createBrowserRouter([
         index: true,
         element: <HomePage />,
       }, // index route for the main page
-      { path: "about", element: <About /> },
-      { path: "contact", element: <Contact /> },
+      { path: "/about", element: <About /> },
+      { path: "/contact", element: <Contact /> },
+      {
+        path: "/payment-success",
+        element: <PaymentSuccess />,
+      },
     ],
   },
   // Weeding Page Route
@@ -75,6 +80,7 @@ const router = createBrowserRouter([
       { path: "Login", element: <Login /> },
       { path: "Register", element: <Register /> },
       { path: "/weeding/payment/:planId", element: < PlanPayment /> },
+
     ],
   },
   // weeding Dashboard Route
