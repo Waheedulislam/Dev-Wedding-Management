@@ -35,6 +35,7 @@ import WeedingBlog from "../Pages/MainHomePage/WeedingHomePage/WeedingBlog/Weedi
 import BlogDetailsCard from "../Pages/MainHomePage/WeedingHomePage/WeedingBlog/BlogsDetails/BlogDetailsCard";
 import WeedingGallery from "../Pages/MainHomePage/WeedingHomePage/WeedingBlog/WeedingGallery/WeedingGallery";
 import PaymentSuccess from "../Pages/MainHomePage/WeedingHomePage/PlanPayment/PaymentSuccess";
+import WeddingCart from "../Pages/MainHomePage/WeedingHomePage/Cart/Cart";
 
 
 
@@ -75,6 +76,7 @@ const router = createBrowserRouter([
       { path: "Testimonial", element: <Testimonial /> },
       { path: "Reservation", element: <WeedingReservation /> },
       { path: "Gallery", element: <WeedingGallery /> },
+      { path: "wedding-cart", element: <WeddingCart /> },
       { path: "Login", element: <Login /> },
       { path: "Register", element: <Register /> },
       { path: "/weeding/payment/:planId", element: < PlanPayment /> },

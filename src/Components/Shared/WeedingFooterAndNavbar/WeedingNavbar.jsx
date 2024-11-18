@@ -126,6 +126,13 @@ const WeedingNavbar = () => {
             </MenuItem>
             <MenuItem
               component={Link}
+              to="/wedding-cart"
+              onClick={handleDropdownClose}
+            >
+              Cart
+            </MenuItem>
+            <MenuItem
+              component={Link}
               to="/weedingTeam"
               onClick={handleDropdownClose}
             >
