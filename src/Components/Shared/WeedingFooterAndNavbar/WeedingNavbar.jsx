@@ -85,19 +85,19 @@ const WeedingNavbar = () => {
         {/* Navbar Items */}
         <div className="flex gap-4 items-center">
           <Link
-            to="/weeding/weedingHome"
+            to="/weedingHome"
             className="hidden md:inline-block ml-2 text-black hover:text-gray-700 transition duration-300 ease-in-out"
           >
             Home
           </Link>
           <Link
-            to="/weeding/weedingPrice"
+            to="/weedingPrice"
             className="hidden md:inline-block ml-2 text-black hover:text-gray-700 transition duration-300 ease-in-out"
           >
             Pricing
           </Link>
           <Link
-            to="/weeding/MenuPlanner"
+            to="/MenuPlanner"
             className="hidden md:inline-block ml-2 text-black hover:text-gray-700 transition duration-300 ease-in-out"
           >
             Menu Planner
@@ -119,35 +119,35 @@ const WeedingNavbar = () => {
           >
             <MenuItem
               component={Link}
-              to="/weeding/weedingBlogs"
+              to="/weedingBlogs"
               onClick={handleDropdownClose}
             >
               Blogs
             </MenuItem>
             <MenuItem
               component={Link}
-              to="/weeding/weedingTeam"
+              to="/weedingTeam"
               onClick={handleDropdownClose}
             >
               Team
             </MenuItem>
             <MenuItem
               component={Link}
-              to="/weeding/weedingAbout"
+              to="/weedingAbout"
               onClick={handleDropdownClose}
             >
               About
             </MenuItem>
             <MenuItem
               component={Link}
-              to="/weeding/Testimonial"
+              to="/Testimonial"
               onClick={handleDropdownClose}
             >
               Testimonial
             </MenuItem>
             <MenuItem
               component={Link}
-              to="/weeding/Reservation"
+              to="/Reservation"
               onClick={handleDropdownClose}
             >
               Reservation
@@ -187,7 +187,7 @@ const WeedingNavbar = () => {
             </Button>
           ) : (
             <Link
-              to="/weeding/Login"
+              to="/Login"
               className="hidden md:inline-block ml-2 text-black hover:text-gray-700 transition duration-300 ease-in-out"
             >
               Login
@@ -251,23 +251,23 @@ const WeedingNavbar = () => {
             onClose={handleDrawerClose}
           >
             <List>
-              <ListItem button component={Link} to="/weeding/weedingHome">
+              <ListItem button component={Link} to="/weedingHome">
                 <ListItemText primary="Home" />
               </ListItem>
 
               <ListItem
                 component={Link}
-                to="/weeding/weedingPrice"
+                to="/weedingPrice"
                 className="hidden md:inline-block  text-black hover:text-gray-700 transition duration-300 ease-in-out"
               >
                 Pricing
               </ListItem>
 
-              <ListItem button component={Link} to="/weeding/weedingBlogs">
+              <ListItem button component={Link} to="/weedingBlogs">
                 <ListItemText primary="Blogs" />
               </ListItem>
 
-              <ListItem button component={Link} to="/weeding/MenuPlanner">
+              <ListItem button component={Link} to="/MenuPlanner">
                 <ListItemText primary="MenuPlanner" />
               </ListItem>
 

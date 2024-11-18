@@ -94,7 +94,7 @@ function Login() {
         <p className="text-sm text-center text-gray-600 mt-6">
           Do not have an account?{" "}
           <Link
-            to="/weeding/register"
+            to="/register"
             className="text-blue-500 hover:underline"
           >
             Register here

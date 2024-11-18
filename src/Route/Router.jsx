@@ -1,10 +1,7 @@
 import { createBrowserRouter } from "react-router-dom";
-import MainLayout from "../Layouts/MainLayout";
-import HomePage from "../Pages/MainHomePage/HomePage/HomePage";
 import WeedingLayout from "../Layouts/WeedingLayout";
 import WeedingMainHomePage from "../Pages/MainHomePage/WeedingHomePage/WeedingMainHomePage";
-import About from "../Pages/About/About";
-import Contact from "../Pages/Contact/Contact";
+
 import Services from "../Pages/MainHomePage/WeedingHomePage/Services/Services";
 import WeedingTeam from "../Pages/MainHomePage/WeedingHomePage/WeedingTeam/WeedingTeam";
 import WeedingPricing from "../Pages/MainHomePage/WeedingHomePage/WeedingPricing/WeedingPricing";
@@ -34,7 +31,7 @@ import UserPayments from "../Pages/MainHomePage/WeedingHomePage/Dashboard/User/U
 import UserBookings from "../Pages/MainHomePage/WeedingHomePage/Dashboard/User/UserBookings";
 import ProfilePage from "../Pages/MainHomePage/WeedingHomePage/Dashboard/User/UserProfile";
 import PlanPayment from "../Pages/MainHomePage/WeedingHomePage/PlanPayment/PlanPayment";
-// import WeedingBlog from "../Pages/MainHomePage/WeedingHomePage/WeedingBlog/WeedingBlog";
+import WeedingBlog from "../Pages/MainHomePage/WeedingHomePage/WeedingBlog/WeedingBlog";
 import BlogDetailsCard from "../Pages/MainHomePage/WeedingHomePage/WeedingBlog/BlogsDetails/BlogDetailsCard";
 import WeedingGallery from "../Pages/MainHomePage/WeedingHomePage/WeedingBlog/WeedingGallery/WeedingGallery";
 import PaymentSuccess from "../Pages/MainHomePage/WeedingHomePage/PlanPayment/PaymentSuccess";
@@ -43,34 +40,35 @@ import PaymentSuccess from "../Pages/MainHomePage/WeedingHomePage/PlanPayment/Pa
 
 const router = createBrowserRouter([
   // Main Home Page Route
+  // {
+  //   path: "/",
+  //   element: <MainLayout />,
+  //   errorElement: <ErrorPage />,
+  //   children: [
+  //     {
+  //       index: true,
+  //       element: <HomePage />,
+  //     }, // index route for the main page
+  //     { path: "/about", element: <About /> },
+  //     { path: "/contact", element: <Contact /> },
+
+  //   ],
+  // },
+  // Weeding Page Route
   {
     path: "/",
-    element: <MainLayout />,
+    element: <WeedingLayout />,
     errorElement: <ErrorPage />,
     children: [
       {
         index: true,
-        element: <HomePage />,
-      }, // index route for the main page
-      { path: "/about", element: <About /> },
-      { path: "/contact", element: <Contact /> },
-      {
-        path: "/payment-success",
-        element: <PaymentSuccess />,
+        element: <WeedingMainHomePage />,
       },
-    ],
-  },
-  // Weeding Page Route
-  {
-    path: "/weeding",
-    element: <WeedingLayout />,
-
-    children: [
       { path: "weedingHome", element: <WeedingMainHomePage /> },
       { path: "services", element: <Services /> },
       { path: "weedingTeam", element: <WeedingTeam /> },
       { path: "weedingPrice", element: <WeedingPricing /> },
-      // { path: "weedingBlogs", element: <WeedingBlog /> },
+      { path: "weedingBlogs", element: <WeedingBlog /> },
       { path: "weedingBlogs/:id", element: <BlogDetailsCard /> },
       { path: "weedingAbout", element: <WeedingAbout /> },
       { path: "MenuPlanner", element: <MenuPlanner /> },
@@ -80,6 +78,10 @@ const router = createBrowserRouter([
       { path: "Login", element: <Login /> },
       { path: "Register", element: <Register /> },
       { path: "/weeding/payment/:planId", element: < PlanPayment /> },
+      {
+        path: "/payment-success",
+        element: <PaymentSuccess />,
+      },
 
     ],
   },

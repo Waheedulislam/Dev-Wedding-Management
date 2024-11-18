@@ -8,7 +8,7 @@ import InstagramFeed from "../WeedingPricing/InstagramFeed";
 
 const WeedingAbout = () => {
   const description =
-    "Lorem ipsum dolor sit amet consectetur adipiscing elit \nsed do eiusmod tempor incididunt";
+    "Lorem ipsum dolor sit amet consectetur adipiscing elit send do eiusmod tempor incididunt";
   return (
     <>
       <BannerSection

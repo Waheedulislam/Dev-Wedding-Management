@@ -10,7 +10,7 @@ const Blog = () => {
       <BlogBanner
         imageUrl="https://img.freepik.com/premium-photo/picture-water-sky-with-some-leaves-it_1044943-50255.jpg"
         title="Blog"
-        subtitle="Home"
+        subtitle="A wedding management blog provides valuable insights, tips, and inspiration for planning and executing the perfect wedding."
         textColor="text-black"
       />
       <Container>
