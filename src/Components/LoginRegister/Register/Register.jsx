@@ -23,7 +23,7 @@ function Register() {
       await createUser(data.name, data.email, data.password);
       toast.success("Registration successful!", { autoClose: 2000 });
       setTimeout(() => {
-        navigate("/weeding/login");
+        navigate("/");
       }, 2000);
     } catch (error) {
       const errorMessage =

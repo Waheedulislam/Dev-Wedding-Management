@@ -6,7 +6,7 @@ import { RouterProvider } from "react-router-dom";
 import router from "./Route/Router.jsx";
 import { AuthProvider } from "./Providers/AuthProvider.jsx";
 import { ToastContainer } from "react-toastify";
-import 'react-toastify/dist/ReactToastify.css'; // Import Toastify CSS
+import 'react-toastify/dist/ReactToastify.css';
 
 // Crisp chat function
 const CrispIntegration = () => {
@@ -33,7 +33,7 @@ createRoot(document.getElementById("root")).render(
     <AuthProvider>
       <RouterProvider router={router} />
       <ToastContainer position="top-right" autoClose={5000} hideProgressBar />
-      <CrispIntegration /> {/* Crisp integration */}
+      <CrispIntegration />
     </AuthProvider>
   </React.StrictMode>
 );

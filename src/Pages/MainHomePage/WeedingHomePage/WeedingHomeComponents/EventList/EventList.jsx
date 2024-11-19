@@ -1,152 +1,76 @@
-import { useEffect, useState } from "react";
-import {
-  Card,
-  CardContent,
-  CardMedia,
-  Typography,
-  Button,
-  Select,
-  MenuItem,
-  Pagination,
-  Grid,
-  Container,
-  Box,
-  TextField,
-  InputAdornment,
-  IconButton,
-} from "@mui/material";
-import { Search } from "@mui/icons-material";
-import API from "../../../../../api/api";
-import { Link } from "react-router-dom";
+import { Heart, Calendar, Glasses, PartyPopper, Cake, Building2 } from 'lucide-react';
 
-const EventList = () => {
-  const [events, setEvents] = useState([]);
-  const [page, setPage] = useState(1);
-  const [sortBy, setSortBy] = useState("date");
-  const [order, setOrder] = useState("asc");
-  const [searchTerm, setSearchTerm] = useState("");
 
-  useEffect(() => {
-    const fetchEvents = async () => {
-      const response = await API.get(
-        `/events?page=${page}&limit=10&sortBy=${sortBy}&order=${order}&searchTerm=${searchTerm}`
-      );
-      setEvents(response.data);
-    };
-    fetchEvents();
-  }, [page, sortBy, order, searchTerm]);
 
+
+
+
+
+export default function EventList() {
   return (
-    <Container maxWidth="lg" sx={{ p: 4 }}>
-      <Box
-        sx={{
-          display: "flex",
-          justifyContent: "space-between",
-          alignItems: "center",
-          mb: 4,
-          flexDirection: { xs: "column", sm: "row" }, // Stack on smaller screens
-        }}
-      >
-        <Typography
-          variant="h4"
-          sx={{ fontWeight: "bold", color: "primary.main", mb: { xs: 2, sm: 0 } }}
-        >
-          Our Events
-        </Typography>
-        <Box sx={{ display: "flex", alignItems: "center" }}>
-          <TextField
-            value={searchTerm}
-            onChange={(e) => setSearchTerm(e.target.value)}
-            placeholder="Search..."
-            variant="outlined"
-            size="small"
-            sx={{ mr: 2, width: { xs: "100%", sm: "200px" } }} // Responsive width
-            InputProps={{
-              endAdornment: (
-                <InputAdornment position="end">
-                  <IconButton>
-                    <Search />
-                  </IconButton>
-                </InputAdornment>
-              ),
-            }}
-          />
-          <Select
-            value={sortBy}
-            onChange={(e) => setSortBy(e.target.value)}
-            variant="outlined"
-            size="small"
-            sx={{ mr: 2, minWidth: "120px" }}
-          >
-            <MenuItem value="date">Date</MenuItem>
-            <MenuItem value="title">Title</MenuItem>
-            <MenuItem value="popularity">Popularity</MenuItem>
-          </Select>
-          <Button
-            onClick={() => setOrder(order === "asc" ? "desc" : "asc")}
-            variant="contained"
-            size="small"
-            color="primary"
-          >
-            {order === "asc" ? "Ascending" : "Descending"}
-          </Button>
-        </Box>
-      </Box>
-      <Grid container spacing={4}>
-        {events.slice(0, 4).map((event) => (
-          <Grid item key={event._id} xs={12} sm={6} md={4} lg={3}>
-            <Link
-              to={`event-management/${event._id}`}
-              style={{ textDecoration: "none" }}
-            >
-              <Card
-                sx={{
-                  transition: "transform 0.2s",
-                  "&:hover": {
-                    transform: "scale(1.05)",
-                    boxShadow: 20,
-                  },
-                }}
-              >
-                <CardMedia
-                  component="img"
-                  height="140"
-                  image={
-                    event.imageUrl ||
-                    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRG1NfT0N-m7mJgBUDb6W7-v4iWexFEzOXZ3A&s"
-                  } // Assuming this is the field for the image URL
-                  alt={event.title}
-                />
-                <CardContent>
-                  <Typography
-                    variant="h6"
-                    sx={{ fontWeight: "bold", color: "primary.dark" }}
-                  >
-                    {event.title}
-                  </Typography>
-                  <Typography
-                    variant="body2"
-                    sx={{ color: "text.secondary", mb: 1 }}
-                  >
-                    {event.description}
-                  </Typography>
-                  <Typography variant="caption" sx={{ color: "text.disabled" }}>
-                    {new Date(event.date).toLocaleDateString()}
-                  </Typography>
-                </CardContent>
-              </Card>
-            </Link>
-          </Grid>
-        ))}
-      </Grid>
-      <Pagination
-        count={Math.ceil(events.length / 10)} // Adjust count based on total events
-        page={page}
-        onChange={(e, value) => setPage(value)}
-        sx={{ display: "flex", justifyContent: "center", mt: 4 }}
-      />
-    </Container>
-  );
-};
+    <div className=' bg-gray-50'>
+      <section className="py-16  container mx-auto px-4 text-gray-800">
+        <div className="container mx-auto px-4">
+          <h2 className="text-5xl my-8 font-bold text-center mb-4">Celebrate Every Moment with Us</h2>
+          <p className="text-xl my-12 text-center text-gray-600 mb-12">
+            We specialize in creating unforgettable experiences for all types of occasions. Whether you're planning a grand wedding,
+            a cozy engagement, or a festive reception, we ensure every detail is perfect.
+          </p>
 
-export default EventList;
+          {/* Event Categories */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
+            {eventCategories.map((category, index) => (
+              <div key={index} className="bg-white shadow-md hover:shadow-2xl  rounded-lg p-6 flex flex-col">
+                <div className="w-12  text-teal-700 h-12 bg-primary rounded-full flex items-center justify-center mb-4">
+                  {category.icon}
+                </div>
+                <h3 className="text-lg  font-semibold mb-2">{category.title}</h3>
+                <p className="text-gray-600 mb-4">{category.description}</p>
+                <p className="text-sm text-gray-500">{category.services}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+    </div>
+  );
+}
+
+const eventCategories = [
+  {
+    title: "Weddings",
+    description: "From dreamy decor to seamless coordination, we turn your big day into a magical celebration.",
+    services: "Venue selection, decoration, catering, entertainment, and more.",
+    icon: <Heart className="w-6 h-6 text-primary-foreground" />
+  },
+  {
+    title: "Engagements",
+    description: "Celebrate the start of your journey with a beautifully planned engagement party.",
+    services: "Customized themes and intimate arrangements for every love story.",
+    icon: <Glasses className="w-6 h-6 text-primary-foreground" />
+  },
+  {
+    title: "Receptions",
+    description: "End your wedding celebrations with a grand and memorable reception.",
+    services: "Elegant setups, curated menus, and perfect ambiance.",
+    icon: <PartyPopper className="w-6 h-6 text-primary-foreground" />
+  },
+  {
+    title: "Anniversaries",
+    description: "Honor your milestones with a celebration that reflects your journey.",
+    services: "Personalized themes, surprise elements, and memorable experiences.",
+    icon: <Cake className="w-6 h-6 text-primary-foreground" />
+  },
+  {
+    title: "Pre-Wedding Events",
+    description: "Host memorable mehndi, sangeet, or bridal showers with our creative touch.",
+    services: "Cultural integration, entertainment planning, and guest management.",
+    icon: <Calendar className="w-6 h-6 text-primary-foreground" />
+  },
+  {
+    title: "Corporate and Social Events",
+    description: "Celebrate professional milestones or host memorable private parties with us.",
+    services: "Venue selection, theme execution, catering, and logistics management.",
+    icon: <Building2 className="w-6 h-6 text-primary-foreground" />
+  }
+];

@@ -22,7 +22,7 @@ function Login() {
 
     try {
       await signIn(data.email, data.password); // Ensure to pass email and password separately
-      navigate("/weeding/weedingHome");
+      navigate("/");
     } catch (error) {
       console.error("Full error response:", error.response);
       // Handle error, you can customize the error message based on your API response

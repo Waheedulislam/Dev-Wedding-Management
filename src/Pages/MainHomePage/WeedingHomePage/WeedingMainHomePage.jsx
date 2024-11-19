@@ -8,6 +8,7 @@ import WeedingBanner from "./WeedingBanner/WeedingBanner";
 import WeedingInsparation from "./Services/WeedingInsparation";
 import Reservation from "./WeedingHomeComponents/Reservation/Reservation";
 import EventList from "./WeedingHomeComponents/EventList/EventList";
+import Testimonials from "./WeedingHomeComponents/Testimonials/Testimonials";
 const WeedingMainHomePage = () => {
   return (
     <div>
@@ -21,6 +22,7 @@ const WeedingMainHomePage = () => {
       <WeddingNextPlan />
       <Reservation />
       <Category />
+      <Testimonials />
     </div>
   );
 };

@@ -52,7 +52,7 @@ export const AuthProvider = ({ children }) => {
   const logout = () => {
     localStorage.removeItem("access-token");
     setUser(null);
-    window.location.href = "/weeding/Login";
+    window.location.href = "/Login";
   };
 
   useEffect(() => {

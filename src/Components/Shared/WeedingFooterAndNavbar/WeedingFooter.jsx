@@ -25,20 +25,23 @@ const WeedingFooter = () => {
                     >
                         Make Reservation
                     </Button>
-                    <Button
-                        variant="outlined"
-                        size="large"
-                        sx={{
-                            borderColor: '#F4A492',
-                            color: '#F4A492',
-                            width: '200px',
-                            height: '60px',
-                            borderRadius: '50px',
-                            '&:hover': { backgroundColor: '#F4A492', color: 'white' }
-                        }}
-                    >
-                        Learn More
-                    </Button>
+                    <Link to='/weedingPrice'>
+
+                        <Button
+                            variant="outlined"
+                            size="large"
+                            sx={{
+                                borderColor: '#F4A492',
+                                color: '#F4A492',
+                                width: '200px',
+                                height: '60px',
+                                borderRadius: '50px',
+                                '&:hover': { backgroundColor: '#F4A492', color: 'white' }
+                            }}
+                        >
+                            Learn More
+                        </Button>
+                    </Link>
                 </div>
 
 

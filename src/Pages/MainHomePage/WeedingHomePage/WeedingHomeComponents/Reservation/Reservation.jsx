@@ -1,27 +1,41 @@
 import { useState } from "react";
-import { FaUser, FaEnvelope, FaCalendarAlt, FaUsers } from "react-icons/fa"; // Importing required icons
+import { FaUser, FaEnvelope, FaCalendarAlt, FaUsers } from "react-icons/fa";
+import API from "../../../../../api/api";
+import { toast } from "react-toastify";
 
 const Reservation = () => {
     const [formData, setFormData] = useState({
         fullName: "",
         date: "",
+        event: "",
         email: "",
         guests: "",
-        event: "entertainment",
     });
 
+    // Handle input changes
     const handleChange = (e) => {
         const { name, value } = e.target;
-        setFormData((prevData) => ({ ...prevData, [name]: value }));
+        setFormData({
+            ...formData,
+            [name]: value,
+        });
     };
 
-    const handleSubmit = (e) => {
+    // Handle form submission
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        console.log("Form Submitted", formData);
+        console.log("Form Data Submitted:", formData);
+        const response = await API.post('/reservation')
+            .then((res) => {
+                console.log(res)
+                toast.success('Successfully Reservation Submit')
+            })
+        console.log(response)
+        // You can process the `formData` object as needed here
     };
 
     return (
-        <div className=" bg-[#9ACCC9] pb-24 bg-opacity-15 flex flex-col items-center">
+        <div className="bg-[#9ACCC9] pb-24 bg-opacity-15 flex flex-col items-center">
             <div className="container mx-auto px-3">
                 {/* Decorative Image */}
                 <div className="flex justify-end items-end w-full">
@@ -37,7 +51,8 @@ const Reservation = () => {
                     <h1 className="text-6xl text-gray-900 font-semibold">Make Reservations</h1>
                     <p className="my-12 text-lg text-gray-700">
                         We are thrilled to announce the wedding of [Bride’s Name] and [Select Event].
-                        Join us for a day <br />filled with joy, laughter, and unforgettable moments as we tie the knot.
+                        Join us for a day <br />
+                        filled with joy, laughter, and unforgettable moments as we tie the knot.
                     </p>
                 </div>
 
@@ -58,10 +73,10 @@ const Reservation = () => {
                                     type="text"
                                     id="fullName"
                                     name="fullName"
-                                    value={formData.fullName}
-                                    onChange={handleChange}
                                     placeholder="Your Full Name"
                                     className="flex-grow p-4 text-gray-700 focus:outline-none focus:border-[#9ACCC9] rounded-full bg-transparent"
+                                    value={formData.fullName}
+                                    onChange={handleChange}
                                     required
                                 />
                             </div>
@@ -78,13 +93,14 @@ const Reservation = () => {
                                     type="date"
                                     id="date"
                                     name="date"
+                                    className="flex-grow p-4 text-gray-700 focus:outline-none focus:border-[#9ACCC9] rounded-full bg-transparent"
                                     value={formData.date}
                                     onChange={handleChange}
-                                    className="flex-grow p-4 text-gray-700 focus:outline-none focus:border-[#9ACCC9] rounded-full bg-transparent"
                                     required
                                 />
                             </div>
                         </div>
+
                         {/* Select Event */}
                         <div className="mb-8">
                             <label htmlFor="event" className="block text-gray-700 font-semibold mb-2">
@@ -94,11 +110,14 @@ const Reservation = () => {
                                 <select
                                     id="event"
                                     name="event"
+                                    className="flex-grow p-4 text-gray-700 focus:outline-none focus:border-[#9ACCC9] rounded-full bg-transparent"
                                     value={formData.event}
                                     onChange={handleChange}
-                                    className="flex-grow p-4 text-gray-700 focus:outline-none focus:border-[#9ACCC9] rounded-full bg-transparent"
                                     required
                                 >
+                                    <option value="" disabled>
+                                        Select Event
+                                    </option>
                                     <option value="entertainment">Entertainment</option>
                                     <option value="dining">Dining</option>
                                     <option value="decor">Decor</option>
@@ -106,12 +125,9 @@ const Reservation = () => {
                                 </select>
                             </div>
                         </div>
-
-
                     </div>
 
                     <div className="lg:w-1/2">
-
                         {/* Email */}
                         <div className="mb-8">
                             <label htmlFor="email" className="block text-gray-700 font-semibold mb-2">
@@ -123,14 +139,15 @@ const Reservation = () => {
                                     type="email"
                                     id="email"
                                     name="email"
-                                    value={formData.email}
-                                    onChange={handleChange}
                                     placeholder="Your Email Address"
                                     className="flex-grow p-4 text-gray-700 focus:outline-none focus:border-[#9ACCC9] rounded-full bg-transparent"
+                                    value={formData.email}
+                                    onChange={handleChange}
                                     required
                                 />
                             </div>
                         </div>
+
                         {/* Guests */}
                         <div className="mb-8">
                             <label htmlFor="guests" className="block text-gray-700 font-semibold mb-2">
@@ -142,10 +159,10 @@ const Reservation = () => {
                                     type="number"
                                     id="guests"
                                     name="guests"
-                                    value={formData.guests}
-                                    onChange={handleChange}
                                     placeholder="Number of Guests"
                                     className="flex-grow p-4 text-gray-700 focus:outline-none focus:border-[#9ACCC9] rounded-full bg-transparent"
+                                    value={formData.guests}
+                                    onChange={handleChange}
                                     required
                                 />
                             </div>
@@ -154,7 +171,7 @@ const Reservation = () => {
                         {/* Submit Button */}
                         <button
                             type="submit"
-                            className="w-full mt-8 rounded-full bg-[#9ACCC9] text-white font-semibold py-5  transition duration-300 hover:bg-[#F4A492]"
+                            className="w-full mt-8 rounded-full bg-[#9ACCC9] text-white font-semibold py-5 transition duration-300 hover:bg-[#F4A492]"
                         >
                             Submit Reservation
                         </button>
