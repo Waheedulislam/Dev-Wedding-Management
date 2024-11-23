@@ -8,6 +8,7 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useContext } from "react";
 import { AuthContext } from "../../../Providers/AuthProvider";
+import axios from "axios"; // Added to fix the 'axios' is not defined error
 
 function Register() {
   const {
@@ -19,8 +20,9 @@ function Register() {
   const { createUser, loading } = useContext(AuthContext);
 
   const onSubmit = async (data) => {
+    console.log("Form data submitted:", data); // Added console log for form data
     try {
-      await createUser(data.name, data.email, data.password);
+      await createUser(data.name, data.email, data.password, data.imgSrc);
       toast.success("Registration successful!", { autoClose: 2000 });
       setTimeout(() => {
         navigate("/");
@@ -28,8 +30,40 @@ function Register() {
     } catch (error) {
       const errorMessage =
         error.response?.data?.error || "Registration failed. Please try again.";
-      console.error("Error:", errorMessage);
+      console.error("Error:", errorMessage); // Added console log for error message
       toast.error(`Error: ${errorMessage}`, { autoClose: 3000 });
+    }
+  };
+
+  const uploadImageToImageBB = async (image) => {
+    console.log("Uploading image to ImageBB:", image); // Added console log for image upload
+    const formData = new FormData();
+    formData.append("image", image);
+
+    try {
+      const response = await axios.post(
+        `https://api.imgbb.com/1/upload?key=97099935520e7352c4d76225795a2662`,
+        formData
+      );
+      console.log("Image uploaded successfully:", response.data.data.url); // Added console log for successful image upload
+      return response.data.data.url;
+    } catch (error) {
+      console.error("Image upload failed:", error); // Added console log for image upload failure
+    }
+  };
+
+  const handleImageUpload = async (e) => {
+    console.log("Image upload event:", e); // Added console log for image upload event
+    const file = e.target.files[0];
+    if (file) {
+      try {
+        const imageUrl = await uploadImageToImageBB(file);
+        register("imgSrc", { value: imageUrl }); // Changed to use react-hook-form's register function
+        console.log("Image URL registered:", imageUrl); // Added console log for registered image URL
+      } catch (error) {
+        console.error("Error uploading image:", error); // Added console log for error uploading image
+        toast.error("Failed to upload image");
+      }
     }
   };
 
@@ -100,6 +134,18 @@ function Register() {
                   "&.Mui-focused fieldset": { borderColor: "#F4A492" },
                 },
               }}
+            />
+          </div>
+          <div className="mb-6">
+            <input
+              type="file"
+              accept=".jpg, .jpeg, .png"
+              onChange={handleImageUpload}
+              className="file:mr-4 file:py-2 file:px-4
+                file:rounded-full file:border-0
+                file:text-sm file:font-semibold
+                file:bg-violet-50 file:text-violet-700
+                hover:file:bg-violet-100"
             />
           </div>
           <Button

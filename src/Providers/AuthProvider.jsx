@@ -10,17 +10,24 @@ export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
 
-  const createUser = async (name, email, password) => {
+  const createUser = async (name, email, password, imgSrc) => {
     setLoading(true);
     try {
+      console.log("Sending data to server:", { name, email, password, imgSrc });
       const response = await API.post("/auth/register", {
         name,
         email,
         password,
+        imgSrc,
       });
+      console.log("Server response:", response.data);
       localStorage.setItem("access-token", response.data.token);
     } catch (error) {
-      throw error; // Propagate the error to be handled in the Register component
+      console.error(
+        "Error during registration:",
+        error.response?.data || error.message
+      );
+      throw error;
     } finally {
       setLoading(false);
     }
@@ -41,6 +48,7 @@ export const AuthProvider = ({ children }) => {
         role: decodedUser.role,
         name: decodedUser.name,
         email: decodedUser.email,
+        imgSrc: decodedUser.imgSrc,
       });
     } catch (error) {
       throw error;

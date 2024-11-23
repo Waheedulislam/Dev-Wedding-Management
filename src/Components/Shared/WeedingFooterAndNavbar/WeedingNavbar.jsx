@@ -176,14 +176,6 @@ const WeedingNavbar = () => {
               User Dashboard
             </Link>
           )}
-          <Link
-            to="#"
-            className="hidden md:inline-block ml-2 text-black border hover:text-gray-700 transition duration-300 ease-in-out"
-          >
-            {user?.name} <br />
-            {user?.email}
-          </Link>
-
           {user ? (
             <Button
               onClick={handleLogout} // Removed the parentheses to pass the function reference
@@ -211,13 +203,15 @@ const WeedingNavbar = () => {
 
         {/* Profile Menu */}
         <div>
-          <IconButton onClick={handleMenu} color="inherit">
-            <Avatar
-              src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp"
-              alt="Profile Picture"
-              className="w-8 h-8"
-            />
-          </IconButton>
+          {user && (
+            <IconButton onClick={handleMenu} color="inherit">
+              <Avatar
+                src={user?.imgSrc}
+                alt="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp"
+                className="w-8 h-8"
+              />
+            </IconButton>
+          )}
           <Menu
             id="menu-appbar"
             anchorEl={anchorEl}
@@ -307,7 +301,6 @@ const WeedingNavbar = () => {
                 Reservation
               </ListItem>
             </List>
-
           </Drawer>
         </div>
       </Toolbar>

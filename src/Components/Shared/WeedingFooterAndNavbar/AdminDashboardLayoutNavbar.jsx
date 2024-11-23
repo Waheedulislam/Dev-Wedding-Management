@@ -34,7 +34,7 @@ function AdminDashboardLayoutNavbar() {
 
         {/* User Avatar with Dropdown Menu */}
         <IconButton onClick={handleMenuOpen} color="default" className="p-0">
-          <Avatar src={user?.imageURL} alt={user?.name} className="h-8 w-8" />
+          <Avatar src={user?.imgSrc} alt={user?.name} className="h-8 w-8" />
         </IconButton>
         <Menu
           anchorEl={anchorEl}
