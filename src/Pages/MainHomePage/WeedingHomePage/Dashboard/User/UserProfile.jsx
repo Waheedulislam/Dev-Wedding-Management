@@ -37,7 +37,7 @@ export default function ProfilePage() {
         setUserInfo((prev) => ({ ...prev, [name]: value }))
     }
     const { user } = useContext(AuthContext);
-
+    console.log(user)
     // Here you can add the save logic (e.g., API call to save data)
     const handleSubmit = () => {
         console.log("User info saved:", userInfo)
@@ -51,7 +51,7 @@ export default function ProfilePage() {
         <div className="space-y-6">
             <Card className="bg-white dark:bg-gray-800 shadow-lg">
                 <CardContent className="p-6 flex flex-col sm:flex-row items-center space-y-4 sm:space-y-0 sm:space-x-4">
-                    <Avatar alt="User avatar" src="https://github.com/shadcn.png" sx={{ width: 80, height: 80 }} />
+                    <Avatar alt="User avatar" src={user?.imgSrc} sx={{ width: 80, height: 80 }} />
                     <div className="flex flex-col space-y-2">
                         <Typography variant="h5" className="text-gray-800 font-semibold">{user?.name}</Typography>
                         <Typography variant="body2" className="text-gray-500 dark:text-gray-400">{user?.email}</Typography>

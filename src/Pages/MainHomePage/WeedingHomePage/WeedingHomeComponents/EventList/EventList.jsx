@@ -1,11 +1,5 @@
 import { Heart, Calendar, Glasses, PartyPopper, Cake, Building2 } from 'lucide-react';
 
-
-
-
-
-
-
 export default function EventList() {
   return (
     <div className=' bg-gray-50'>

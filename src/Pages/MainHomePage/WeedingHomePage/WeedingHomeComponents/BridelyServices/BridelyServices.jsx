@@ -18,7 +18,7 @@ const BridelyServices = () => {
                 {/* card-div  */}
                 <div className="container mx-auto px-4">
 
-                    <div className="grid grid-cols-1 lg:grid-cols-3 justify-items-center items-center gap-4">
+                    <div className="grid grid-cols-1 lg:grid-cols-3 sm:grid-cols-2 justify-items-center items-center gap-4">
 
 
                         <Card

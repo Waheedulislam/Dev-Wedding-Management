@@ -2,7 +2,7 @@
 
 const Category = () => {
     return (
-        <div className="grid grid-cols-2  md:grid-cols-4 rounded-full mt-20 container mx-auto px-4">
+        <div className="grid grid-cols-2  md:grid-cols-4 rounded-full md:my-40 my-20 container mx-auto px-4">
             {/* component-1  */}
             <div
                 className="flex flex-col items-center border border-gray-200 p-8 hover:shadow-lg transition-shadow duration-300 rounded"

@@ -7,6 +7,7 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
+import { toast } from "react-toastify";
 
 export default function UserEvents() {
     const events = [
@@ -15,11 +16,14 @@ export default function UserEvents() {
         { id: 3, name: "Birthday Party", date: "2024-08-10", guests: 30 },
     ];
 
+    const handleCreateEvent = () => {
+        toast.warning('Sorry you are  not available creating event now')
+    }
     return (
         <div className="space-y-6 p-6">
             <div className="flex justify-between items-center">
                 <h1 className="text-3xl font-bold">My Events</h1>
-                <Button variant="contained" startIcon={<AddCircleOutlineIcon />} color="primary">
+                <Button onClick={handleCreateEvent} variant="contained" startIcon={<AddCircleOutlineIcon />} color="primary">
                     Create Event
                 </Button>
             </div>

@@ -13,7 +13,7 @@ import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
 import MenuIcon from "@mui/icons-material/Menu";
 import Toolbar from "@mui/material/Toolbar";
-import { Outlet, useNavigate } from "react-router-dom";
+import { Link, Outlet, useNavigate } from "react-router-dom";
 import DashboardIcon from "@mui/icons-material/Dashboard";
 import PeopleIcon from "@mui/icons-material/People";
 import EventIcon from "@mui/icons-material/Event";
@@ -68,8 +68,9 @@ function ResponsiveDrawer(props) {
 
   const userDrawerContent = [
     { text: "Dashboard Overview", icon: <DashboardIcon />, path: "userHome" },
-    { text: "My Events", icon: <EventIcon />, path: "userEvents" },
+    { text: "My Reservation", icon: <EventIcon />, path: "userReservation" },
     { text: "Booking Status", icon: <BookIcon />, path: "userBookings" },
+    { text: "Profile Settings", icon: <PersonIcon />, path: "userProfile" },
     {
       text: "Payments & Invoices",
       icon: <PaymentIcon />,
@@ -80,7 +81,7 @@ function ResponsiveDrawer(props) {
       icon: <MessageIcon />,
       path: "userMessages",
     },
-    { text: "Profile Settings", icon: <PersonIcon />, path: "userProfile" },
+
   ];
 
   if (loading) {
@@ -92,9 +93,11 @@ function ResponsiveDrawer(props) {
   const drawer = (
     <div>
       <Toolbar>
-        <h1 className="text-3xl font-semibold">
-          Wedding <span className="text-blue-800">Pro</span>
-        </h1>
+        <Link to='/'>
+          <h1 className="text-3xl font-semibold">
+            Wedding <span className="text-blue-800">Pro</span>
+          </h1>
+        </Link>
       </Toolbar>
       <Divider />
       <List>
@@ -139,6 +142,7 @@ function ResponsiveDrawer(props) {
           <LogOut className="h-6 w-6" />
           <span className="text-xl ml-2 ">Log out</span>
         </div>
+
       </List>
     </div>
   );

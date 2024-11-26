@@ -1,4 +1,5 @@
 import { Button } from "@mui/material";
+import { Link } from "react-router-dom";
 
 const WeedingBanner = () => {
     return (
@@ -17,23 +18,26 @@ const WeedingBanner = () => {
                     <p className="text-gray-600 text-xl font-semibold my-4">
                         We specialize in creating unforgettable <br /> experiences that exceed your expectations
                     </p>
-                    <Button
-                        variant="contained"
-                        size="medium"
-                        sx={{
-                            backgroundColor: '#9ACCC9', // Initial background color
-                            color: 'white',
-                            width: '200px',
-                            height: '60px',
-                            borderRadius: '50px', // Full-rounded
-                            '&:hover': {
-                                backgroundColor: '#F4A492', // Hover background color
-                                color: 'white', // Keep text color white on hover
-                            },
-                        }}
-                    >
-                        Make Reservation
-                    </Button>
+                    <Link to='/Reservation'>
+                        <Button
+                            variant="contained"
+                            size="medium"
+                            sx={{
+                                backgroundColor: '#9ACCC9', // Initial background color
+                                color: 'white',
+                                width: '200px',
+                                height: '60px',
+                                marginTop: '15px',
+                                borderRadius: '50px', // Full-rounded
+                                '&:hover': {
+                                    backgroundColor: '#F4A492', // Hover background color
+                                    color: 'white', // Keep text color white on hover
+                                },
+                            }}
+                        >
+                            Make Reservation
+                        </Button>
+                    </Link>
 
 
 

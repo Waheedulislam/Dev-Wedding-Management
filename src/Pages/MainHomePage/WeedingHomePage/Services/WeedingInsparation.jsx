@@ -46,7 +46,7 @@ const WeedingInsparation = () => {
           <Typography variant="p" className="text-[#f4a492] font-bold" gutterBottom>
             We Share Expert Advice
           </Typography>
-          <Typography variant="h3" component="h1" fontWeight={700} gutterBottom>
+          <Typography variant="h3" className="text-gray-900" component="h1" fontWeight={700} gutterBottom>
             Your Source for Wedding <br /> Inspiration and Tips
           </Typography>
         </Box>

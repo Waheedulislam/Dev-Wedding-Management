@@ -12,10 +12,12 @@ function AdminDashboardLayoutNavbar() {
 
   const handleMenuClose = () => {
     setAnchorEl(null);
+    // LogOut()
+    logout()
   };
 
   // user info
-  const { user } = useContext(AuthContext);
+  const { user, logout } = useContext(AuthContext);
 
   return (
     <header className="bg-white shadow-md p-4 flex justify-between items-center">

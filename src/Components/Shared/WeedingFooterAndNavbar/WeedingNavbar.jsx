@@ -6,24 +6,17 @@ import {
   Avatar,
   Menu,
   MenuItem,
-  Badge,
   Typography,
   ListItem,
   List,
   Drawer,
   ListItemText,
   Box,
-  Button,
 } from "@mui/material";
-import {
-  AccountCircle,
-  Settings,
-  ExitToApp,
-  LogoutOutlined,
-} from "@mui/icons-material";
+import { AccountCircle, Settings, ExitToApp } from "@mui/icons-material";
+import MenuIcon from "@mui/icons-material/Menu"; // Corrected import
 import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
-import { MenuIcon } from "lucide-react";
 import { AuthContext } from "../../../Providers/AuthProvider";
 
 const WeedingNavbar = () => {
@@ -33,38 +26,25 @@ const WeedingNavbar = () => {
 
   const { user, logout } = useContext(AuthContext);
 
-  const handleMenu = (event) => {
-    setAnchorEl(event.currentTarget);
-  };
+  const handleMenu = (event) => setAnchorEl(event.currentTarget);
+  const handleClose = () => setAnchorEl(null);
 
-  const handleClose = () => {
-    setAnchorEl(null);
-  };
+  const handleDrawerOpen = () => setDrawerOpen(true);
+  const handleDrawerClose = () => setDrawerOpen(false);
 
-  const handleDrawerOpen = () => {
-    setDrawerOpen(true);
-  };
-
-  const handleDrawerClose = () => {
-    setDrawerOpen(false);
-  };
-
-  const handleDropdownToggle = (event) => {
+  const handleDropdownToggle = (event) =>
     setDropdownAnchor((prev) => (prev ? null : event.currentTarget));
-  };
-
-  const handleDropdownClose = () => {
-    setDropdownAnchor(null);
-  };
+  const handleDropdownClose = () => setDropdownAnchor(null);
 
   const handleLogout = () => {
     logout();
+    handleClose();
   };
 
   return (
     <AppBar
       position="fixed"
-      style={{
+      sx={{
         background: "rgba(255, 255, 255, 0.2)",
         backdropFilter: "blur(10px)",
         boxShadow: "0 4px 30px rgba(0, 0, 0, 0.1)",
@@ -75,8 +55,8 @@ const WeedingNavbar = () => {
         {/* Brand Logo */}
         <Typography
           variant="h6"
-          component="a"
-          href="/"
+          component={Link}
+          to="/"
           className="font-bold text-black"
         >
           Weeding
@@ -84,111 +64,58 @@ const WeedingNavbar = () => {
 
         {/* Navbar Items */}
         <div className="flex gap-4 items-center">
-          <Link
-            to="/weedingHome"
-            className="hidden md:inline-block ml-2 text-black hover:text-gray-700 transition duration-300 ease-in-out"
-          >
+          <Link to="/weedingHome" className="hidden md:inline-block text-black hover:text-gray-700 transition">
             Home
           </Link>
-          <Link
-            to="/weedingPrice"
-            className="hidden md:inline-block ml-2 text-black hover:text-gray-700 transition duration-300 ease-in-out"
-          >
+          <Link to="/weedingPrice" className="hidden md:inline-block text-black hover:text-gray-700 transition">
             Pricing
           </Link>
-          <Link
-            to="/MenuPlanner"
-            className="hidden md:inline-block ml-2 text-black hover:text-gray-700 transition duration-300 ease-in-out"
-          >
+          <Link to="/MenuPlanner" className="hidden md:inline-block text-black hover:text-gray-700 transition">
             Menu Planner
           </Link>
 
-          {/* Dropdown Trigger */}
+          {/* Dropdown Menu */}
           <Box
             onClick={handleDropdownToggle}
-            className="hidden md:inline-block ml-2 text-black hover:text-gray-700 cursor-pointer transition duration-300 ease-in-out"
+            className="hidden md:inline-block text-black hover:text-gray-700 cursor-pointer"
           >
             Pages
           </Box>
-
-          {/* Dropdown Menu */}
           <Menu
             anchorEl={dropdownAnchor}
             open={Boolean(dropdownAnchor)}
             onClose={handleDropdownClose}
           >
-            <MenuItem
-              component={Link}
-              to="/weedingBlogs"
-              onClick={handleDropdownClose}
-            >
-              Blogs
-            </MenuItem>
-            <MenuItem
-              component={Link}
-              to="/wedding-cart"
-              onClick={handleDropdownClose}
-            >
-              Cart
-            </MenuItem>
-            <MenuItem
-              component={Link}
-              to="/weedingTeam"
-              onClick={handleDropdownClose}
-            >
-              Team
-            </MenuItem>
-            <MenuItem
-              component={Link}
-              to="/weedingAbout"
-              onClick={handleDropdownClose}
-            >
-              About
-            </MenuItem>
-            <MenuItem
-              component={Link}
-              to="/Testimonial"
-              onClick={handleDropdownClose}
-            >
-              Testimonial
-            </MenuItem>
-            <MenuItem
-              component={Link}
-              to="/Reservation"
-              onClick={handleDropdownClose}
-            >
+            <MenuItem component={Link} to="/Reservation" onClick={handleDropdownClose}>
               Reservation
             </MenuItem>
+            <MenuItem component={Link} to="/weedingBlogs" onClick={handleDropdownClose}>
+              Blogs
+            </MenuItem>
+            <MenuItem component={Link} to="/weedingTeam" onClick={handleDropdownClose}>
+              Team
+            </MenuItem>
+            <MenuItem component={Link} to="/weedingAbout" onClick={handleDropdownClose}>
+              About
+            </MenuItem>
+            <MenuItem component={Link} to="/Testimonial" onClick={handleDropdownClose}>
+              Testimonial
+            </MenuItem>
           </Menu>
-          {user && user.role === "admin" && (
-            <Link
-              to="/dashboard/adminHome"
-              className="hidden md:inline-block ml-2 text-black hover:text-gray-700 transition duration-300 ease-in-out"
-            >
+
+          {/* Admin/User Dashboards */}
+          {user?.role === "admin" && (
+            <Link to="/dashboard/adminHome" className="hidden md:inline-block text-black hover:text-gray-700">
               Admin Dashboard
             </Link>
           )}
-          {user && user.role === "attendee" && (
-            <Link
-              to="/dashboard/userHome"
-              className="hidden md:inline-block ml-2 text-black hover:text-gray-700 transition duration-300 ease-in-out"
-            >
-              User Dashboard
+          {user?.role === "attendee" && (
+            <Link to="/dashboard/userHome" className="hidden md:inline-block text-black hover:text-gray-700">
+              Dashboard
             </Link>
           )}
-          {user ? (
-            <Button
-              onClick={handleLogout} // Removed the parentheses to pass the function reference
-              type="button"
-              className="hidden md:inline-block ml-2 text-black hover:text-gray-700 transition duration-300 ease-in-out"
-            >
-              <LogoutOutlined />
-            </Button>
-          ) : (
-            <Link
-              to="/Login"
-              className="hidden md:inline-block ml-2 text-black hover:text-gray-700 transition duration-300 ease-in-out"
-            >
+          {!user && (
+            <Link to="/Login" className="hidden md:inline-block text-black hover:text-gray-700">
               Login
             </Link>
           )}
@@ -198,107 +125,65 @@ const WeedingNavbar = () => {
         <InputBase
           placeholder="Search..."
           className="bg-white bg-opacity-70 rounded-full px-4 py-1 text-gray-800"
-          style={{ width: 120 }}
+          sx={{ width: 120 }}
         />
 
         {/* Profile Menu */}
-        <div>
-          {user && (
+        {user && (
+          <div>
             <IconButton onClick={handleMenu} color="inherit">
               <Avatar
-                src={user?.imgSrc}
-                alt="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp"
+                src={user?.imgSrc || "https://via.placeholder.com/150"}
+                alt="Profile"
                 className="w-8 h-8"
               />
             </IconButton>
-          )}
-          <Menu
-            id="menu-appbar"
-            anchorEl={anchorEl}
-            anchorOrigin={{
-              vertical: "top",
-              horizontal: "right",
-            }}
-            keepMounted
-            transformOrigin={{
-              vertical: "top",
-              horizontal: "right",
-            }}
-            open={Boolean(anchorEl)}
-            onClose={handleClose}
-          >
-            <MenuItem onClick={handleClose}>
-              <AccountCircle className="mr-2" /> Profile
-              <Badge color="secondary" variant="dot" />
-            </MenuItem>
-            <MenuItem onClick={handleClose}>
-              <Settings className="mr-2" /> Settings
-            </MenuItem>
-            <MenuItem onClick={handleClose}>
-              <ExitToApp className="mr-2" /> Logout
-            </MenuItem>
-          </Menu>
-        </div>
+            <Menu
+              id="menu-appbar"
+              anchorEl={anchorEl}
+              open={Boolean(anchorEl)}
+              onClose={handleClose}
+            >
+              <MenuItem onClick={handleClose}>
+                <AccountCircle className="mr-2" /> Profile
+              </MenuItem>
+              <MenuItem onClick={handleClose}>
+                <Settings className="mr-2" /> Settings
+              </MenuItem>
+              <MenuItem onClick={handleLogout}>
+                <ExitToApp className="mr-2" /> Logout
+              </MenuItem>
+            </Menu>
+          </div>
+        )}
 
         {/* Mobile Drawer */}
-        <div className="flex gap-4 items-center md:hidden">
+        <div className="md:hidden">
           <IconButton onClick={handleDrawerOpen} color="default">
             <MenuIcon />
           </IconButton>
-          <Drawer
-            className="px-10"
-            anchor="left"
-            open={drawerOpen}
-            onClose={handleDrawerClose}
-          >
+          <Drawer anchor="left" open={drawerOpen} onClose={handleDrawerClose}>
             <List>
               <ListItem button component={Link} to="/weedingHome">
                 <ListItemText primary="Home" />
               </ListItem>
-
-              <ListItem
-                component={Link}
-                to="/weedingPrice"
-                className="hidden md:inline-block  text-black hover:text-gray-700 transition duration-300 ease-in-out"
-              >
-                Pricing
+              <ListItem button component={Link} to="/weedingPrice">
+                <ListItemText primary="Pricing" />
               </ListItem>
-
-              <ListItem button component={Link} to="/weedingBlogs">
-                <ListItemText primary="Blogs" />
-              </ListItem>
-
               <ListItem button component={Link} to="/MenuPlanner">
-                <ListItemText primary="MenuPlanner" />
+                <ListItemText primary="Menu Planner" />
               </ListItem>
-
-              <ListItem
-                component={Link}
-                to="/weeding/weedingTeam"
-                onClick={handleDropdownClose}
-              >
-                Team
+              <ListItem button component={Link} to="/weedingTeam">
+                <ListItemText primary="Team" />
               </ListItem>
-              <ListItem
-                component={Link}
-                to="/weeding/weedingAbout"
-                onClick={handleDropdownClose}
-              >
-                About
+              <ListItem button component={Link} to="/weedingAbout">
+                <ListItemText primary="About" />
               </ListItem>
-              <ListItem
-                component={Link}
-                to="/weeding/Testimonial"
-                onClick={handleDropdownClose}
-              >
-                Testimonial
+              <ListItem button component={Link} to="/Testimonial">
+                <ListItemText primary="Testimonial" />
               </ListItem>
-              <ListItem
-                component={Link}
-                to="/weeding/Reservation"
-                onClick={handleDropdownClose}
-              >
-                Reservation
+              <ListItem button component={Link} to="/Reservation">
+                <ListItemText primary="Reservation" />
               </ListItem>
             </List>
           </Drawer>

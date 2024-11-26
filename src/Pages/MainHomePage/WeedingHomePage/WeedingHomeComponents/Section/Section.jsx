@@ -12,7 +12,7 @@ const Section = () => {
                 }}
             />
             {/* Overlay color */}
-            <div className="absolute inset-0 bg-[#F4A492] opacity-70" />
+            <div className="absolute inset-0 bg-gray-200 opacity-70" />
 
             {/* Content on top */}
             <div className="relative   px-2 justify-items-center items-center h-full gap-2 grid grid-cols-2  lg:grid-cols-4">

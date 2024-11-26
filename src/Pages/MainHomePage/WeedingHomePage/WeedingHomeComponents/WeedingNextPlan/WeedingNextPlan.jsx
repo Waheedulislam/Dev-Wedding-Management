@@ -1,9 +1,10 @@
 import { Button } from "@mui/material";
+import { Link } from "react-router-dom";
 
 
 const WeddingNextPlan = () => {
     return (
-        <div className="flex mt-12 container mx-auto px-4 flex-col md:flex-row items-center justify-between p-8 ">
+        <div className="flex mt-12 container mx-auto px-4  md:flex-row items-center justify-between p-8 flex-col-reverse">
 
             {/* Middle Section - Text Content */}
             <div className="w-full md:w-1/2 mb-6 text-center md:text-left space-y-4">
@@ -17,23 +18,26 @@ const WeddingNextPlan = () => {
                 <p className="text-gray-600">
                     Whether you’re planning a corporate event, a social gathering, or a wedding, let Bridely be your partner in creating unforgettable memories. Contact us today to schedule a consultation and start planning your next event.
                 </p>
-                <Button
-                    variant="contained"
-                    size="medium"
-                    sx={{
-                        backgroundColor: '#9ACCC9', // Initial background color
-                        color: 'white',
-                        width: '200px',
-                        height: '60px',
-                        borderRadius: '50px', // Full-rounded
-                        '&:hover': {
-                            backgroundColor: '#F4A492', // Hover background color
-                            color: 'white', // Keep text color white on hover
-                        },
-                    }}
-                >
-                    Make Reservation
-                </Button>
+                <Link to='/Reservation'>
+                    <Button
+                        variant="contained"
+                        size="medium"
+                        sx={{
+                            backgroundColor: '#9ACCC9', // Initial background color
+                            color: 'white',
+                            width: '200px',
+                            height: '60px',
+                            marginTop: '15px',
+                            borderRadius: '50px', // Full-rounded
+                            '&:hover': {
+                                backgroundColor: '#F4A492', // Hover background color
+                                color: 'white', // Keep text color white on hover
+                            },
+                        }}
+                    >
+                        Make Reservation
+                    </Button>
+                </Link>
 
 
 

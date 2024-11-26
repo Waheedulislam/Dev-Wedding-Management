@@ -26,6 +26,7 @@ import {
     ArrowDropDown,
 } from '@mui/icons-material';
 import { BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer } from 'recharts';
+import { toast } from 'react-toastify';
 
 const data = [
     { name: 'Jan', total: 1500 },
@@ -41,6 +42,9 @@ const data = [
     { name: 'Nov', total: 5500 },
     { name: 'Dec', total: 6200 },
 ];
+const handleReport = () => {
+    toast.warning('View Report is not available now...!')
+}
 
 export default function UserHome() {
     const [tabValue, setTabValue] = useState('activity');
@@ -51,7 +55,7 @@ export default function UserHome() {
                 <Typography variant="h4" component="h1" gutterBottom>
                     Dashboard Overview
                 </Typography>
-                <Button variant="contained" color="primary" endIcon={<ArrowForward />}>
+                <Button onClick={handleReport} variant="contained" color="primary" endIcon={<ArrowForward />}>
                     View Reports
                 </Button>
             </Box>
@@ -108,12 +112,25 @@ export default function UserHome() {
                         />
                         <CardContent>
                             <Typography variant="body2" color="textSecondary">
-                                {/* You can add a progress bar here if needed */}
+                                <ArrowDropUp className="text-green-500" /> 18% from last week
                             </Typography>
                         </CardContent>
                     </Card>
                 </Grid>
             </Grid>
+            <Card>
+                <CardHeader title="Monthly Revenue Overview" />
+                <CardContent>
+                    <ResponsiveContainer width="100%" height={300}>
+                        <BarChart data={data}>
+                            <XAxis dataKey="name" />
+                            <YAxis tickFormatter={(value) => `$${value}`} />
+                            <Tooltip />
+                            <Bar dataKey="total" fill="#3f51b5" />
+                        </BarChart>
+                    </ResponsiveContainer>
+                </CardContent>
+            </Card>
 
             <Tabs value={tabValue} onChange={(event, newValue) => setTabValue(newValue)}>
                 <Tab label="Recent Activity" value="activity" />
@@ -170,19 +187,7 @@ export default function UserHome() {
                 </Card>
             )}
 
-            <Card>
-                <CardHeader title="Monthly Revenue Overview" />
-                <CardContent>
-                    <ResponsiveContainer width="100%" height={300}>
-                        <BarChart data={data}>
-                            <XAxis dataKey="name" />
-                            <YAxis tickFormatter={(value) => `$${value}`} />
-                            <Tooltip />
-                            <Bar dataKey="total" fill="#3f51b5" />
-                        </BarChart>
-                    </ResponsiveContainer>
-                </CardContent>
-            </Card>
+
         </Box>
     );
 }

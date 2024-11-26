@@ -9,7 +9,6 @@ import WeedingAbout from "../Pages/MainHomePage/WeedingHomePage/WeedingAbout/Wee
 import MenuPlanner from "../Pages/MainHomePage/WeedingHomePage/MenuPlanner/MenuPlanner";
 
 import Testimonial from "../Pages/MainHomePage/WeedingHomePage/weedingTestimonial/Testimonial";
-import WeedingReservation from "../Pages/MainHomePage/WeedingHomePage/WeedingReservation/WeedingReservation";
 import Login from "../Components/LoginRegister/Login/Login";
 import Register from "../Components/LoginRegister/Register/Register";
 import ResponsiveDrawer from "../Layouts/DashboardLayout";
@@ -35,8 +34,8 @@ import WeedingBlog from "../Pages/MainHomePage/WeedingHomePage/WeedingBlog/Weedi
 import BlogDetailsCard from "../Pages/MainHomePage/WeedingHomePage/WeedingBlog/BlogsDetails/BlogDetailsCard";
 import WeedingGallery from "../Pages/MainHomePage/WeedingHomePage/WeedingBlog/WeedingGallery/WeedingGallery";
 import PaymentSuccess from "../Pages/MainHomePage/WeedingHomePage/PlanPayment/PaymentSuccess";
-import WeddingCart from "../Pages/MainHomePage/WeedingHomePage/Cart/Cart";
-import WeddingReservation from "../Pages/MainHomePage/WeedingHomePage/WeedingHomeComponents/WeedingReservation/WeedingReservation";
+// import WeddingCart from "../Pages/MainHomePage/WeedingHomePage/Cart/Cart";
+import Reservation from "../Pages/MainHomePage/WeedingHomePage/WeedingHomeComponents/Reservation/Reservation";
 
 
 
@@ -75,15 +74,14 @@ const router = createBrowserRouter([
       { path: "weedingAbout", element: <WeedingAbout /> },
       { path: "MenuPlanner", element: <MenuPlanner /> },
       { path: "Testimonial", element: <Testimonial /> },
-      { path: "Reservation", element: <WeedingReservation /> },
+      { path: "Reservation", element: <Reservation /> },
       { path: "Gallery", element: <WeedingGallery /> },
-      { path: "wedding-cart", element: <WeddingCart /> },
-      { path: "wedding-reservation", element: <WeddingReservation /> },
+      // { path: "wedding-cart", element: <WeddingCart /> },
       { path: "Login", element: <Login /> },
       { path: "Register", element: <Register /> },
       { path: "/weeding/payment/:planId", element: < PlanPayment /> },
       {
-        path: "/payment-success",
+        path: "payment-success",
         element: <PaymentSuccess />,
       },
 

@@ -28,7 +28,7 @@ const PlanPayment = () => {
   const handlePayment = async () => {
 
     if (!user) {
-      navigate('/weeding/Login')
+      navigate('/Login')
     } else {
       const response = API.post("/create-payment", {
         eventPlan: planId, // Send event plan array with product information
@@ -56,10 +56,18 @@ const PlanPayment = () => {
       // Mock payment verification success
       console.log(response)
       const paymentSuccessful = true;
+      // if (paymentSuccessful) {
+      //   setIsPaid(true);
+      //   // fetchMeetLink();
+      // }
       if (paymentSuccessful) {
         setIsPaid(true);
-        // fetchMeetLink();
+        toast.success("Payment Successful! Redirecting...");
+        setTimeout(() => {
+          window.location.replace("http://localhost:5173/payment-success");
+        }, 2000); // 2 সেকেন্ড অপেক্ষা করে রিডাইরেক্ট
       }
+
     }
   };
   // const fetchMeetLink = async () => {

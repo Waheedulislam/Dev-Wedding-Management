@@ -16,12 +16,12 @@ const WeedingMainHomePage = () => {
       <WeedingInsparation />
       <BridelyServices />
       <EventList />
-      <Section />
+      <WeddingNextPlan />
       <PersonalizedPlanning />
       <UnforgettableEvents />
-      <WeddingNextPlan />
       <Reservation />
       <Category />
+      <Section />
       <Testimonials />
     </div>
   );
