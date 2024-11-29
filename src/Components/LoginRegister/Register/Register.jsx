@@ -173,7 +173,7 @@ function Register() {
         </div> */}
         <p className="text-sm text-center text-gray-600 mt-6">
           Already have an account?{" "}
-          <Link to="/weeding/login" className="text-blue-500 hover:underline">
+          <Link to="/login" className="text-blue-500 hover:underline">
             Log in
           </Link>
         </p>
